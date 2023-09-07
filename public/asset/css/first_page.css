@@ -1,0 +1,19 @@
+body{
+    margin: 0 auto;
+    width: 800px;
+    height: 600px;
+}
+
+header{
+    height: 50px;
+    margin-top: 5%;
+    border: 0px;
+}
+
+main{
+    margin-top: 5%;
+}
+
+footer{
+    height: 100px;
+}
