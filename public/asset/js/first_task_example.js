@@ -10,7 +10,26 @@ let arrRegExps = [
 let str = 'ahb acb aeb aaaab caeeb adcb axeb bbbba aba aca aea xxyxx abba adca abea';
 
 // блок с подсказкой:
-let clue = '<ul><li>/abc/ Идущие подряд символы abc</li><li>/[abc]/ Один из символов a, b или c </li><li> /[abc]/ Один из символов a, b или c</li><li>/[a-z]/ Диапазон символов, идущих подряд в таблице Unicode </li><li> /[^a]/ Исключить символ из поиска </li><li> /\\b/ Граница слова </li><li> /\\B/ Не граница слова </li> <li> /\\d/ Цифра </li><li> /\\D/ Не цифра </li><li> /\\w/ Латинская буква, цифра или _ </li><li>/\\W/ Не латинская буква, не цифра и не _ </li><li> /\\s/ Пробельный символ</li><li> /\\S/ Непробельный символ </li><li> /a{3}/ Строго 3 символа а подряд </li><li> /a{2,4}/ От 2 до 4 символов а подряд </li><li>/a+/ 1 и более символов а подряд</li><li>/a*/ 0 и более символов а подряд</li><li>/a?/ 0 или 1 символ а</li><li>/./ Один любой символ, кроме переноса строки</li><li>/(abс)+/ одноврменный поиск нескольких символов подряд </li></ul>';
+let clue = `<ul>
+    <li>/abc/ Идущие подряд символы abc</li>
+    <li>/[abc]/ Один из символов a, b или c </li>
+    <li> /[abc]/ Один из символов a, b или c</li>
+    <li>/[a-z]/ Диапазон символов, идущих подряд в таблице Unicode </li>
+    <li> /[^a]/ Исключить символ из поиска </li><li> /\\b/ Граница слова </li>
+    <li> /\\B/ Не граница слова </li> <li> /\\d/ Цифра </li><li> /\\D/ Не цифра </li>
+    <li> /\\w/ Латинская буква, цифра или _ </li>
+    <li>/\\W/ Не латинская буква, не цифра и не _ </li>
+    <li> /\\s/ Пробельный символ</li>
+    <li> /\\S/ Непробельный символ </li>
+    <li> /a{3}/ Строго 3 символа а подряд </li>
+    <li> /a{2,4}/ От 2 до 4 символов а подряд </li>
+    <li>/a+/ 1 и более символов а подряд</li>
+    <li>/a*/ 0 и более символов а подряд</li>
+    <li>/a?/ 0 или 1 символ а</li>
+    <li>/./ Один любой символ, кроме переноса строки</li>
+    <li>/(abс)+/ одноврменный поиск нескольких символов подряд </li>
+</ul>`;
+
 let out_clue = document.querySelector('.out_clue');
 
 let button_clue = document.querySelector('.button_clue').addEventListener('click', function (){
@@ -88,7 +107,6 @@ document.querySelector('.button_task_3').addEventListener('click', function (){
 })
 
 let new_str = 'dit dot dyt dkt dnt';
-let newRegExpTest = new RegExp('d[kn]t', 'g');
+let newRegExpTest = new RegExp('d.t', 'g');
 let new_str_1 = new_str.match(newRegExpTest);
 console.log(new_str_1);
-
