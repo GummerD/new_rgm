@@ -6,7 +6,9 @@ use App\Http\Controllers\FirstPageController;
 use App\Http\Controllers\Profiles\ProfilePageController;
 use App\Http\Controllers\Rules\RulesPageController;
 use App\Http\Controllers\StartPageController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,10 +22,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-// Route::get('/', [FirstPageController::class, 'index']) ->name('/');
-// Route::get('/first_task', [FirstPageController::class, 'first_task'])->name('first_task');
-
-
 
 // Этот блок будет доступен всем ->
 
@@ -34,19 +32,25 @@ Route::group(['prefix' => 'rules'], static function(){
     Route::get('/', [RulesPageController::class, 'index'])->name('rules');
 });
 
-// Блок регистрации/авторизации добавим, когда решим каким способом будем делать)) -><-
+// Блок регистрации/авторизации  ->
+// User: vamobe@mailinator.com
+// password: 12345678
 
+Auth::routes();
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+//<-
 // <-
 
 
 // Этот блок будет доступен только для зарегистрированных пользователей ->
 
-Route::group(['prefix' => 'profiles'], static function(){
+
+Route::group(['prefix' => 'profiles', 'middleware'=>'auth'], static function(){
     Route::get('/', [ProfilePageController::class, 'index'])->name('profiles');
 });
 
 
-Route::group(['prefix' => 'exercises'], static function(){
+Route::group(['prefix' => 'exercises','middleware'=>'auth'], static function(){
     Route::get('/', [ExercisesPageController::class, 'index'])->name('exercises');
 });
 
@@ -59,3 +63,4 @@ Route::group(['prefix' => 'admin'], static function(){
     Route::get('/', [AdminPageController::class, 'index'])->name('admin');
 });
 // <-
+
