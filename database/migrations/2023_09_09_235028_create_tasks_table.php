@@ -13,11 +13,13 @@ return new class extends Migration
   {
     Schema::create('tasks', function (Blueprint $table) {
       $table->bigIncrements('id');
-      $table->string('level');
-      $table->string('level_name');
+      $table->foreignId('level_id')
+        ->references('id')
+        ->on('levels')
+        ->cascadeOnDelete();
       $table->integer('num_task')->unsigned();
       $table->text('task_text');
-      $table->text('text')->nullable();
+      $table->text('rule_use')->nullable();
       $table->text('correct_answer');
     });
   }
