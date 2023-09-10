@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminPageController;
-use App\Http\Controllers\Exercises\ExercisesPageController;
+use App\Http\Controllers\Tasks\TasksPageController;
 use App\Http\Controllers\FirstPageController;
 use App\Http\Controllers\Profiles\ProfilePageController;
 use App\Http\Controllers\Rules\RulesPageController;
@@ -28,8 +28,8 @@ use App\Http\Controllers\HomeController;
 Route::get('/', [StartPageController::class, 'index'])->name('start');
 
 
-Route::group(['prefix' => 'rules'], static function(){
-    Route::get('/', [RulesPageController::class, 'index'])->name('rules');
+Route::group(['prefix' => 'rules'], static function () {
+  Route::get('/', [RulesPageController::class, 'index'])->name('rules');
 });
 
 // Блок регистрации/авторизации  ->
@@ -45,13 +45,13 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 // Этот блок будет доступен только для зарегистрированных пользователей ->
 
 
-Route::group(['prefix' => 'profiles', 'middleware'=>'auth'], static function(){
-    Route::get('/', [ProfilePageController::class, 'index'])->name('profiles');
+Route::group(['prefix' => 'profiles', 'middleware' => 'auth'], static function () {
+  Route::get('/', [ProfilePageController::class, 'index'])->name('profiles');
 });
 
 
-Route::group(['prefix' => 'exercises','middleware'=>'auth'], static function(){
-    Route::get('/', [ExercisesPageController::class, 'index'])->name('exercises');
+Route::group(['prefix' => 'tasks', 'middleware' => 'auth'], static function () {
+  Route::get('/', [TasksPageController::class, 'index'])->name('tasks');
 });
 
 // <-
@@ -59,8 +59,7 @@ Route::group(['prefix' => 'exercises','middleware'=>'auth'], static function(){
 
 // Блок администратора ->
 
-Route::group(['prefix' => 'admin'], static function(){
-    Route::get('/', [AdminPageController::class, 'index'])->name('admin');
+Route::group(['prefix' => 'admin'], static function () {
+  Route::get('/', [AdminPageController::class, 'index'])->name('admin');
 });
 // <-
-
