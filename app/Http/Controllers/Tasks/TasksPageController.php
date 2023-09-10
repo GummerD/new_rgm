@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Tasks;
 
 use App\Http\Controllers\Controller;
+use App\Models\Task;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -13,7 +14,8 @@ class TasksPageController extends Controller
    */
   public function index(): View
   {
-    return view('Tasks.tasks');
+    $tasks = Task::all();
+    return view('Tasks.tasks', compact('tasks'));
   }
 
   /**
