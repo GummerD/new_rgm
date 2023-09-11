@@ -5,20 +5,31 @@
 
 .img_fon{   
     width: 100vw;
-    height: 1163px;
+    height: 100vh;
     background-image: url("/asset/Images/Background/fon1.png");    
     background-position: center;
     opacity: 0.4;
-    margin-top:-1100px;
+    margin-top: calc(-100vh - 265px);
     position: relative;
     z-index: -1; 
+    flex: 1 0 auto;
     
 } 
 
-.big_contain{
+.wrapper{
 
     width: 100vw;
     height: 100vh;
-    
+    display: flex;
+	flex-direction: column;
+	min-height: 100%; 
 
+}
+
+.content{
+    flex: 1 0 auto;
+}
+
+.footer{
+    flex: 0 0 auto;
 }
