@@ -12,13 +12,13 @@ return new class extends Migration
   public function up(): void
   {
     Schema::create('tasks', function (Blueprint $table) {
-      $table->bigIncrements('id');
-      $table->string('level');
-      $table->string('level_name');
-      $table->integer('num_task')->unsigned();
-      $table->text('task_text');
-      $table->text('text')->nullable();
-      $table->text('correct_answer');
+      $table->increments('id');
+      $table->integer('level_id')->unsigned()->default('1');
+      $table->foreign('level_id')->references('id')->on('levels');
+      $table->integer('num_task')->unsigned()->nullable();
+      $table->text('task_text')->nullable();
+      $table->text('rule_use')->nullable();
+      $table->text('correct_answer')->nullable();
     });
   }
 
