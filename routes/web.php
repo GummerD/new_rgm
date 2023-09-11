@@ -18,6 +18,8 @@ use App\Http\Controllers\HomeController;
 | Here is where you can register web routes for your application. These
 | routes are loaded by the RouteServiceProvider and all of them will
 | be assigned to the "web" middleware grouen
+|
+*/
 
 // Этот блок будет доступен всем ->
 
