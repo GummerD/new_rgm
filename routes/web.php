@@ -19,16 +19,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//блок Дениса, для тестирования своих фич:
-
-Route:: group(['prefix'=>'test_pages_denis'], static function (){
-    Route::get('/', [FirstPageController::class, 'index']) ->name('/');
-    Route::get('/first_task', [FirstPageController::class, 'first_task'])->name('first_task');}
-);
- 
-
-
-
 // Этот блок будет доступен всем ->
 
 Route::get('/', [StartPageController::class, 'index'])->name('start');
@@ -63,3 +53,10 @@ Route::group(['prefix' => 'admin'], static function(){
     Route::get('/', [AdminPageController::class, 'index'])->name('admin');
 });
 // <-
+
+//блок Дениса, для тестирования своих фич:
+
+Route:: group(['prefix'=>'test_pages_denis'], static function (){
+    Route::get('/', [FirstPageController::class, 'index']) ->name('/');
+    Route::get('/first_task', [FirstPageController::class, 'first_task'])->name('first_task');}
+);
