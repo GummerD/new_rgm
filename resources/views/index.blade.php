@@ -6,15 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ asset('asset/css/Includes/header.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/css/reg_background.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/css/Includes/footer.css') }}">
 
-    {{-- 
-        Шрифты:
+    {{--   Шрифты:  --}}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https: //fonts.googleapis.com/css2?family= семья= Аноним+Про:wght@400;700 & display=swap" rel="stylesheet">
 
-        npm install @fontsource/anonymous-pro
-        npm install @fontsource/roboto-mono
-        
-    --}}
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:wght@400;700&family=Roboto+Mono:ital,wght@0,200;0,300;0,400;0,600;0,700;1,200;1,300;1,400;1,500;1,600&display=swap" rel="stylesheet">
     
 
         <!-- CSRF Token -->
@@ -38,7 +40,7 @@
     
 
     
-<div class="big_contain">
+<div class="wrapper">
 
            @include('Includes.header')
 

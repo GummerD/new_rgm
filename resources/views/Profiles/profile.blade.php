@@ -4,7 +4,7 @@
 
 @section('content')
 
-<main class="container">
+<main class="container content">
     your profile
 </main>
 @endsection
