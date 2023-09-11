@@ -106,7 +106,7 @@ document.querySelector('.button_task_3').addEventListener('click', function (){
     }
 })
 
-let new_str = 'dit dot dyt dkt dnt';
-let newRegExpTest = new RegExp('d.t', 'g');
+let new_str = '325412 343879 124551 124545 343823';
+let newRegExpTest = new RegExp('[3-6][4-5][3-8][1-8][1-9][1-9]', 'g');
 let new_str_1 = new_str.match(newRegExpTest);
 console.log(new_str_1);

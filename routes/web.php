@@ -19,9 +19,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//блок Дениса, для тестирования своих фич:
 
-// Route::get('/', [FirstPageController::class, 'index']) ->name('/');
-// Route::get('/first_task', [FirstPageController::class, 'first_task'])->name('first_task');
+Route:: group(['prefix'=>'test_pages_denis'], static function (){
+    Route::get('/', [FirstPageController::class, 'index']) ->name('/');
+    Route::get('/first_task', [FirstPageController::class, 'first_task'])->name('first_task');}
+);
+ 
 
 
 
