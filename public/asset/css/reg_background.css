@@ -1,0 +1,24 @@
+*{
+    margin: 0;
+    padding: 0;  
+}
+
+.img_fon{   
+    width: 100vw;
+    height: 1163px;
+    background-image: url("/asset/Images/Background/fon1.png");    
+    background-position: center;
+    opacity: 0.4;
+    margin-top:-1100px;
+    position: relative;
+    z-index: -1; 
+    
+} 
+
+.big_contain{
+
+    width: 100vw;
+    height: 100vh;
+    
+
+}

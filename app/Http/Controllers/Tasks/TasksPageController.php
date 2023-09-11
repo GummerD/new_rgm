@@ -1,21 +1,21 @@
 <?php
 
-namespace App\Http\Controllers\Rules;
+namespace App\Http\Controllers\Tasks;
 
 use App\Http\Controllers\Controller;
-use App\Models\Rule;
+use App\Models\Task;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
-class RulesPageController extends Controller
+class TasksPageController extends Controller
 {
   /**
    * Display a listing of the resource.
    */
   public function index(): View
   {
-    $rules = Rule::all();
-    return view('Rules.rules', compact('rules'));
+    $tasks = Task::all();
+    return view('Tasks.tasks', compact('tasks'));
   }
 
   /**

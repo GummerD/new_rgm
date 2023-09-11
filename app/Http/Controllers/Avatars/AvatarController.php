@@ -1,21 +1,19 @@
 <?php
 
-namespace App\Http\Controllers\Rules;
+namespace App\Http\Controllers\Avatars;
 
 use App\Http\Controllers\Controller;
-use App\Models\Rule;
+use App\Models\Avatar;
 use Illuminate\Http\Request;
-use Illuminate\View\View;
 
-class RulesPageController extends Controller
+class AvatarController extends Controller
 {
   /**
    * Display a listing of the resource.
    */
-  public function index(): View
+  public function index()
   {
-    $rules = Rule::all();
-    return view('Rules.rules', compact('rules'));
+    //
   }
 
   /**
@@ -37,7 +35,7 @@ class RulesPageController extends Controller
   /**
    * Display the specified resource.
    */
-  public function show(string $id)
+  public function show(Avatar $avatar)
   {
     //
   }
@@ -45,7 +43,7 @@ class RulesPageController extends Controller
   /**
    * Show the form for editing the specified resource.
    */
-  public function edit(string $id)
+  public function edit(Avatar $avatar)
   {
     //
   }
@@ -53,7 +51,7 @@ class RulesPageController extends Controller
   /**
    * Update the specified resource in storage.
    */
-  public function update(Request $request, string $id)
+  public function update(Request $request, Avatar $avatar)
   {
     //
   }
@@ -61,7 +59,7 @@ class RulesPageController extends Controller
   /**
    * Remove the specified resource from storage.
    */
-  public function destroy(string $id)
+  public function destroy(Avatar $avatar)
   {
     //
   }
