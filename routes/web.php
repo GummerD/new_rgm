@@ -63,3 +63,11 @@ Route::group(['prefix' => 'admin'], static function () {
   Route::get('/', [AdminPageController::class, 'index'])->name('admin');
 });
 // <-
+
+// Блок для тестирования рег выражений ->
+Route::group(['prefix' => 'test_regexp'], static function () {
+  Route::get('/', [FirstPageController::class, 'index'])->name('index');
+  Route::get('/first_task', [FirstPageController::class, 'first_task'])->name('first_task');
+  
+});
+// <-
