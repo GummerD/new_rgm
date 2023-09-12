@@ -1,58 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{ asset('asset/css/Includes/header.css') }}">
-    <link rel="stylesheet" href="{{ asset('asset/css/reg_background.css') }}">
-    <link rel="stylesheet" href="{{ asset('asset/css/Includes/footer.css') }}">
-    <link rel="stylesheet" href="{{ asset('asset/css/Includes/registr_log_component.css') }}">
 
-    {{--   Шрифты:  --}}
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https: //fonts.googleapis.com/css2?family= семья= Аноним+Про:wght@400;700 & display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="{{ asset('asset/css/main.css') }}">
+  <link rel="stylesheet" href="{{ asset('asset/css/Includes/header.css') }}">
+  <link rel="stylesheet" href="{{ asset('asset/css/Includes/footer.css') }}">
+
+  {{-- Шрифты: --}}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https: //fonts.googleapis.com/css2?family= семья= Аноним+Про:wght@400;700 & display=swap"
+    rel="stylesheet">
 
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:wght@400;700&family=Roboto+Mono:ital,wght@0,200;0,300;0,400;0,600;0,700;1,200;1,300;1,400;1,500;1,600&display=swap" rel="stylesheet">
-    
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:wght@400;700&family=Roboto+Mono:ital,wght@0,200;0,300;0,400;0,600;0,700;1,200;1,300;1,400;1,500;1,600&display=swap"
+    rel="stylesheet">
 
-        <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Document</title>
-     <!-- Fonts -->
-     <link rel="dns-prefetch" href="//fonts.bunny.net">
-     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
- 
-     <!-- Scripts -->
-     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+  <!-- CSRF Token -->
+  <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    
+  <title>Document</title>
+  <!-- Fonts -->
+  <link rel="dns-prefetch" href="//fonts.bunny.net">
+  <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+
+  <!-- Scripts -->
+  @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
+
 
 
 
 </head>
+
 <body>
 
-    
+  <div class="rast wrapper">
 
-    
-<div class="wrapper">
+    <div class="verx">
 
-           @include('Includes.header')
+      @include('Includes.header')
 
-        <div class="black_fon">
-            @yield('content')
+      <div class="soder">
+        @yield('content')
+      </div>
 
-            <div class="img_fon"></div>
-        </div>
-    
-    @include('Includes.footer')</div>
-    
+    </div>
+
+    @include('Includes.footer')
+
+  </div>
+
 </body>
 
 
