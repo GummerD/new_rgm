@@ -12,19 +12,25 @@
       </a>
 
       <div class="icon_block_header">
-        @guest            
-       
+        @guest  
+        <div class="register_login_comp">
           @if (Route::has('login'))
-            <div class="nav-item">          
-              <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-            </div>
-          @endif
+          <div class="nav-item">          
+            <a class="nav-link" href="{{ route('login') }}">
+              <button class="log_component">{{ __('Login') }}</button>
+            </a>
+          </div>
+        @endif
 
-          @if (Route::has('register'))
-            <div class="nav-item">
-              <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-            </div>
-          @endif
+        @if (Route::has('register'))
+          <div class="nav-item">
+            <a class="nav-link" href="{{ route('register') }}">
+              <button class="register_component">{{ __('Register') }}</button>
+            </a>
+          </div>
+        @endif
+        </div>          
+        
 
 
           @else

@@ -4,6 +4,9 @@
 }
 
 .footer{
+    flex: 0 0 auto;
     height: 130px;
     background-color: black;
+    border-top: 2px solid;
+    border-color: rgba(118, 91, 91, 1);
 }
