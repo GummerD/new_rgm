@@ -1,0 +1,19 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.rast {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.verx {
+  flex-grow: 1;
+}
+
+.soder {
+  background-image: url("/asset/Images/Background/fon1.png");
+  background-repeat: repeat;
+}
