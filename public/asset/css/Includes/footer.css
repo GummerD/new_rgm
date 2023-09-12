@@ -8,5 +8,31 @@
   height: 130px;
   background-color: black;
   color: darkgrey;
+  border-top: 3px solid;
+  border-color: rgba(118, 91, 91, 1);
+  display: flex; 
+  flex-direction: row; 
+  align-items:center
+}
+
+.footer_content{
+ display: flex;
+ align-items:center;
+ justify-content: space-around;
 
 }
+
+.copyright_block{
+  font-size: 16px;  
+}
+
+.team{
+  font-size: 14px;
+  color: rgb(173, 146, 146);
+  font-weight: 500;
+}
+
+.icon_footer{
+  margin-right: 6px;
+}
+
