@@ -84,12 +84,12 @@
 
                                         @else
                                             <li class="nav-item dropdown">
-                                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                                <a id="navbarDropdown" class="nav-link dropdown-toggle icon_header_a" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                                     <img class="icon_header" src="{{asset('asset/Images/Icons/icons8-user.png')}}">
                                                 </a>
-                
+                                                <p class="user_name_start"> {{ Auth::user()->login }}</p>
                                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                                    <p> {{ Auth::user()->login }}</p>
+                                                   
                                                     <a href="{{route('profiles')}}">{{__('Личный кабинет')}}</a>
                                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                                         onclick="event.preventDefault();

@@ -18,7 +18,7 @@
 .footer_content{
  display: flex;
  align-items:center;
- justify-content: space-around;
+ justify-content:space-around;
 
 }
 
@@ -26,7 +26,7 @@
   font-size: 16px;  
 }
 
-.team{
+.team_footer{
   font-size: 14px;
   color: rgb(173, 146, 146);
   font-weight: 500;
