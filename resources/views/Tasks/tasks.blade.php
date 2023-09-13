@@ -6,7 +6,7 @@
 
 @section('content')
     <main>
-        <h1>1 уровень сложности</h1>
+        <h1>Начальный уровень сложности</h1>
         <h2>Метасимволы</h2>
         <p>
           Метасимволы - это символы, которые задают команды, а также управляющие 
@@ -23,7 +23,7 @@
         <div class="task_1">
             <h2>Задания:</h2>
             @for ($i = 0; $i <= 3; $i++)
-                <p>{{ $tasks[$i]->task_text }}</p>
+                <p>{{$i+1}}. {{ $tasks[$i]->task_text }}</p>
                 <input type="text" class="input_task_{{ $i }}" placeholder="введите ответ">
                 <button class="button_task_{{ $i }}">Проверить задание</button>
                 <br>
