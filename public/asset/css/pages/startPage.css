@@ -108,3 +108,17 @@ a:link{
     font-size: 20px;
    
 }
+
+.icon_header_a{
+    margin-right: 50px;
+}
+.icon_header{
+   width: 40px;
+   height: 40px;
+}
+.user_name{
+    color: rgb(212, 184, 184);
+    font-family:'Roboto Mono';
+    font-size: 16px;
+    margin-left: -15px;
+}

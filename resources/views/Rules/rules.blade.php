@@ -6,7 +6,7 @@
 
 @section('content')
 
-<main class="container">
+<main class="contain">
 
   <div class="text_field_light">
     <div style="margin-top: 15px" class="text_rules">
