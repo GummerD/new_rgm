@@ -2,7 +2,7 @@
 
   <div class="contain footer_content">
     <div class="copyright_block">
-      <a href="#" class="team">{{__("О КОМАНДЕ")}}</a>
+      <a href="#" class="team_footer">{{__("О КОМАНДЕ")}}</a>
       <div >
         &copy; 2023, RegExp master
       </div>
