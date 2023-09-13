@@ -50,7 +50,7 @@
 
       @include('Includes.header')
 
-      <div class="soder">
+      <div class="soder contain">
         @yield('content')
       </div>
 
