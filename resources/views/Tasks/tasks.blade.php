@@ -22,7 +22,26 @@
 
         <div class="task_1">
             <h2>Задания:</h2>
-            @for ($i = 0; $i <= 3; $i++)
+
+            @foreach ($tasks as $item)
+
+            <p>{{ $item->task_text }}</p>
+            <input type="text" class="input_task_{{ $item->id }}" placeholder="введите ответ">
+            <button class="button_task_{{ $item->id }} ">Проверить задание</button>
+            <br>
+            <p class="out_task_{{ $item->id }}"></p>
+
+             {{-- Невидимые блоки для передачи в js значений переменных из модели Task --}}
+             <p class="correct_answer_{{ $item->id }}" style="display: none">{{ $item->correct_answer }}</p>
+             <p class="rule_use_{{ $item->id }}" style="display: none">{{ $item->rule_use }}</p>
+             <p class="string_task_{{ $item->id }}" style="display: none">{{ $item->string_task }}</p> 
+
+            @endforeach         
+
+
+
+
+            {{-- @for ($i = 0; $i <= 3; $i++)
                 <p>{{$i+1}}. {!! $tasks[$i]->task_text !!}</p>
                 <input type="text" class="input_task_{{ $i }}" placeholder="введите ответ">
                 <button class="button_task_{{ $i }}">Проверить задание</button>
@@ -30,17 +49,21 @@
                 <p class="out_task_{{ $i }}"></p>
 
                 {{-- Невидимые блоки для передачи в js значений переменных из модели Task --}}
-                <p class="correct_answer_{{ $i }}" style="display: none">{{ $tasks[$i]->correct_answer }}</p>
+                {{-- <p class="correct_answer_{{ $i }}" style="display: none">{{ $tasks[$i]->correct_answer }}</p>
                 <p class="rule_use_{{ $i }}" style="display: none">{{ $tasks[$i]->rule_use }}</p>
                 <p class="string_task_{{ $i }}" style="display: none">{{ $tasks[$i]->string_task }}</p>
-                {{-- --------------------------------------------------------------------- --}}
-            @endfor
+                ---------------------------------------------------------------------  --}}
+            {{-- @endfor --}}
+
+
         </div>
 
         <div class="div_clue">
             <button class="button_clue">Подсказка</button>
             <p class="out_clue"></p>
         </div>
+
+        {{$tasks->links('pagination::bootstrap-4')}}
     </main>
 
 <script src="{{ asset('asset/js/first_task.js') }}"></script>
