@@ -7,5 +7,20 @@ use Illuminate\Database\Eloquent\Model;
 
 class Profile extends Model
 {
+     
     use HasFactory;
+   
+    public $timestamps = false;
+    
+
+    protected $fillable = [
+        'user_id',
+        'avatar_id',
+        'rating',
+        'correct_answer',
+        'incorrect_answer',
+        'num_trainings',
+    ];
+
+ 
 }

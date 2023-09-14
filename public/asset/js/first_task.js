@@ -28,7 +28,7 @@ let button_clue = document.querySelector('.button_clue').addEventListener('click
 
 
 //1лог-блок 
-let user_answer_0 = document.querySelector('.input_task_0');
+let user_answer_0 = document.querySelector( ".input_task_0" );
 //console.log(user_answer_0);
 let out_task_0 = document.querySelector('.out_task_0');
 let correct_answer_0 = document.querySelector('.correct_answer_0').textContent;
