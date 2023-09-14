@@ -36,7 +36,7 @@ let correct_answer_0 = document.querySelector('.correct_answer_0').textContent;
 let rule_use_0 = document.querySelector('.rule_use_0').textContent;
 //console.log(rule_use_0);
 let string_task_0 = document.querySelector('.string_task_0').textContent;
-//console.log("строка" + string_task_0);
+console.log("строка" + string_task_0);
 let rule_use_array_0 =  rule_use_0.split(' ');
 //console.log('правило' + rule_use_array_0);
 
@@ -49,7 +49,7 @@ document.querySelector('.button_task_0').addEventListener('click', function (){;
             let strOutPut = string_task_0.match(newRegExp);
             strOutPut = strOutPut.join(', ');
             out_task_0.style = "color: green";
-            out_task_0.innerHTML = `
+            out_task_0.innerHTM = `
                 Ваш вариант регулярного выражения - /${data}/ верен, результат поиска: ${strOutPut}
             `;
         } else{
@@ -163,3 +163,4 @@ document.querySelector('.button_task_3').addEventListener('click', function (){;
         }
     
 })
+

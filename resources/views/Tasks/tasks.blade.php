@@ -23,7 +23,7 @@
         <div class="task_1">
             <h2>Задания:</h2>
             @for ($i = 0; $i <= 3; $i++)
-                <p>{{$i+1}}. {{ $tasks[$i]->task_text }}</p>
+                <p>{{$i+1}}. {!! $tasks[$i]->task_text !!}</p>
                 <input type="text" class="input_task_{{ $i }}" placeholder="введите ответ">
                 <button class="button_task_{{ $i }}">Проверить задание</button>
                 <br>
@@ -45,3 +45,4 @@
 
 <script src="{{ asset('asset/js/first_task.js') }}"></script>
 @endsection
+
