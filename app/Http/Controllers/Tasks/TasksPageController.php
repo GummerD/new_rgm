@@ -14,10 +14,11 @@ class TasksPageController extends Controller
    */
   public function index(): View
   {
-    $tasks = Task::all();
+    $tasks = Task::paginate(3);
     return view('Tasks.tasks', compact('tasks'));
   }
 
+  
   /**
    * Show the form for creating a new resource.
    */
