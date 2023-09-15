@@ -1,3 +1,4 @@
+;( function(){
 // переменная для проверки введеных пользователем ответов:
 let arrRegExps = [
     ['a.b', 'a\\wb'],
@@ -110,3 +111,4 @@ let new_str = 'dit dot dyt dkt dnt';
 let newRegExpTest = new RegExp('d.t', 'g');
 let new_str_1 = new_str.match(newRegExpTest);
 console.log(new_str_1);
+}) ();

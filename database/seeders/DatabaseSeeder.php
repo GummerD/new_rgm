@@ -18,5 +18,11 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        \App\Models\Avatar::create([             
+             'path_img' => 'https://avatar-collection.ru/images/avatar-n-161-s.jpg',
+             ]);   
     }
+
+
 }
