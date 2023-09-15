@@ -12,9 +12,9 @@ class TasksPageController extends Controller
   /**
    * Display a listing of the resource.
    */
-  public function index(TasksQueryBuilder $tasksQueryBuilder, int $levelId = 1): View
+  public function index(TasksQueryBuilder $tasksQueryBuilder, int $level_id = 1): View
   {    
-    return view('Tasks.tasks', ['tasks' => $tasksQueryBuilder->getTasksByLevel($levelId)]);
+    return view('Tasks.tasks', ['tasks' => $tasksQueryBuilder->getTasksByLevel($level_id)]);
   }
 
 

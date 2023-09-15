@@ -10,9 +10,9 @@ class Task extends Model
 {
     use HasFactory;
 
-    public function scopeLevel(Builder $query, int $levelId): void
+    public function scopeLevel(Builder $query, int $level_id): void
     {
-        $query->where('level_id', $levelId);
+        $query->where('level_id', $level_id);
     }
 
 }

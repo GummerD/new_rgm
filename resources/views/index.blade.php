@@ -62,8 +62,4 @@
 
 </body>
 
-
-<script src="{{asset('asset/js/first_task_example.js')}}"></script>
-
-
 </html>

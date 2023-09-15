@@ -20,9 +20,9 @@ class TasksQueryBuilder extends QueryBuilder
     // }
 
 
-    public function getTasksByLevel(int $levelId):LengthAwarePaginator
+    public function getTasksByLevel(int $level_id):LengthAwarePaginator
     {
-        return $this->getModel()->level($levelId)->paginate(3);
+        return $this->getModel()->level($level_id)->paginate(4);
     }
 
 
