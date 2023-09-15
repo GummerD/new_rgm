@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Tasks;
 
 use App\Http\Controllers\Controller;
-use App\Models\Task;
+use App\Queries\TasksQueryBuilder;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -12,11 +12,13 @@ class TasksPageController extends Controller
   /**
    * Display a listing of the resource.
    */
-  public function index(): View
-  {
-    $tasks = Task::all();
-    return view('Tasks.tasks', compact('tasks'));
+  public function index(TasksQueryBuilder $tasksQueryBuilder, int $levelId = 1): View
+  {    
+    return view('Tasks.tasks', ['tasks' => $tasksQueryBuilder->getTasksByLevel($levelId)]);
   }
+
+
+  
 
   /**
    * Show the form for creating a new resource.
