@@ -4,7 +4,12 @@
 
 @section('content')
 
-<main class="container content">
-    your profile
+<main class="contain content">
+    <div class="">
+        {{-- <div class="">{{Auth::user()->profile->avatar->path_img}}</div> --}}
+        {{Auth::user()->login}}
+
+    </div>
+    <div class=""></div>
 </main>
-@endsection
+@endsection             

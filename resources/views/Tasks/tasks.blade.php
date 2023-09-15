@@ -23,19 +23,25 @@
         <div class="task_1">
             <h2>Задания:</h2>
 
+
+            {{-- Передаю кучу Элементов, потому что не знаю, что может понадобится ;) --}}
+
+            <div class="" style="display: none">{{$i=0}}</div>
             @foreach ($tasks as $item)
 
+            <p>Задание{{$item->id}}</p>
             <p>{{ $item->task_text }}</p>
-            <input type="text" class="input_task_{{ $item->id }}" placeholder="введите ответ">
-            <button class="button_task_{{ $item->id }} ">Проверить задание</button>
+            <input type="text" class="input_task_{{$item->id, $i, $item->level_id }}" placeholder="введите ответ">
+            <button class="button_task_{{ $item->id, $i, $item->level_id }} ">Проверить задание</button>
             <br>
-            <p class="out_task_{{ $item->id }}"></p>
-
+            <p class="out_task_{{ $item->id, $i, $item->level_id }}"></p>
+            
              {{-- Невидимые блоки для передачи в js значений переменных из модели Task --}}
-             <p class="correct_answer_{{ $item->id }}" style="display: none">{{ $item->correct_answer }}</p>
-             <p class="rule_use_{{ $item->id }}" style="display: none">{{ $item->rule_use }}</p>
-             <p class="string_task_{{ $item->id }}" style="display: none">{{ $item->string_task }}</p> 
-
+             <p class="correct_answer_{{ $item->id, $i, $item->level_id }}" style="display: none">{{ $item->correct_answer }}</p>
+             <p class="rule_use_{{$item->id, $i, $item->level_id}}" style="display: none">{{ $item->rule_use }}</p>
+             <p class="string_task_{{ $item->id, $i, $item->level_id }}" style="display: none">{{ $item->string_task }}</p> 
+             <div class="" style="display: none">{{$i++}}</div>
+            
             @endforeach         
 
 
@@ -63,7 +69,9 @@
             <p class="out_clue"></p>
         </div>
 
-        {{$tasks->links('pagination::bootstrap-4')}}
+        {{$tasks->links('pagination::bootstrap-4')}} 
+        <a href="{{route('tasks', [$item->level_id + 1])}}"><button>Новый уровень</button></a>
+        
     </main>
 
 <script src="{{ asset('asset/js/first_task.js') }}"></script>
