@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="{{ asset('asset/css/Includes/header.css') }}">
   <link rel="stylesheet" href="{{ asset('asset/css/Includes/footer.css') }}">
   <link rel="stylesheet" href="{{ asset('asset/css/Includes/registr_log_component.css') }}">
+  <link rel="stylesheet" href="{{ asset('asset/css/pages/rulesPage.css') }}">
 
   {{-- Шрифты: --}}
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -44,16 +45,18 @@
 
 <body>
 
-  <div class="rast wrapper">
+  <div class="rast">
 
-    <div class="verx">
+    <div class="verx soder ">
 
       @include('Includes.header')
 
-      <div class="soder contain">
+      <div class="black_fon">
+      <div class=" contain ">
         @yield('content')
       </div>
 
+    </div>
     </div>
 
     @include('Includes.footer')
