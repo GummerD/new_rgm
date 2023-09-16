@@ -23,6 +23,8 @@
 
         <div class="task_1">
             <h2>Задания:</h2>
+
+            <div class="" style="display: none">{{$level = 0}}</div>
             @foreach ($tasks as $item)
                 <p>{{ $item->num_task }}. {!! $item->task_text !!}</p>
                 <input type="text" class="input_task" placeholder="введите ответ">
@@ -39,18 +41,18 @@
                 <p class="rule_use_{{ $item->num_task - 1 }}" style="display: none">{{ $item->rule_use }}</p>
                 <p class="string_task_{{ $item->num_task - 1 }}" style="display: none">{{ $item->string_task }}</p>
                 {{-- --------------------------------------------------------------------- --}}
-
+                <div class="" style="display: none">{{$level = $item->level_id}}</div>
             @endforeach
         </div>
 
         {{ $tasks->links('pagination::bootstrap-4') }}
-        <a href="{{ route('tasks', [$item->level_id + 1]) }}"><button>Новый уровень</button></a>
+        
 
         <div class="div_clue">
             <button class="button_clue">Памятка основных правил</button>
             <p class="out_clue"></p>
         </div>
-
+        <a href="{{ route('tasks', [$level + 1]) }}"><button>Новый уровень</button></a>
     </main>
 
     <script src="{{ asset('asset/js/reload_task.js') }}"></script>

@@ -6,10 +6,12 @@
 
 @section('content')
 
-<main class="container">
+<main class="contain">
 
-  <div class="text_field_light">
-    <div style="margin-top: 15px" class="text_rules">
+  <h3>Правила:</h3>
+
+  <div class="rules_content">
+    <div class="text_rules">
       <h2>Что такое регулярныне выражения</h2>
       <p style="font-size: 18px">
         Регулярное выражение – способ записи текстовых шаблонов. По
@@ -39,7 +41,7 @@
         </tr>
         @foreach ($rules as $rule)
         <tr>
-          <td style="font-weight:lighter;font-size:22px;color:blue">{{ $rule->regex }}</td>
+          <td style="font-weight:lighter;font-size:22px;color:rgb(68, 43, 24)">{{ $rule->regex }}</td>
           <td style="font-size: 18px;font-style:italic">{{ $rule->description }}</td>
         </tr>
         @endforeach
