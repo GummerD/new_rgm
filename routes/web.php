@@ -46,7 +46,7 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 
 Route::group(['prefix' => 'profiles', 'middleware' => 'auth'], static function () {
-  Route::get('/', [ProfilePageController::class, 'index'])->name('profiles');
+  Route::get('/', [ProfilePageController::class, 'show'])->name('profiles');
 });
 
 
@@ -68,6 +68,5 @@ Route::group(['prefix' => 'admin'], static function () {
 Route::group(['prefix' => 'test_regexp'], static function () {
   Route::get('/', [FirstPageController::class, 'index'])->name('index');
   Route::get('/first_task', [FirstPageController::class, 'first_task'])->name('first_task');
-  
 });
 // <-
