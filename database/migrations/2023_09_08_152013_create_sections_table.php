@@ -11,9 +11,11 @@ return new class extends Migration
    */
   public function up(): void
   {
-    Schema::create('avatars', function (Blueprint $table) {
-      $table->id();
-      $table->string('path_img')->nullable();
+    Schema::create('sections', function (Blueprint $table) {
+      $table->increments('id');
+      $table->string('num_section');
+      $table->integer('name_section');
+      $table->text('desc_section');
     });
   }
 
@@ -22,6 +24,6 @@ return new class extends Migration
    */
   public function down(): void
   {
-    Schema::dropIfExists('avatars');
+    Schema::dropIfExists('sections');
   }
 };
