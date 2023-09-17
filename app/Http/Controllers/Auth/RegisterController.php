@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
-    /*
+  /*
     |--------------------------------------------------------------------------
     | Register Controller
     |--------------------------------------------------------------------------
@@ -23,64 +23,64 @@ class RegisterController extends Controller
     |
     */
 
-    use RegistersUsers;
+  use RegistersUsers;
 
-    /**
-     * Where to redirect users after registration.
-     *
-     * @var string
-     */
-    protected $redirectTo = RouteServiceProvider::PROFILE;
+  /**
+   * Where to redirect users after registration.
+   *
+   * @var string
+   */
+  protected $redirectTo = RouteServiceProvider::PROFILE;
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('guest');
-    }
+  /**
+   * Create a new controller instance.
+   *
+   * @return void
+   */
+  public function __construct()
+  {
+    $this->middleware('guest');
+  }
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'login' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
-    }
+  /**
+   * Get a validator for an incoming registration request.
+   *
+   * @param  array  $data
+   * @return \Illuminate\Contracts\Validation\Validator
+   */
+  protected function validator(array $data)
+  {
+    return Validator::make($data, [
+      'login' => ['required', 'string', 'max:255'],
+      'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+      'password' => ['required', 'string', 'min:8', 'confirmed'],
+    ]);
+  }
 
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\Models\User
-     */
-    protected function create(array $data)
-    {
-        $user=User::create([
-            'login' => $data['login'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+  /**
+   * Create a new user instance after a valid registration.
+   *
+   * @param  array  $data
+   * @return \App\Models\User
+   */
+  protected function create(array $data)
+  {
+    $user = User::create([
+      'login' => $data['login'],
+      'email' => $data['email'],
+      'password' => Hash::make($data['password']),
+    ]);
 
-        Profile::create([
-            'user_id' => $user->id,
-            'avatar_id'=>1,
-            'rating' =>1,
-            'correct_answer'=>1,
-            'incorrect_answer' =>1,
-            'num_trainings' =>1,
+    Profile::create([
+      'user_id' => $user->id,
+      'path_img' => 1,
+      'rating' => 1,
+      'correct_answer' => 1,
+      'incorrect_answer' => 1,
+      'num_trainings' => 1,
 
-        ]);
+    ]);
 
-        return $user ;
-    }
+    return $user;
+  }
 }
