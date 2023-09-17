@@ -16,14 +16,11 @@ return new class extends Migration
         ->references('id')
         ->on('users')
         ->cascadeOnDelete();
-      $table->foreignId('avatar_id')
-        ->references('id')
-        ->on('avatars')
-        ->cascadeOnDelete();
-      $table->float('rating', 8, 2)->unsigned();
-      $table->integer('correct_answer')->unsigned();
-      $table->integer('incorrect_answer')->unsigned();
-      $table->integer('num_trainings')->unsigned();
+      $table->string('path_img')->default("/asset/Images/Background/fon1.png");
+      $table->float('rating', 8, 2)->nullable();
+      $table->integer('correct_answer')->nullable();
+      $table->integer('incorrect_answer')->nullable();
+      $table->integer('num_trainings')->nullable();
     });
   }
 
