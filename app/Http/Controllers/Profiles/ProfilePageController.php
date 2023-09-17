@@ -7,6 +7,7 @@ use App\Models\Profile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\DB;
 
 class ProfilePageController extends Controller
 {
@@ -35,8 +36,7 @@ class ProfilePageController extends Controller
   /* ИЗВЛЕЧЬ ПРОФИЛЬ АВТОРИЗОВАННОГО ПОЛЬЗОВАТЕЛЯ */
   public function show(): View
   {
-    $unic = Auth::user()->id;
-    $profile = Profile::where('user_id', $unic);
+    $profile = Profile::where('user_id', Auth::user()->id)->get();
     return view('Profiles.profile', compact('profile'));
   }
 
