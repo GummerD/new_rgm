@@ -15,10 +15,14 @@
     <p>Логин: {{Auth::user()->login}} </p>
     <p>id: {{Auth::user()->id}}</p>
     <hr>
-    <p>{{ $profile->get() }}</p>
-    {{-- @foreach ($profile as $prof)
-    <li>{{$prof}}</li>
-    @endforeach --}}
+    @foreach ($profile as $prof)
+    <li>user_id: {{$prof->user_id}}</li>
+    <li>path_img: {{$prof->path_img}}</li>
+    <li>rating: {{$prof->rating}}</li>
+    <li>correct_answer: {{$prof->correct_answer}}</li>
+    <li>incorrect_answer: {{$prof->incorrect_answer}}</li>
+    <li>num_trainings: {{$prof->num_trainings}}</li>
+    @endforeach
   </div>
 </main>
 @endsection
