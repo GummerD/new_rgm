@@ -12,11 +12,11 @@ return new class extends Migration
   public function up(): void
   {
     Schema::create('tasks', function (Blueprint $table) {
-      $table->integer('level_id')->unsigned()->default('1');
+      $table->integer('level_id')->unsigned();
       $table->foreign('level_id')->references('id')->on('levels');
-      $table->integer('section_id')->unsigned()->default('1');
+      $table->integer('section_id')->unsigned();
       $table->foreign('section_id')->references('id')->on('sections');
-      $table->integer('group_id')->unsigned()->default('1');
+      $table->integer('group_id')->unsigned();
       $table->foreign('group_id')->references('id')->on('groups_tasks');
       $table->integer('num_task')->unsigned()->nullable();
       $table->text('task_text')->nullable();

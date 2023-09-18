@@ -22,6 +22,7 @@
     <li>correct_answer: {{$prof->correct_answer}}</li>
     <li>incorrect_answer: {{$prof->incorrect_answer}}</li>
     <li>num_trainings: {{$prof->num_trainings}}</li>
+    <li>progress: {{$prof->progress}}</li>
     @endforeach
   </div>
 </main>
