@@ -64,9 +64,13 @@
           <img class="icon_header " src="{{asset('asset/Images/Icons/icons8-book-64.png')}}">
         </a>
 
-        <a href=tasks/1/1/1>
-          <img class="icon_header" src="{{asset('asset/Images/Icons/icons1.png')}}">
-        </a>
+        @if (Auth::user())
+        <a href=tasks/{{Auth::user()->profile->progress}}>
+          @else
+          <a href="{{ route('login') }}">
+            @endif
+            <img class=" icon_header" src="{{asset('asset/Images/Icons/icons1.png')}}">
+          </a>
 
 
       </div>
