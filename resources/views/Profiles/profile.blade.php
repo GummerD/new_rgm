@@ -17,8 +17,9 @@
       @else
       <div class="profile_avatar"><img class="profile_avatar_img" src="{{Auth::user()->profile->path_img}}" alt=""></div>
       @endif
-
-      <button class="btn_profile_redact">{{__('Изменить фото')}}</button>
+      <a href="{{route('profiles.update', ['user' => Auth::user()->id])}}">
+        <button class="btn_profile_redact">{{__('Редактировать профиль')}}</button>
+      </a>      
     </div>
 
     <div class="profile_content_rating">
