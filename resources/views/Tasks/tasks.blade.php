@@ -11,27 +11,24 @@
   <h3>Задания:</h3>
 
   <div class="rules_content">
-    <h1>Начальный уровень сложности</h1>
+    @foreach ($lev as $item)
+    <h1>{{ $item->name_level }}</h1>
+    @endforeach
     <hr>
-    <h2>Метасимволы</h2>
-    <p>
-      Метасимволы - это символы, которые задают команды, а также управляющие
-      последовательности. Задания этого уровня будут направлены на использования именно их.
-    </p>
+    @foreach ($sect as $item)
+    <h2>{{ $item->name_section }}</h2>
+    <p>{{ $item->desc_section }}</p>
+    @endforeach
     <hr>
-
-    <p>Ниже представлены задания на правила:</p>
-    <ul>
-      <li>любой символ из последовательности, указанной в скобках [...] </li>
-      <li>любой символ из последовательности, не указанной (исключающей этот символ/ы из поиска ) в скобках [^...]:</li>
-    </ul>
-
+    @foreach ($gr as $item)
+    <h2>Задания {{ $item->num_group }}</h2>
+    <p>{{ $item->desc_group }}</p>
+    @endforeach
 
     <div class="task_1">
-      <h2>Задания:</h2>
 
-      <div class="" style="display: none">{{$level = 0}}</div>
-      @foreach ($tasks as $item)
+      {{-- <div class="" style="display: none">{{$level = 0}}</div> --}}
+      @foreach ($tsk as $item)
       <p>{{ $item->num_task }}. {!! $item->task_text !!}</p>
       <input type="text" class="input_task" placeholder="введите ответ">
       <button class="button_task_{{ $item->num_task - 1 }}">Проверить задание</button>
@@ -48,18 +45,18 @@
       <p class="rule_use_{{ $item->num_task - 1 }}" style="display: none">{{ $item->rule_use }}</p>
       <p class="string_task_{{ $item->num_task - 1 }}" style="display: none">{{ $item->string_task }}</p>
       {{-- --------------------------------------------------------------------- --}}
-      <div class="" style="display: none">{{$level = $item->level_id}}</div>
+      {{-- <div class="" style="display: none">{{$level = $item->level_id}}</div> --}}
       @endforeach
     </div>
-
-    {{ $tasks->links('pagination::bootstrap-4') }}
 
 
     <div class="div_clue">
       <button class="button_clue">Памятка основных правил</button>
       <p class="out_clue"></p>
     </div>
-    <a href="{{ route('tasks', [$level + 1]) }}"><button>Новый уровень</button></a>
+    @foreach ($gr as $item)
+    <a href={{ $item->num_group +1 }}><button>Новый уровень</button></a>
+    @endforeach
 </main>
 </div>
 

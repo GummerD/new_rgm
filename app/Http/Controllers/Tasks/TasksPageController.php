@@ -3,6 +3,10 @@
 namespace App\Http\Controllers\Tasks;
 
 use App\Http\Controllers\Controller;
+use App\Models\GroupsTask;
+use App\Models\Level;
+use App\Models\Section;
+use App\Models\Task;
 use App\Queries\TasksQueryBuilder;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -13,12 +17,12 @@ class TasksPageController extends Controller
    * Display a listing of the resource.
    */
   public function index(TasksQueryBuilder $tasksQueryBuilder, int $level_id = 1): View
-  {    
+  {
     return view('Tasks.tasks', ['tasks' => $tasksQueryBuilder->getTasksByLevel($level_id)]);
   }
 
 
-  
+
 
   /**
    * Show the form for creating a new resource.
@@ -39,9 +43,13 @@ class TasksPageController extends Controller
   /**
    * Display the specified resource.
    */
-  public function show(string $id)
+  public function show(string $level, string $section, string $group): View
   {
-    //
+    $lev = Level::where('num_level', $level)->get();
+    $sect = Section::where('num_section', $section)->get();
+    $gr = GroupsTask::where('num_group', $group)->get();
+    $tsk = Task::where('group_id', $group)->get();
+    return view('Tasks.tasks', compact('lev', 'sect', 'gr', 'tsk'));
   }
 
   /**
