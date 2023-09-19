@@ -8,11 +8,17 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Section extends Model
 {
-    use HasFactory;
+  use HasFactory;
 
+  protected $fillable = [
+    'id',
+    'num_section',
+    'name_section',
+    'desc_section',
+  ];
 
-    public function tasks(): HasMany
-    {
-        return $this->hasMany(Task::class);
-    }
+  public function tasks(): HasMany
+  {
+    return $this->hasMany(Task::class);
+  }
 }

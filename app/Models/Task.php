@@ -9,30 +9,40 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Task extends Model
 {
-    use HasFactory;
+  use HasFactory;
 
-    // public function level(): BelongsTo
-    // {
-    //     return $this->belongsTo(Level::class);
-    // }
+  protected $fillable = [
+    'level_id',
+    'section_id',
+    'group_id',
+    'num_task',
+    'task_text',
+    'rule_use',
+    'correct_answer',
+    'string_task',
+  ];
 
-    // public function groupsTask(): BelongsTo
-    // {
-    //     return $this->belongsTo(GroupsTask::class);
-    // }
+  // public function level(): BelongsTo
+  // {
+  //     return $this->belongsTo(Level::class);
+  // }
 
-    // public function section(): BelongsTo
-    // {
-    //     return $this->belongsTo(Section::class);
-    // }
-  
+  // public function groupsTask(): BelongsTo
+  // {
+  //     return $this->belongsTo(GroupsTask::class);
+  // }
+
+  // public function section(): BelongsTo
+  // {
+  //     return $this->belongsTo(Section::class);
+  // }
 
 
 
 
-    public function scopeLevel(Builder $query, int $level_id): void
-    {
-        $query->where('level_id', $level_id);
-    }
 
+  public function scopeLevel(Builder $query, int $level_id): void
+  {
+    $query->where('level_id', $level_id);
+  }
 }
