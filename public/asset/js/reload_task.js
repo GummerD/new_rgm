@@ -23,10 +23,11 @@
      * то на экране будет выведно храниемое в переменной - data значение и найденая подстрока - strOutPut
      * function try_answer(out_clue){} - выводит забавные реплики при первых двух неверных ответах
      * function clue(i, out_clue) {} - на третий неправильный ответ логика предлагает воспользовться подсказкой через <button>
+     * function empty_string( ) - проверка на пустую строку в теге input_task
      * ------------------------------------------------------------------------------------------------------------------------------------------------
      */
 
-    let input_task = document.getElementsByClassName('input_task'); 
+    let input_task = document.getElementsByClassName('input_task');
     input_task = Array.from(input_task);
     //console.log("проверка связи " + input_task);
     let rul_array = [];// переменная 
@@ -38,22 +39,32 @@
         //console.log("проверка итераций" + i);
         let out_clue = document.querySelector(`.out_clue_${i}`);
         document.querySelector(`.button_task_${i}`).addEventListener('click', function () {
-
-            let data = input_task[i].value;
-            //console.log("введенные данные пользователем" + data);
+            
             let rule_use = document.querySelector(`.rule_use_${i}`).textContent;
             rul_array[i] = rule_use.split(', ');
             //console.log("массив верных ответов после добавления в него значения" + rul_array);
 
-            output_result(data, i, out_clue)
+            let data = input_task[i].value;
+            //console.log("введенные данные пользователем" + data);
             
+            //проверка на пустую строку
+            data == ' ' ?  output_result(data, i, out_clue) :  empty_string(i);
+
             //out_clue.style = 'display: none';
         })
 
     }
 
+    // проверка на пустую строку
+    function empty_string(i) {
+        document.querySelector(`.out_task_${i}`).style = "color: violet";
+        document.querySelector(`.out_task_${i}`).textContent = `
+                Вы забыли вести регулярное выражение.
+            `;
+    }
+
     // функция с блоком ветления, в которую передается и сравнивается введеный ответ пользователя
-    function output_result(data, i, out_clue){
+    function output_result(data, i, out_clue) {
         if (data == rul_array[i][0]
             || data == rul_array[i][1]
             || data == rul_array[i][2]
@@ -74,19 +85,19 @@
         } else {
 
             count_try_answer++;
-            
+
             out_clue.textContent = ``;
 
             /** 
              * тернарный оператор для вывода на странице верного ответа либо кнопки с подсказкой после 
              * после двух неверных ответов
-            */ 
+            */
             count_try_answer > 2 ? (
                 clue(i, out_clue),
                 count_try_answer = 0,
                 out_clue.textContent = ``
-                )
-            : try_answer(out_clue);
+            )
+                : try_answer(out_clue);
 
             document.querySelector(`.out_task_${i}`).style = "color: red";
             document.querySelector(`.out_task_${i}`).textContent = `
@@ -109,7 +120,7 @@
 
         //console.log(out_clue);
         out_clue.style = 'display: inline';
-        random_funny_unswer = Math.floor(Math.random() * (3+2))
+        random_funny_unswer = Math.floor(Math.random() * (3 + 2))
         //console.log(random_funny_unswer);
         out_clue.textContent = `${funny_unswer[random_funny_unswer]}`;
     }
