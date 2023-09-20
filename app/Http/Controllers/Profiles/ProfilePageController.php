@@ -12,7 +12,7 @@ use Illuminate\View\View;
 
 class ProfilePageController extends Controller
 {
-  /* ИЗВЛЕЧЬ ВСЕ ПРОФИЛИ */
+  /* ИЗВЛЕЧЬ ВСЕ ПРОФИЛИ */ 
   public function index()
   {
     //
@@ -35,8 +35,7 @@ class ProfilePageController extends Controller
   }
 
   /* ИЗВЛЕЧЬ ПРОФИЛЬ АВТОРИЗОВАННОГО ПОЛЬЗОВАТЕЛЯ - 
-  " ps ИИИ это можно просто на страничке получать, через связь которую я до этого делала
-  ничего в контроллер можно не выносить) */
+  " */
 
   public function show(): View
   {
