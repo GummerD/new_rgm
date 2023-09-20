@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="{{ asset('asset/css/Includes/registr_log_component.css') }}">
   <link rel="stylesheet" href="{{ asset('asset/css/pages/rulesPage.css') }}">
   <link rel="stylesheet" href="{{ asset('asset/css/pages/profile.css') }}">
+  <link rel="stylesheet" href="{{ asset('asset/css/pages/tasksPage.css') }}">
 
   {{-- Шрифты: --}}
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -53,11 +54,11 @@
       @include('Includes.header')
 
       <div class="black_fon">
-      <div class=" contain ">
-        @yield('content')
-      </div>
+        <div class=" contain ">
+          @yield('content')
+        </div>
 
-    </div>
+      </div>
     </div>
 
     @include('Includes.footer')

@@ -65,7 +65,7 @@
         </a>
 
         @if (Auth::user())
-        <a href=tasks/{{Auth::user()->profile->progress}}>
+        <a href="tasks/{{Auth::user()->profile->progress}}">
           @else
           <a href="{{ route('login') }}">
             @endif
