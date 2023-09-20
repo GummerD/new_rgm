@@ -74,11 +74,6 @@ class RegisterController extends Controller
     Profile::create([
       'user_id' => $user->id,
       'path_img' => 1,
-      'rating' => 1,
-      'correct_answer' => 1,
-      'incorrect_answer' => 1,
-      'num_trainings' => 1,
-
     ]);
 
     return $user;

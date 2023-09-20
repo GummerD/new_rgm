@@ -5,20 +5,23 @@
 }
 
 .tasks_content {
+  position: absolute; 
+  top: 160px;
+  bottom: 135px; 
   border-radius: 7px;
   background: #000000CC;
   box-shadow: 0px 4px 16px 1px #FFFFFF47 inset;
   padding: 40px;
   overflow: auto;
   overflow-y: scroll;
-  height: 75% !important;
+  /* height: 75% !important; */
 }
 
 .tasks_begin_txt {
   padding-top: 30px;
   padding-bottom: 22px;
   font-size: 21px;
-  font-family: Roboto Mono;
+  font-family: 'Roboto Mono';
   font-size: 21px;
   font-weight: 400;
   line-height: 28px;
@@ -47,13 +50,15 @@
 }
 
 .nutro {
+  width: 100;
   display: flex;
   justify-content: space-between;
-  height: 75% !important;
+  height: 100%;
 }
 
 .group_tasks {
   width: 670px;
+  margin-right: 6vw;
 }
 
 .num_group_txt {
@@ -61,7 +66,7 @@
   height: 24px;
   top: 122px;
   left: 200px;
-  font-family: Roboto Mono;
+  font-family: 'Roboto Mono';
   font-size: 16px;
   font-weight: 400;
   line-height: 19px;
@@ -71,16 +76,17 @@
 }
 
 .tasks {
-  font-family: Roboto Mono;
+  font-family: 'Roboto Mono';
   font-size: 14px;
   font-weight: 400;
   line-height: 19px;
   letter-spacing: 0em;
   text-align: left;
   color: rgba(222, 211, 198, 1);
-  width: 670px;
+  max-width: 670px;
   height: 114px;
 }
+
 
 .about_tasks {
   width: 244px;
@@ -92,49 +98,51 @@
 
 .knop {
   display: flex;
-  align-items: stretch;
+  height: 40px;
+  box-sizing: border-box;
+  justify-content: flex-start
 }
 
 .input_task {
+  background-color: rgba(242, 240, 240, 0.88);
+  border: 0;
+  padding-left: 15px;
   width: 489.85px;
   height: 34px;
-  top: 229px;
-  left: 201.08px;
-  border-radius: 3px, 0px, 0px, 3px;
-  box-shadow: 0px 4px 4px 2px rgba(126, 116, 92, 0.52) inset;
-  box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.95);
+  border-radius: 4px 0 0 4px;
+  box-shadow: 0px 4px 4px 2px rgba(126, 116, 92, 0.52) inset, 0px 4px 6px 0px rgba(0, 0, 0, 0.95);  
 }
 
 .b_t {
+  border: 0;
+  margin-bottom: 1px;
   width: 165.77px;
   height: 34px;
-  top: 229px;
-  left: 690.36px;
-  border-radius: 0px, 3px, 3px, 0px;
-  box-shadow: 3px 0px 6px 0px rgba(0, 0, 0, 0.95);
-  box-shadow: 0px 4px 4px 1px rgba(236, 248, 237, 0.61) inset;
+  box-shadow: 3px 0px 6px 0px rgba(0, 0, 0, 0.95), 0px 4px 4px 1px rgba(236, 248, 237, 0.61) inset;
   background-color: rgba(99, 205, 103, 1);
+  border-radius: 0 4px 4px 0;
 }
 
 .about_section {
-  font-family: Roboto Mono;
+  font-family: 'Roboto Mono';
   font-size: 16px;
   font-weight: 400;
   line-height: 21px;
   letter-spacing: 0em;
-  text-align: justified;
+  text-align: justify;
   color: rgba(236, 248, 237, 0.61);
 }
 
 .about_group {
-  font-family: Roboto Mono;
+  font-family: 'Roboto Mono';
   font-size: 16px;
   font-weight: 400;
   line-height: 21px;
   letter-spacing: 0em;
-  text-align: justified;
+  text-align: justify;
   color: rgba(236, 248, 237, 0.61);
   margin-top: 50px;
+  flex-grow: 1;
 }
 
 .ab_but {
@@ -145,23 +153,38 @@
 .button_clue {
   width: 137px;
   height: 30px;
-  box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.3) inset;
-  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.3) inset, 0px 4px 8px 0px rgba(0, 0, 0, 0.75);
   background-color: rgba(64, 144, 67, 0.5);
   color: rgba(245, 245, 245, 1);
   margin-right: 5px;
+  border-radius: 4px;
+}
+
+.tasks_content::-webkit-scrollbar {
+  width: 8px;
+  border: 1px solid rgba(170, 169, 169, 0.56);
+  border-radius: 3px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+
+.tasks_content::-webkit-scrollbar-thumb {
+  background: linear-gradient(0deg, rgba(60, 37, 37, 0.56), rgba(60, 37, 37, 0.56)),
+      linear-gradient(0deg, rgba(60, 37, 37, 0.43), rgba(60, 37, 37, 0.43));
+  border-radius: 3px;  
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 1px 6px 4px 0px rgba(245, 245, 245, 0.5) inset;
 }
 
 .dalee {
   width: 137px;
   height: 30px;
-  box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.3) inset;
-  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.3) inset, 0px 4px 8px 0px rgba(0, 0, 0, 0.75);
   background-color: rgba(118, 91, 91, 0.6);
   color: rgba(245, 245, 245, 1);
-  /* background-image: url('../../Images/Icons/icons8-arrow-48.png');
-  background-repeat: no-repeat;
-  background-position-x: 90px;
-  background-position-y: center;
-  background-size: 26px; */
-}
+  border-radius: 4px;
+ }
+
+ .icon_task_dalee{
+  width: 25px;
+
+ }
