@@ -13,6 +13,8 @@
   <link rel="stylesheet" href="{{ asset('asset/css/pages/rulesPage.css') }}">
   <link rel="stylesheet" href="{{ asset('asset/css/pages/profile.css') }}">
   <link rel="stylesheet" href="{{ asset('asset/css/pages/tasksPage.css') }}">
+  <link rel="stylesheet" href="{{ asset('asset/css/pages/redactProfile.css') }}">
+
 
   {{-- Шрифты: --}}
   <link rel="preconnect" href="https://fonts.googleapis.com">

@@ -47,12 +47,11 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::group(['prefix' => 'profiles', 'middleware' => 'auth'], static function () {
   Route::get('/', [ProfilePageController::class, 'show'])->name('profiles');
+  Route::get('update/{user}', [ProfilePageController::class, 'update'])->name('profiles.update');
+  Route::any('edit/{user}', [ProfilePageController::class, 'edit'])->name('profiles.edit');
 });
 
 
-// Route::group(['prefix' => 'tasks', 'middleware' => 'auth'], static function () {
-//   Route::get('/{levelId?}', [TasksPageController::class, 'index'])->name('tasks');
-// });
 
 Route::group(['prefix' => 'tasks', 'middleware' => 'auth'], static function () {
   Route::get('/{level}/{section}/{group}', [TasksPageController::class, 'show'])->name('tasks');

@@ -107,8 +107,9 @@ document.querySelector('.button_task_3').addEventListener('click', function (){
     }
 })
 
-let new_str = 'dit dot dyt dkt dnt';
-let newRegExpTest = new RegExp('d.t', 'g');
+let new_str = '1 скажика 11 4599';
+let newRegExpTest = new RegExp('[1–9]+', 'g');
+//let newRegExpTest = `/[1–9]+/g`;
 let new_str_1 = new_str.match(newRegExpTest);
 console.log(new_str_1);
 }) ();

@@ -1,0 +1,46 @@
+.redact_profile_form{
+    margin-top: 30px;
+    align-self: center;
+    flex-direction: column;
+    color: rgb(177, 178, 179);
+}
+
+.redact_profile_content{
+    display:flex;
+    justify-content: center;
+}
+
+.block_form_redact_profile{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;    
+}
+
+.int_redact_profile{
+    width: 380px;
+    height: 38px;
+    border-radius: 4px;
+    background-color: rgba(0, 1, 0, 0.8);
+    color: beige;
+    margin-bottom: 5px;
+    box-sizing: border-box;    
+    padding: 3px 10px;
+    box-shadow: 2px 4px 4px 1px rgba(255, 255, 255, 0.3) inset, 0px 4px 8px 0px rgba(0, 0, 0, 0.75);
+    border: 0;
+}
+
+.btn_redact_profile{
+    font-family: 'Roboto Mono';
+    width: 200px;
+    height: 35px;   
+    color: aliceblue;   
+    border-radius: 5px;
+    background-color:rgba(64, 144, 67, 0.3);
+    box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.3) inset, 0px 4px 8px 0px rgba(0, 0, 0, 0.75);
+}
+
+.int_redact_profile_file::file-selector-button{
+    box-shadow: 2px 4px 4px 1px rgba(255, 255, 255, 0.8) inset;
+    background-color:rgba(255, 255, 255, 0.5);
+    border-radius: 3px;
+}
