@@ -8,7 +8,7 @@
 
 <main class="contain">
 
-  <h3>Задания:</h3>
+  <h3 style='visibility:hidden'>Задания:</h3> 
 
   <div class="rules_content">
     @foreach ($lev as $item)
