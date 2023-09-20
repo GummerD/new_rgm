@@ -48,7 +48,7 @@
             //console.log("введенные данные пользователем" + data);
             
             //проверка на пустую строку
-            data == ' ' ?  output_result(data, i, out_clue) :  empty_string(i);
+            data == !' ' ?  empty_string(i) :  output_result(data, i, out_clue) ;
 
             //out_clue.style = 'display: none';
         })
