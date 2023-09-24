@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Tasks;
 use App\Http\Controllers\Controller;
 use App\Models\GroupsTask;
 use App\Models\Level;
+use App\Models\Rule;
 use App\Models\Section;
 use App\Models\Task;
 use App\Queries\TasksQueryBuilder;
@@ -49,7 +50,8 @@ class TasksPageController extends Controller
     $sect = Section::where('num_section', $section)->get();
     $gr = GroupsTask::where('num_group', $group)->get();
     $tsk = Task::where('group_id', $group)->get();
-    return view('Tasks.tasks', compact('lev', 'sect', 'gr', 'tsk'));
+    $helps = Rule::all();
+    return view('Tasks.tasks', compact('lev', 'sect', 'gr', 'tsk', 'helps'));
   }
 
   /**
