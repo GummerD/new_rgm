@@ -17,13 +17,15 @@
      * let funny_unswer - массив с забавными репликами в случае неверного ответа пользовтеля.
      * let random_funny_unswer - необходима для получения рандомного индекса в массиве - funny_unswer.
      * let button_clue - присваевает в <button>, который появляется после 2-ого неверного ответа пользовтеля.
+     * let correct_answers_array - массив, в котором хранится число вернхы ответов пользовтеля.
      * 
      * Функции:
      * function output_result(data, i, out_clue){} - выводит результат введенных пользовтелем данных, если все верно
      * то на экране будет выведно храниемое в переменной - data значение и найденая подстрока - strOutPut
      * function try_answer(out_clue){} - выводит забавные реплики при первых двух неверных ответах
      * function clue(i, out_clue) {} - на третий неправильный ответ логика предлагает воспользовться подсказкой через <button>
-     * function empty_string( ) - проверка на пустую строку в теге input_task
+     * function empty_string( ) - проверка на пустую строку в теге input_task.
+     * function invisible_button(counter_correct_answer, counter_input) - функция, которая делает выдимой кнопку перехода на следующую страницу, если все ответы в задании даны верно.
      * ------------------------------------------------------------------------------------------------------------------------------------------------
      */
 
@@ -34,12 +36,15 @@
     //console.log('итоговый массив верных ответов после итераций' + rul_array)
     let count_try_answer = 0;
 
+    //массив правильных ответов:
+    let correct_answers_array = [];
+
     //основной цикл перебора строки ввода ответов пользователя с последующим сопостовлением с верными ответами
     for (let i = 0; i < input_task.length; i++) {
         //console.log("проверка итераций" + i);
         let out_clue = document.querySelector(`.out_clue_${i}`);
         document.querySelector(`.button_task_${i}`).addEventListener('click', function () {
-            
+
             let rule_use = document.querySelector(`.rule_use_${i}`).textContent;
             rul_array[i] = rule_use.split(', ');
             //console.log("массив верных ответов после добавления в него значения" + rul_array);
@@ -49,8 +54,12 @@
             
             //проверка на пустую строку
             data == !' ' ?  empty_string(i) :  output_result(data, i, out_clue) ;
+    
+            //console.log('итоговый массив количества верных ответов пользователя ' + correct_answers_array);
 
-            //out_clue.style = 'display: none';
+            //функция для вывода кнопки переахода на следующую страницу
+            invisible_button(correct_answers_array.length, input_task.length)
+           
         })
 
     }
@@ -63,13 +72,13 @@
             `;
     }
 
-    // функция с блоком ветления, в которую передается и сравнивается введеный ответ пользователя
-    function output_result(data, i, out_clue) {
+    // функция с блоком ветвления, в которую передается и сравнивается введеный ответ пользователя
+    function output_result(data, i, out_clue, counter_of_correct_answers) {
         if (data == rul_array[i][0]
             || data == rul_array[i][1]
             || data == rul_array[i][2]
             || data == rul_array[i][3]
-        ) {
+        ) { 
             out_clue.style = 'display: none';
             let newRegExp = new RegExp(data, 'g');
             //console.log('рег выражение' + newRegExp);
@@ -82,6 +91,7 @@
             document.querySelector(`.out_task_${i}`).textContent = `
                 Ваш вариант регулярного выражения - /${data}/ верен, результат поиска: ${strOutPut}
             `;
+            correct_answers_array[i] = 'true';
         } else {
 
             count_try_answer++;
@@ -137,6 +147,13 @@
         })
 
     }
+
+    //функция, которая делает выдимой кнопку перехода на следующую страницу, если все ответы в задании даны верно.
+    function invisible_button(counter_correct_answer, counter_input){
+        if (counter_input == counter_correct_answer) 
+            document.querySelector('.dalee').style = "visibility: visible";
+    }
+   
 })();
 
 
