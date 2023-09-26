@@ -33,12 +33,13 @@ class Edit extends FormRequest
     public function rules()
     {  
       return  [
-            'login'=> ['nullable', 'string', 'min:2', 'max:150'],
-            'password'=> ['nullable', 'string', 'min:4'],
-            'current_password'=> ['nullable', 'string', 'current_password'],
-            'email' => ['nullable', 'string','email', Rule::unique('users')->ignore($this->user->id)],          
-            'avatar'=>['nullable', 'file'],
+            'login'=> ['nullable','string','min:2','max:150'],
+            'password'=> ['nullable'],
+            'current_password'=> ['nullable'],
+            'email' => ['nullable','string','email', Rule::unique('users')->ignore($this->user->id)],          
+            'path_img'=>['nullable','mimes:jpg,bmp,png,jpeg,svg'],
         ];
         
-        }
-    }
+        }    }
+
+        // 'image','mimes:jpg,bmp,png,jpeg,svg'

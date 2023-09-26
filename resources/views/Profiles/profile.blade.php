@@ -15,7 +15,7 @@
       @if(is_numeric(Auth::user()->profile->path_img))    
       <div class="profile_avatar"><img class="profile_avatar_img" src="{{ asset('asset/Images/photos/fone-125.jpg') }}" alt=""></div>        
       @else
-      <div class="profile_avatar"><img class="profile_avatar_img" src="{{Auth::user()->profile->path_img}}" alt=""></div>
+      <div class="profile_avatar"><img class="profile_avatar_img" src="{{asset(Auth::user()->profile->path_img)}}" alt=""></div>
       @endif
       <a href="{{route('profiles.update', ['user' => Auth::user()->id])}}">
         <button class="btn_profile_redact">{{__('Редактировать профиль')}}</button>
