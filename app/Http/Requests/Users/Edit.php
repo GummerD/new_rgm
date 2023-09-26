@@ -34,12 +34,12 @@ class Edit extends FormRequest
     {  
       return  [
             'login'=> ['nullable','string','min:2','max:150'],
-            'password'=> ['nullable'],
-            'current_password'=> ['nullable'],
+            'password'=> ['nullable','string','min:8'],
+            'current_password'=> ['nullable','current_password'],
             'email' => ['nullable','string','email', Rule::unique('users')->ignore($this->user->id)],          
             'path_img'=>['nullable','mimes:jpg,bmp,png,jpeg,svg'],
         ];
         
         }    }
 
-        // 'image','mimes:jpg,bmp,png,jpeg,svg'
+        // ,'current_password'

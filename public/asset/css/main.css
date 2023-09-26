@@ -17,7 +17,6 @@
   flex-grow: 1;
   align-items: center;
   height: calc(100vh - 130px - 85px);
-  
 }
 
 .black_fon{  
@@ -36,9 +35,7 @@
   background-image: url("/asset/Images/Background/fon1.png");
   background-repeat: no-repeat;
   background-position: center;
-  background-size: cover;
-  
-
+  background-size: cover; 
 }
 
 .contain{
