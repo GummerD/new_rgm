@@ -107,12 +107,14 @@ document.querySelector('.button_task_3').addEventListener('click', function (){
     }
 })
 
-let new_str = 'Ключик в руку мы возьмем и моторчик заведем: «Чик, чик, чик, чик»';
-let newRegExpTest = new RegExp('([Ч-ч]ик)+', 'g');
+let new_str = ' June и July, но не January.';
+let newRegExpTest = new RegExp('\\bJu+?[a-z]+\\b','g');
 //let newRegExpTest = `/[1–9]+/g`;
 //let newRegExpTest = new RegExp('(чик)+', 'g');
+console.log(newRegExpTest);
 let new_str_1 = new_str.match(newRegExpTest);
 console.log(new_str_1);
 new_str_1 = new_str_1.join(', ');
 console.log(new_str_1)
+
 }) ();

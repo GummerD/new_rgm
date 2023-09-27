@@ -79,7 +79,7 @@
             {{-- <a href={{ $item->num_group +1 }}> --}}
               <a href="{{ route('profiles.saveprogress', Request::segment(2) . ',' . Request::segment(3) . ',' .
                 Request::segment(4)+1) }}">
-                <button class="dalee" style="visibility: hidden">
+                <button class="dalee" style="display: none">
                   Далее
                   <img class="icon_task_dalee" src="{{asset('asset/Images/Icons/icons8-arrow-48.png')}}">
                 </button>

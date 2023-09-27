@@ -151,7 +151,7 @@
     //функция, которая делает выдимой кнопку перехода на следующую страницу, если все ответы в задании даны верно.
     function invisible_button(counter_correct_answer, counter_input){
         if (counter_input == counter_correct_answer) 
-            document.querySelector('.dalee').style = "visibility: visible";
+            document.querySelector('.dalee').style = "display: inline";
     }
    
 })();
