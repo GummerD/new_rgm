@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Profiles;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Users\Edit;
 use App\Models\Profile;
+use App\Models\Task;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Auth\Events\Validated;
@@ -16,7 +17,7 @@ use Illuminate\View\View;
 
 class ProfilePageController extends Controller
 {
-  /* ИЗВЛЕЧЬ ВСЕ ПРОФИЛИ */ 
+  /* ИЗВЛЕЧЬ ВСЕ ПРОФИЛИ */
   public function index()
   {
     //
@@ -47,72 +48,85 @@ class ProfilePageController extends Controller
     return view('Profiles.profile', compact('profile'));
   }
 
- 
+  public function saveprogress(Request $request)
+  {
+    $uspex = $request->prog;
+    $parts = explode(",", $uspex);
+    $p1 = $parts[0];
+    $p2 = $parts[1];
+    $p3 = $parts[2];
+    $ta = Task::where('group_id', $p3)->first();
+
+    if ($ta) {
+      $uspex2 = str_replace(",", "/", $uspex);
+      Profile::where('user_id', Auth::user()->id)->update(['progress' => $uspex2]);
+    } else {
+      $p4 = $p2 + 1;
+      $uspex3 = $p1 . '/' . $p4 . '/1';
+      Profile::where('user_id', Auth::user()->id)->update(['progress' => $uspex3]);
+    };
+    return redirect()->route('profiles');
+  }
 
   /**
    * Update the specified resource in storage.
    */
-  public function update(User $user):View
+  public function update(User $user): View
   {
     return view('Profiles.redactProfile', compact('user'));
   }
 
-   /**
+  /**
    * Show the form for editing the specified resource.
    */
   public function edit(Edit $request, User $user)
   {
-    $new = array_filter($request->validated());  
-   
+    $new = array_filter($request->validated());
 
-    
-    if (array_key_exists('password', $new) && !array_key_exists('path_img', $new)){   
-      
+
+
+    if (array_key_exists('password', $new) && !array_key_exists('path_img', $new)) {
+
       User::where('id', $user->id)->update([
         'login' => $new['login'],
-        'email' => $new['email'], 
-        'password' => Hash::make($new['password'])     
+        'email' => $new['email'],
+        'password' => Hash::make($new['password'])
       ]);
-      return (\redirect()->route('profiles'));      
+      return (\redirect()->route('profiles'));
+    }
+    if (array_key_exists('path_img', $new) && array_key_exists('password', $new)) {
 
-    }if (array_key_exists('path_img', $new) && array_key_exists('password', $new)){ 
-   
       User::where('id', $user->id)->update([
         'login' => $new['login'],
-        'email' => $new['email'], 
-        'password' => Hash::make($new['password'])     
-      ]);  
-        
-        $avatar = $request->file('path_img')->store('avatars', 'public');
-        $url = Storage::url($avatar);
-        Profile::where('user_id', $user->id)->update(['path_img' => $url]);
-        return (\redirect()->route('profiles')); 
+        'email' => $new['email'],
+        'password' => Hash::make($new['password'])
+      ]);
 
-      }if(array_key_exists('path_img', $new) && !array_key_exists('password', $new)){ 
+      $avatar = $request->file('path_img')->store('avatars', 'public');
+      $url = Storage::url($avatar);
+      Profile::where('user_id', $user->id)->update(['path_img' => $url]);
+      return (\redirect()->route('profiles'));
+    }
+    if (array_key_exists('path_img', $new) && !array_key_exists('password', $new)) {
 
-        $avatar = $request->file('path_img')->store('avatars', 'public');
-        $url = Storage::url($avatar);
-        Profile::where('user_id', $user->id)->update(['path_img' => $url]);
+      $avatar = $request->file('path_img')->store('avatars', 'public');
+      $url = Storage::url($avatar);
+      Profile::where('user_id', $user->id)->update(['path_img' => $url]);
 
-        User::where('id', $user->id)->update([
-        'login' => $new['login'],
-        'email' => $new['email'],      
-    ]);
-    return (\redirect()->route('profiles'));
-
-    } else{
       User::where('id', $user->id)->update([
         'login' => $new['login'],
-        'email' => $new['email'],      
-    ]);
-    return (\redirect()->route('profiles'));
+        'email' => $new['email'],
+      ]);
+      return (\redirect()->route('profiles'));
+    } else {
+      User::where('id', $user->id)->update([
+        'login' => $new['login'],
+        'email' => $new['email'],
+      ]);
+      return (\redirect()->route('profiles'));
     }
 
-       
-      return (\back());
 
-    }
-   
-   
+    return (\back());
   }
-
+}

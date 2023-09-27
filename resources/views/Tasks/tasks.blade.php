@@ -76,9 +76,15 @@
             </div>
 
             @foreach ($gr as $item)
-            <a href={{ $item->num_group +1 }}><button class="dalee" style="visibility: hidden">Далее <img class="icon_task_dalee"
-                  src="{{asset('asset/Images/Icons/icons8-arrow-48.png')}}"></button></a>
-            @endforeach
+            {{-- <a href={{ $item->num_group +1 }}> --}}
+              <a href="{{ route('profiles.saveprogress', Request::segment(2) . ',' . Request::segment(3) . ',' .
+                Request::segment(4)+1) }}">
+                <button class="dalee" style="visibility: hidden">
+                  Далее
+                  <img class="icon_task_dalee" src="{{asset('asset/Images/Icons/icons8-arrow-48.png')}}">
+                </button>
+              </a>
+              @endforeach
           </div>
 
         </div>

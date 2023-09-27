@@ -49,6 +49,7 @@ Route::group(['prefix' => 'profiles', 'middleware' => 'auth'], static function (
   Route::get('/', [ProfilePageController::class, 'show'])->name('profiles');
   Route::get('update/{user}', [ProfilePageController::class, 'update'])->name('profiles.update');
   Route::any('edit/{user}', [ProfilePageController::class, 'edit'])->name('profiles.edit');
+  Route::any('saveprogress/{prog}', [ProfilePageController::class, 'saveprogress'])->name('profiles.saveprogress');
 });
 
 
