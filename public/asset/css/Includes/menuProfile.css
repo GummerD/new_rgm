@@ -1,0 +1,46 @@
+
+/* .dropdown .nav-link {color:#fff; text-decoration: none;}
+/* .dropdown .dropdown-menu a{color: #000; text-decoration: none;} */
+/* .dropdown .btn {background: green; color:#fff;}
+.dropdown .btn:hover {background: cyan; color:#000;}
+.dropdown .btn:active {background: cyan; color:#000;} */
+/* .dropdown .btn:focus {background: cyan; color:#000;} */
+/* .dropdown-menu.dropdown-item {display: inline-block; width: 100%; padding: 10px 5px;  background-color: #17b958;}  */
+
+.dropdown .dropdown-menu{
+    background-color: #000000;
+    color:rgba(198, 239, 199, 1);
+    border: 2px solid rgba(248, 238, 228, 1);   
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(248, 238, 228, 0.6);
+    text-align: center;
+    padding: 10px;  
+}
+
+.dropdown-menu:hover{  
+  border-color:rgba(248, 238, 228, 1);
+}
+
+.dropdown .dropdown-menu a{
+    color:rgba(222, 211, 198, 1); 
+    text-decoration: none;
+    text-align: center;
+}
+.dropdown .dropdown-menu a:active{  
+    background-color:rgb(83, 113, 74);
+}
+.dropdown .dropdown-menu a:hover{
+    color:rgb(3, 3, 3); 
+}
+
+
+
+
+.dropdown .dropdown-toggle{
+    color:rgba(248, 238, 228, 1);
+}
+.dropdown .dropdown-toggle:hover{
+    color:rgba(248, 238, 228, 1);
+}
+.dropdown .dropdown-toggle:active{
+    color: black;
+}
