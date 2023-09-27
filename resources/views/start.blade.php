@@ -12,9 +12,13 @@
       
         <!-- Scripts -->
         @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
+        {{-- Styles --}}
         <link rel="stylesheet" href="{{ asset('asset/css/Includes/footer.css') }}">
-        <link rel="stylesheet" href="{{ asset('asset/css/pages/startPage.css') }}">
+        <link rel="stylesheet" href="{{ asset('asset/css/Includes/menuProfile.css') }}">
         <link rel="stylesheet" href="{{ asset('asset/css/Includes/registr_log_component.css') }}">
+        <link rel="stylesheet" href="{{ asset('asset/css/pages/startPage.css') }}">
+
 
         <!-- Fonts -->
 
@@ -90,7 +94,7 @@
                                                 <p class="user_name_start"> {{ Auth::user()->login }}</p>
                                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                                    
-                                                    <a href="{{route('profiles')}}">{{__('Личный кабинет')}}</a>
+                                                    <a class="dropdown-item" href="{{route('profiles')}}">{{__('Личный кабинет')}}</a>
                                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                                         onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();">
