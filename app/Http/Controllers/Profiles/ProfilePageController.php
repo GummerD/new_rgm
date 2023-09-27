@@ -6,8 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Users\Edit;
 use App\Models\Profile;
 use App\Models\User;
+use Carbon\Carbon;
+use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 class ProfilePageController extends Controller
@@ -60,21 +64,55 @@ class ProfilePageController extends Controller
   {
     $new = array_filter($request->validated());  
    
-    if(in_array('avatar', $new)){
-      dd($new);
-    }else{
-      User::where('id', $user->id)->update($new);
-      return (\redirect()->route('profiles'));
-    }  
-    return (back());
+
+    
+    if (array_key_exists('password', $new) && !array_key_exists('path_img', $new)){   
+      
+      User::where('id', $user->id)->update([
+        'login' => $new['login'],
+        'email' => $new['email'], 
+        'password' => Hash::make($new['password'])     
+      ]);
+      return (\redirect()->route('profiles'));      
+
+    }if (array_key_exists('path_img', $new) && array_key_exists('password', $new)){ 
+   
+      User::where('id', $user->id)->update([
+        'login' => $new['login'],
+        'email' => $new['email'], 
+        'password' => Hash::make($new['password'])     
+      ]);  
+        
+        $avatar = $request->file('path_img')->store('avatars', 'public');
+        $url = Storage::url($avatar);
+        Profile::where('user_id', $user->id)->update(['path_img' => $url]);
+        return (\redirect()->route('profiles')); 
+
+      }if(array_key_exists('path_img', $new) && !array_key_exists('password', $new)){ 
+
+        $avatar = $request->file('path_img')->store('avatars', 'public');
+        $url = Storage::url($avatar);
+        Profile::where('user_id', $user->id)->update(['path_img' => $url]);
+
+        User::where('id', $user->id)->update([
+        'login' => $new['login'],
+        'email' => $new['email'],      
+    ]);
+    return (\redirect()->route('profiles'));
+
+    } else{
+      User::where('id', $user->id)->update([
+        'login' => $new['login'],
+        'email' => $new['email'],      
+    ]);
+    return (\redirect()->route('profiles'));
+    }
+
+       
+      return (\back());
+
+    }
+   
    
   }
 
-  /**
-   * Remove the specified resource from storage.
-   */
-  public function destroy(string $id)
-  {
-    //
-  }
-}
