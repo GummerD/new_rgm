@@ -18,6 +18,7 @@
      * let random_funny_unswer - необходима для получения рандомного индекса в массиве - funny_unswer.
      * let button_clue - присваевает в <button>, который появляется после 2-ого неверного ответа пользовтеля.
      * let correct_answers_array - массив, в котором хранится число вернхы ответов пользовтеля.
+     * let btm_link - для ссылки в которую обернута кнопка перехода на новую страницу заданий:
      * 
      * Функции:
      * function output_result(data, i, out_clue){} - выводит результат введенных пользовтелем данных, если все верно
@@ -39,6 +40,20 @@
     //массив правильных ответов:
     let correct_answers_array = [];
 
+    //переменная для кнопки перехода на новую страницу заданий:
+    /*
+    let btm = document.querySelector('.dalee');
+    btm.style = `
+        background-color: gray; 
+        color: red; 
+        font-size: 19px`;
+    btm.textContent = 'X';
+    */
+
+    //переменная для ссылки в которй находится кнопка с переходм на следующую страничку
+    let btm_link = document.querySelector('.btm_link');
+
+
     //основной цикл перебора строки ввода ответов пользователя с последующим сопостовлением с верными ответами
     for (let i = 0; i < input_task.length; i++) {
         //console.log("проверка итераций" + i);
@@ -47,19 +62,19 @@
 
             let rule_use = document.querySelector(`.rule_use_${i}`).textContent;
             rul_array[i] = rule_use.split(', ');
-            //console.log("массив верных ответов после добавления в него значения" + rul_array);
+            console.log("массив верных ответов после добавления в него значения" + rul_array);
 
             let data = input_task[i].value;
-            //console.log("введенные данные пользователем" + data);
-            
+            console.log("введенные данные пользователем" + data);
+
             //проверка на пустую строку
-            data == !' ' ?  empty_string(i) :  output_result(data, i, out_clue) ;
-    
+            data == !' ' ? empty_string(i) : output_result(data, i, out_clue);
+
             //console.log('итоговый массив количества верных ответов пользователя ' + correct_answers_array);
 
             //функция для вывода кнопки переахода на следующую страницу
             invisible_button(correct_answers_array.length, input_task.length)
-           
+
         })
 
     }
@@ -78,7 +93,7 @@
             || data == rul_array[i][1]
             || data == rul_array[i][2]
             || data == rul_array[i][3]
-        ) { 
+        ) {
             out_clue.style = 'display: none';
             let newRegExp = new RegExp(data, 'g');
             //console.log('рег выражение' + newRegExp);
@@ -148,12 +163,20 @@
 
     }
 
-    //функция, которая делает выдимой кнопку перехода на следующую страницу, если все ответы в задании даны верно.
-    function invisible_button(counter_correct_answer, counter_input){
-        if (counter_input == counter_correct_answer) 
-            document.querySelector('.dalee').style = "display: inline";
+    //функция, которая делает активной кнопку перехода на следующую страницу, если все ответы в задании даны верно.
+    function invisible_button(counter_correct_answer, counter_input) {
+        if (counter_input == counter_correct_answer) {
+            btm_link.disabled = false
+            btm_link.style ='visibility: visible';
+            
+            /*
+            btm.innerHTML = 'Далее >>>';
+            btm.disabled = false;
+            btm.removeAttribute('style');
+            */
+        }
     }
-   
+
 })();
 
 
