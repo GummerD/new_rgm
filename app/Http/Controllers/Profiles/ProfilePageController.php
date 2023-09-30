@@ -7,8 +7,7 @@ use App\Http\Requests\Users\Edit;
 use App\Models\Profile;
 use App\Models\Task;
 use App\Models\User;
-use Carbon\Carbon;
-use Illuminate\Auth\Events\Validated;
+use App\Queries\UserQueryBuilder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -18,9 +17,10 @@ use Illuminate\View\View;
 class ProfilePageController extends Controller
 {
   /* ИЗВЛЕЧЬ ВСЕ ПРОФИЛИ */
-  public function index()
+
+  public function index(UserQueryBuilder $userQueryBuilder):View
   {
-    //
+      return view('admin.profiles', ['profiles' => $userQueryBuilder->getAll()]);
   }
 
   /**
@@ -83,8 +83,6 @@ class ProfilePageController extends Controller
   {
     $new = array_filter($request->validated());
 
-
-
     if (array_key_exists('password', $new) && !array_key_exists('path_img', $new)) {
 
       User::where('id', $user->id)->update([
@@ -118,6 +116,7 @@ class ProfilePageController extends Controller
         'email' => $new['email'],
       ]);
       return (\redirect()->route('profiles'));
+      
     } else {
       User::where('id', $user->id)->update([
         'login' => $new['login'],

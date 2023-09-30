@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Rules;
 
 use App\Http\Controllers\Controller;
 use App\Models\Rule;
+use App\Queries\RulesQueryBuilder;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -12,10 +13,10 @@ class RulesPageController extends Controller
   /**
    * Display a listing of the resource.
    */
-  public function index(): View
+  public function index(RulesQueryBuilder $rulesQueryBuilder): View
   {
-    $rules = Rule::all();
-    return view('Rules.rules', compact('rules'));
+   
+    return view('Admin.rules', ['rules' => $rulesQueryBuilder->getAll()]);
   }
 
   /**
@@ -37,9 +38,9 @@ class RulesPageController extends Controller
   /**
    * Display the specified resource.
    */
-  public function show(string $id)
+  public function show(RulesQueryBuilder $rulesQueryBuilder)
   {
-    //
+    return view('Rules.rules', ['rules' => $rulesQueryBuilder->getAll()]);
   }
 
   /**

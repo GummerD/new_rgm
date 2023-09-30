@@ -29,7 +29,7 @@ Route::get('/', [StartPageController::class, 'index'])->name('start');
 
 
 Route::group(['prefix' => 'rules'], static function () {
-  Route::get('/', [RulesPageController::class, 'index'])->name('rules');
+  Route::get('/', [RulesPageController::class, 'show'])->name('rules');
 });
 
 // Блок регистрации/авторизации  ->
@@ -65,6 +65,9 @@ Route::group(['prefix' => 'tasks', 'middleware' => 'auth'], static function () {
 
 Route::group(['prefix' => 'admin'], static function () {
   Route::get('/', [AdminPageController::class, 'index'])->name('admin');
+  Route::get('profiles', [ProfilePageController::class, 'index'])->name('admin.profiles');
+  Route::get('tasks', [TasksPageController::class, 'index'])->name('admin.tasks');
+  Route::get('rules', [RulesPageController::class, 'index'])->name('admin.rules');
 });
 // <-
 
