@@ -7,6 +7,7 @@ use App\Models\Rule;
 use App\Queries\RulesQueryBuilder;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Laravel\Ui\Presets\Vue;
 
 class RulesPageController extends Controller
 {
@@ -22,9 +23,9 @@ class RulesPageController extends Controller
   /**
    * Show the form for creating a new resource.
    */
-  public function create()
+  public function create(): View
   {
-    //
+    return view('Admin.Create.task');
   }
 
   /**
