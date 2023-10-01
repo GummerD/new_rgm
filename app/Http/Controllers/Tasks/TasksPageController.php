@@ -28,7 +28,7 @@ class TasksPageController extends Controller
   /**
    * Show the form for creating a new resource.
    */
-  public function create():View
+  public function create(): View
   {
     return view('Admin.Create.task');
   }
@@ -41,17 +41,23 @@ class TasksPageController extends Controller
     //
   }
 
-  /**
-   * Display the specified resource.
-   */
+  /* ИЗВЛЕЧЬ КОНКРЕТНУЮ КАРТОЧКУ */
   public function show(string $level, string $section, string $group): View
   {
-    $lev = Level::where('num_level', $level)->get();
-    $sect = Section::where('num_section', $section)->get();
-    $gr = GroupsTask::where('num_group', $group)->get();
-    $tsk = Task::where('group_id', $group)->get();
+    $level_view = Level::where('num_level', $level);
+    $section_view = Section::where('num_section', $section);
+    $group_view = GroupsTask::where('num_group', $group);
+    $tasks_view = Task::where('level_id', $level)
+      ->where('section_id', $section)
+      ->where('group_id', $group)->get();
     $helps = Rule::all();
-    return view('Tasks.tasks', compact('lev', 'sect', 'gr', 'tsk', 'helps'));
+    return view('Tasks.tasks', compact(
+      'level_view',
+      'section_view',
+      'group_view',
+      'tasks_view',
+      'helps'
+    ));
   }
 
   /**
