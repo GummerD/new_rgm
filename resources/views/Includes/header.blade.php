@@ -44,6 +44,12 @@
             <p> {{ Auth::user()->login }}</p>
             <a class="dropdown-item" href="{{route('profiles')}}">{{__('Личный кабинет')}}</a>
 
+            @if ((Auth::user()->profile->user_status) === "admin")
+
+            <a class="dropdown-item" href="{{route('admin')}}">{{__('Кабинет администратора')}}</a>
+                
+            @endif          
+
             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                       document.getElementById('logout-form').submit();">
               {{ __('Выйти') }}

@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="{{ asset('asset/css/pages/profile.css') }}">
   <link rel="stylesheet" href="{{ asset('asset/css/pages/tasksPage.css') }}">
   <link rel="stylesheet" href="{{ asset('asset/css/pages/redactProfile.css') }}">
+  <link rel="stylesheet" href="{{ asset('asset/css/pages/adminPage.css') }}">
 
 
   {{-- Шрифты: --}}
