@@ -66,11 +66,16 @@ Route::group(['prefix' => 'tasks', 'middleware' => 'auth'], static function () {
 Route::group(['prefix' => 'admin'], static function () {
   Route::get('/', [AdminPageController::class, 'index'])->name('admin');
   Route::get('profiles', [ProfilePageController::class, 'index'])->name('admin.profiles');
-  Route::get('tasks', [TasksPageController::class, 'index'])->name('admin.tasks');
+
   Route::get('rules', [RulesPageController::class, 'index'])->name('admin.rules');
+  Route::get('create/rule', [RulesPageController::class, 'create'])->name('admin.create.rule');
+
+  Route::get('tasks', [TasksPageController::class, 'index'])->name('admin.tasks');
   Route::get('create/task', [TasksPageController::class, 'create'])->name('admin.create.task');
   Route::post('store/task/{task?}', [TasksPageController::class, 'store'])->name('admin.store.task');
-  Route::get('create/rule', [RulesPageController::class, 'create'])->name('admin.create.rule');
+  Route::post('store/task/{task?}', [TasksPageController::class, 'store'])->name('admin.store.task');
+  Route::post('task/delete/{task}', [TasksPageController::class, 'destroy'])->name('admin.delete.task');
+  
 });
 // <-
 

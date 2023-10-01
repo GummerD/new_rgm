@@ -37,7 +37,7 @@
                     
                     
                     <td  class="text-center">
-                        <button >
+                        <button class="delete" rel="{{$item->level_id}}/{{$item->section_id}}/{{$item->group_id}}/{{$item->num_task}}" value="/admin/task/delete">
                             Delete
                         </button>
                         
@@ -59,3 +59,7 @@
 
 
 @endsection
+
+@push('jsDel')
+<script type="text/javascript" src="{{ asset("asset/js/delete.js") }}"></script>
+@endpush
