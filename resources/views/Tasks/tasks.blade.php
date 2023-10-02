@@ -10,9 +10,14 @@
 
   <div class="tasks_begin_txt">
 
-    <div class="tasks_level_txt">{{ $level_view->implode('name_level') }}</div>
+    @foreach ($lev as $item)
+    <div class="tasks_level_txt">{{ $item->name_level }}</div>
+    @endforeach
 
-    <div class="tasks_section_txt">{{ $section_view->implode('name_section') }} </div>
+    @foreach ($sect as $item)
+    <div class="tasks_section_txt">{{ $item->name_section }}
+    </div>
+    @endforeach
 
   </div>
 
@@ -22,11 +27,13 @@
 
         <div class="group_tasks">
 
-          <div class="num_group_txt">Задания {{ $group_view->implode('num_group') }}</div>
+          @foreach ($gr as $item)
+          <div class="num_group_txt">Задания {{ $item->num_group }}</div>
+          @endforeach
 
           <div class="tasks">
 
-            @foreach ($tasks_view as $item)
+            @foreach ($tsk as $item)
             <hr>
             <p class="tsk_txt">{{ $item->num_task }}. {!! $item->task_text !!}</p>
             <div class="knop">
@@ -54,9 +61,13 @@
         </div>
 
         <div class="about_tasks">
-          <p class="about_section">{{ $section_view->implode('desc_section') }}</p>
+          @foreach ($sect as $item)
+          <p class="about_section">{{ $item->desc_section }}</p>
+          @endforeach
 
-          <p class="about_group">{{ $group_view->implode('desc_group') }}</p>
+          @foreach ($gr as $item)
+          <p class="about_group">{{ $item->desc_group }}</p>
+          @endforeach
 
           <div class="ab_but">
             <div class="div_clue">
@@ -64,14 +75,16 @@
               {{-- <p class="out_clue"></p> --}}
             </div>
 
-            <a href="{{ route('profiles.saveprogress', Request::segment(2) . ',' . Request::segment(3) . ',' .
+            @foreach ($gr as $item)
+            {{-- <a href={{ $item->num_group +1 }}> --}}
+              <a href="{{ route('profiles.saveprogress', Request::segment(2) . ',' . Request::segment(3) . ',' .
                 Request::segment(4)+1) }}">
-              <button class="dalee" style="display: none">
-                Далее
-                <img class="icon_task_dalee" src="{{asset('asset/Images/Icons/icons8-arrow-48.png')}}">
-              </button>
-            </a>
-
+                <button class="dalee" style="display: none">
+                  Далее
+                  <img class="icon_task_dalee" src="{{asset('asset/Images/Icons/icons8-arrow-48.png')}}">
+                </button>
+              </a>
+              @endforeach
           </div>
 
         </div>
