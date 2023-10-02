@@ -15,6 +15,7 @@
     <table class="table admin_table" >
         <thead class="admin_table_header">
             <tr>
+                <th>{{__('id')}}</th>
                 <th>TASK KEY</th>
                 <th>{{__('Описание')}}</th>
                 <th>{{__('Связанные правила')}}</th>
@@ -29,6 +30,7 @@
             @foreach ($tasks as $item)
 
                 <tr>
+                    <td>{{$item->id}}</td>
                     <th>{{$item->level_id}}/{{$item->section_id}}/{{$item->group_id}}/{{$item->num_task}}</td>
                     <td>{{$item->task_text}}</td>
                     <td>{{$item->rule_use}}</td>
@@ -37,7 +39,7 @@
                     
                     
                     <td  class="text-center">
-                        <button >
+                        <button class="delete" rel="{{$item->id}}" value="admin/task/delete">
                             Delete
                         </button>
                         
@@ -59,3 +61,7 @@
 
 
 @endsection
+
+@push('jsDel')
+<script type="text/javascript" src="{{ asset("asset/js/delete.js") }}"></script>
+@endpush
