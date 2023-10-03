@@ -30,17 +30,16 @@ class TasksPageController extends Controller
   protected QueryBuilder $sectionQueryBuilder;
   protected QueryBuilder $groupsTaskQueryBuilder;
 
-  public function __construct( 
-      TasksQueryBuilder $tasksQueryBuilder,
-      LevelQueryBuilder $levelQueryBuilder,
-      GroupsTaskQueryBuilder $groupsTaskQueryBuilder,      
-      SectionQueryBuilder $sectionQueryBuilder
-      )
-  {  
-      $this->tasksQueryBuilder=$tasksQueryBuilder;
-      $this->groupsTaskQueryBuilder = $groupsTaskQueryBuilder;
-      $this->levelQueryBuilder = $levelQueryBuilder;
-      $this->sectionQueryBuilder = $sectionQueryBuilder;
+  public function __construct(
+    TasksQueryBuilder $tasksQueryBuilder,
+    LevelQueryBuilder $levelQueryBuilder,
+    GroupsTaskQueryBuilder $groupsTaskQueryBuilder,
+    SectionQueryBuilder $sectionQueryBuilder
+  ) {
+    $this->tasksQueryBuilder = $tasksQueryBuilder;
+    $this->groupsTaskQueryBuilder = $groupsTaskQueryBuilder;
+    $this->levelQueryBuilder = $levelQueryBuilder;
+    $this->sectionQueryBuilder = $sectionQueryBuilder;
   }
 
   /**
@@ -57,12 +56,12 @@ class TasksPageController extends Controller
   /**
    * Show the form for creating a new resource.
    */
-  public function create():View
+  public function create(): View
   {
     $levels = $this->levelQueryBuilder->getAll();
     $groups = $this->groupsTaskQueryBuilder->getAll();
     $sections = $this->sectionQueryBuilder->getAll();
-    
+
     return view('Admin.Create.task', compact("levels", "groups", "sections"));
   }
 
@@ -73,23 +72,22 @@ class TasksPageController extends Controller
 
 
 
-  public function store(Request $request):RedirectResponse
+  public function store(Request $request): RedirectResponse
   {
 
     $data = $request->all();
     //$data = $request->validate(); 
-   // dd($data);
-      
-    $task = Task::create($data);       
+    // dd($data);
 
-    if ($task) {          
+    $task = Task::create($data);
+
+    if ($task) {
       $level = Level::find($request->id);
       $group  = GroupsTask::find($request->id);
       $section = Section::find($request->id);
-      return (\redirect()->route('admin.tasks', [$level, $group, $section])-> with ('success', __('The task was successfully created!')));           
-    }        
+      return (\redirect()->route('admin.tasks', [$level, $group, $section])->with('success', __('The task was successfully created!')));
+    }
     return (\back()->with('error', __('Task creation error!')));
- 
   }
 
   /**
@@ -97,12 +95,20 @@ class TasksPageController extends Controller
    */
   public function show(string $level, string $section, string $group): View
   {
-    $lev = Level::where('num_level', $level)->get();
-    $sect = Section::where('num_section', $section)->get();
-    $gr = GroupsTask::where('num_group', $group)->get();
-    $tsk = Task::where('group_id', $group)->get();
+    $level_view = Level::where('num_level', $level);
+    $section_view = Section::where('num_section', $section);
+    $group_view = GroupsTask::where('num_group', $group);
+    $tasks_view = Task::where('level_id', $level)
+      ->where('section_id', $section)
+      ->where('group_id', $group)->get();
     $helps = Rule::all();
-    return view('Tasks.tasks', compact('lev', 'sect', 'gr', 'tsk', 'helps'));
+    return view('Tasks.tasks', compact(
+      'level_view',
+      'section_view',
+      'group_view',
+      'tasks_view',
+      'helps'
+    ));
   }
 
   /**
@@ -127,14 +133,12 @@ class TasksPageController extends Controller
   public function destroy(Task $task)
   {
     // dd("controller");
-      try {            
-          $task->delete();   
-          return (response()->with('success', __("Record deleted!"))->json(('Record deleted!')));
-
-      }catch(Throwable $exception) {
-          Log::error($exception->getMessage(), $exception->getTrace());
-          return \response()->json('error', 400);
-      }
+    try {
+      $task->delete();
+      return (response()->with('success', __("Record deleted!"))->json(('Record deleted!')));
+    } catch (Throwable $exception) {
+      Log::error($exception->getMessage(), $exception->getTrace());
+      return \response()->json('error', 400);
+    }
   }
-
 }

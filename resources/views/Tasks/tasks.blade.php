@@ -10,14 +10,9 @@
 
   <div class="tasks_begin_txt">
 
-    @foreach ($lev as $item)
-    <div class="tasks_level_txt">{{ $item->name_level }}</div>
-    @endforeach
+    <div class="tasks_level_txt">{{ $level_view->implode('name_level') }}</div>
 
-    @foreach ($sect as $item)
-    <div class="tasks_section_txt">{{ $item->name_section }}
-    </div>
-    @endforeach
+    <div class="tasks_section_txt">{{ $section_view->implode('name_section') }}</div>
 
   </div>
 
@@ -27,13 +22,11 @@
 
         <div class="group_tasks">
 
-          @foreach ($gr as $item)
-          <div class="num_group_txt">Задания {{ $item->num_group }}</div>
-          @endforeach
+          <div class="num_group_txt">Задания {{ $group_view->implode('num_group') }}</div>
 
           <div class="tasks">
 
-            @foreach ($tsk as $item)
+            @foreach ($tasks_view as $item)
             <hr>
             <p class="tsk_txt">{{ $item->num_task }}. {!! $item->task_text !!}</p>
             <div class="knop">
@@ -62,13 +55,10 @@
         </div>
 
         <div class="about_tasks">
-          @foreach ($sect as $item)
-          <p class="about_section">{{ $item->desc_section }}</p>
-          @endforeach
 
-          @foreach ($gr as $item)
-          <p class="about_group">{{ $item->desc_group }}</p>
-          @endforeach
+          <p class="about_section">{{ $section_view->implode('desc_section') }}</p>
+
+          <p class="about_group">{{ $group_view->implode('desc_group') }}</p>
 
           <div class="ab_but">
             <div class="div_clue">
@@ -76,16 +66,18 @@
               {{-- <p class="out_clue"></p> --}}
             </div>
 
-            @foreach ($gr as $item)
-            {{-- <a href={{ $item->num_group +1 }}> --}}
-              <a class="a_dalee" href="{{ route('profiles.saveprogress', Request::segment(2) . ',' . Request::segment(3) . ',' .
-                Request::segment(4)+1) }}">
-                <button class="dalee">
-                  Далее
-                  <img class="icon_task_dalee" src="{{asset('asset/Images/Icons/icons8-arrow-48.png')}}">
-                </button>
-              </a>
-              @endforeach
+
+            <a class="a_dalee" href="{{ route(
+              'profiles.saveprogress', 
+              Request::segment(2) . ',' . 
+              Request::segment(3) . ',' . 
+              Request::segment(4)) }}">
+              <button class="dalee">
+                Далее
+                <img class="icon_task_dalee" src="{{asset('asset/Images/Icons/icons8-arrow-48.png')}}">
+              </button>
+            </a>
+
           </div>
 
         </div>
