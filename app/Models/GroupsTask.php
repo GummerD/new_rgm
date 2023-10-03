@@ -10,8 +10,9 @@ class GroupsTask extends Model
 {
   use HasFactory;
 
+  public $timestamps = false;
+
   protected $fillable = [
-    'id',
     'num_group',
     'desc_group',
   ];
