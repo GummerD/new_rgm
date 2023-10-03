@@ -43,8 +43,9 @@
             <br>
             {{-- Блок вывод подсказок, по нему нужны стили --}}
             <p class="out_task_{{ $item->num_task - 1 }}"></p>
-            <button class="clue_{{ $item->num_task - 1 }}" style="display: none">Нужна подсказка?</button>
-            <p class="out_clue_{{ $item->num_task - 1 }}" style="display: none"></p>
+            <button class="clue_{{ $item->num_task - 1 }}" style="visibility:hidden">Нужна подсказка?</button>
+            <h4 class="h4_clue_{{ $item->num_task - 1 }}" style="visibility:hidden">Варианты ответов:</h3>
+            <p class="out_clue_{{ $item->num_task - 1 }}" style="visibility:hidden"></p>
             {{-- --------------------------------------------------------------------- --}}
 
             {{-- Невидимые блоки для передачи в js значений переменных из модели Task по ним не нужны стили, они места
@@ -88,7 +89,7 @@
           </div>
 
         </div>
-
+      
       </div>
       <div class="nutro-back">
         <table class="tab">

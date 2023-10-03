@@ -18,6 +18,7 @@
      * let random_funny_unswer - необходима для получения рандомного индекса в массиве - funny_unswer.
      * let button_clue - присваевает в <button>, который появляется после 2-ого неверного ответа пользовтеля.
      * let correct_answers_array - массив, в котором хранится число вернхы ответов пользовтеля.
+     * let h1_clue  - переменная для вывода заголовка - "Варианты ответов", по умолчаниию hidden
      * 
      * Функции:
      * function output_result(data, i, out_clue){} - выводит результат введенных пользовтелем данных, если все верно
@@ -35,6 +36,7 @@
     let rul_array = [];// переменная 
     //console.log('итоговый массив верных ответов после итераций' + rul_array)
     let count_try_answer = 0;
+    let rule_clue = [];
 
     //массив правильных ответов:
     let correct_answers_array = [];
@@ -44,25 +46,29 @@
     //основной цикл перебора строки ввода ответов пользователя с последующим сопостовлением с верными ответами
     for (let i = 0; i < input_task.length; i++) {
         //console.log("проверка итераций" + i);
+        // переменная для вывода заголовка - "Варианты ответов", по умолчаниию hidden
+        let h1_clue = document.querySelector(`.h4_clue_${i}`);
+
         let out_clue = document.querySelector(`.out_clue_${i}`);
         document.querySelector(`.button_task_${i}`).addEventListener('click', function () {
 
             let rule_use = document.querySelector(`.rule_use_${i}`).textContent;
-            //console.log("данные из бд" + rule_use);
+            rule_clue[i] = rule_use;
+            //console.log("данные из бд" + rule_clue);
             rul_array[i] = rule_use.split(' | ');
             //console.log("массив верных ответов после добавления в него значения" + rul_array);
 
             let data = input_task[i].value;
             //console.log("введенные данные пользователем" + data);
-            
+
             //проверка на пустую строку
-            data == !' ' ?  empty_string(i) :  output_result(data, i, out_clue) ;
-    
+            data == !' ' ? empty_string(i) : output_result(data, i, out_clue, h1_clue);
+
             //console.log('итоговый массив количества верных ответов пользователя ' + correct_answers_array);
 
             //функция для вывода кнопки переахода на следующую страницу
             invisible_button(correct_answers_array.length, input_task.length)
-           
+
         })
 
     }
@@ -76,7 +82,7 @@
     }
 
     // функция с блоком ветвления, в которую передается и сравнивается введеный ответ пользователя
-    function output_result(data, i, out_clue, counter_of_correct_answers) {
+    function output_result(data, i, out_clue, h1_clue) {
         if (data == rul_array[i][0]
             || data == rul_array[i][1]
             || data == rul_array[i][2]
@@ -85,8 +91,11 @@
             || data == rul_array[i][5]
             || data == rul_array[i][6]
             || data == rul_array[i][7]
-        ) { 
-            out_clue.style = 'display: none';
+        ) {
+
+            out_clue.style = 'visibility:hidden';
+            h1_clue.style = 'visibility:hidden';
+
             let newRegExp = new RegExp(data, 'g');
             //console.log('рег выражение' + newRegExp);
             let string_task = document.querySelector(`.string_task_${i}`).textContent;
@@ -110,7 +119,7 @@
              * после двух неверных ответов
             */
             count_try_answer > 2 ? (
-                clue(i, out_clue),
+                clue(i, out_clue, h1_clue),
                 count_try_answer = 0,
                 out_clue.textContent = ``
             )
@@ -136,31 +145,35 @@
         ];
 
         //console.log(out_clue);
-        out_clue.style = 'display: inline';
+        out_clue.style = 'visibility:visible';
         random_funny_unswer = Math.floor(Math.random() * (3 + 2))
         //console.log(random_funny_unswer);
         out_clue.textContent = `${funny_unswer[random_funny_unswer]}`;
     }
 
     // функция для вывода кнопки подсказки + подсказки:
-    function clue(i, out_clue) {
+    function clue(i, out_clue, h1_clue) {
         let button_clue = document.querySelector(`.clue_${i}`);
-        button_clue.style = 'display: inline';
+        button_clue.style = 'visibility:visible';
         //console.log(button_clue);
         button_clue.addEventListener('click', function () {
-            button_clue.style = 'display: none';
-            out_clue.style = 'display: inline';
-            out_clue.textContent = `Правильный ответ: ${rul_array[i]}`
+            h1_clue.style = 'visibility:visible';
+            button_clue.style = 'visibility:hidden';
+            out_clue.style = 'visibility:visible';
+            for(let counter = 0; counter < rul_array[i].length; counter++){
+                out_clue.innerHTML += `<ul><li>${rul_array[i][counter]}</li></ul>`
+            }
+            
         })
 
     }
 
     //функция, которая делает выдимой кнопку перехода на следующую страницу, если все ответы в задании даны верно.
-    function invisible_button(counter_correct_answer, counter_input){
-        if (counter_input == counter_correct_answer) 
-        a_dalee.style = "visibility: visible";
+    function invisible_button(counter_correct_answer, counter_input) {
+        if (counter_input == counter_correct_answer)
+            a_dalee.style = "visibility: visible";
     }
-   
+
 })();
 
 
