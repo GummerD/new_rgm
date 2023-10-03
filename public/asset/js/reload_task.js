@@ -49,7 +49,7 @@
 
             let rule_use = document.querySelector(`.rule_use_${i}`).textContent;
             //console.log("данные из бд" + rule_use);
-            rul_array[i] = rule_use.split(' или ');
+            rul_array[i] = rule_use.split(' | ');
             //console.log("массив верных ответов после добавления в него значения" + rul_array);
 
             let data = input_task[i].value;
@@ -81,6 +81,10 @@
             || data == rul_array[i][1]
             || data == rul_array[i][2]
             || data == rul_array[i][3]
+            || data == rul_array[i][4]
+            || data == rul_array[i][5]
+            || data == rul_array[i][6]
+            || data == rul_array[i][7]
         ) { 
             out_clue.style = 'display: none';
             let newRegExp = new RegExp(data, 'g');
