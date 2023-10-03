@@ -9,6 +9,10 @@ use App\Http\Controllers\StartPageController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LevelsGroupsSectionsInOne\GroupsController;
+use App\Http\Controllers\LevelsGroupsSectionsInOne\LevelsController;
+use App\Http\Controllers\LevelsGroupsSectionsInOne\LevGrSecController;
+use App\Http\Controllers\LevelsGroupsSectionsInOne\SectionsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -76,7 +80,22 @@ Route::group(['prefix' => 'admin'], static function () {
   Route::post('store/task/{task?}', [TasksPageController::class, 'store'])->name('admin.store.task');
   Route::any('task/delete/{task}', [TasksPageController::class, 'destroy'])->name('admin.delete.task');
   
+
+  Route::get('level', [LevelsController::class, 'index'])->name('admin.level');
+  Route::get('group', [GroupsController::class, 'index'])->name('admin.groups');
+  Route::get('section', [SectionsController::class, 'index'])->name('admin.section');
+
+  Route::get('create/levGrSec', [LevGrSecController::class, 'create'])->name('admin.create.levGrSec');
+
+  Route::post('store/group/{group?}', [GroupsController::class, 'store'])->name('admin.store.group');
+  Route::post('store/section/{section?}', [SectionsController::class, 'store'])->name('admin.store.section');
+  Route::post('store/level/{level?}', [LevelsController::class, 'store'])->name('admin.store.level');
+
+  Route::any('level/delete/{level}', [LevelsController::class, 'destroy'])->name('admin.delete.level');
+  Route::any('group/delete/{group}', [GroupsController::class, 'destroy'])->name('admin.delete.group');
+  Route::any('section/delete/{section}', [SectionsController::class, 'destroy'])->name('admin.delete.section');
 });
+
 // <-
 
 // Блок для тестирования рег выражений ->

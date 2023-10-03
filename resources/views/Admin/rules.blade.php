@@ -32,9 +32,6 @@
                     <th> {{$item->id}}</td>
                     <td>{{$item->regex}}</td>
                     <td>{{$item->description}}</td>
-                   
-                    
-                    
                     <td  class="text-center">
                         <button >
                             Delete

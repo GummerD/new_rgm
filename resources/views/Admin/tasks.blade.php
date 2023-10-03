@@ -28,25 +28,21 @@
         <tbody>
             
             @foreach ($tasks as $item)
-
                 <tr>
                     <td>{{$item->id}}</td>
                     <th>{{$item->level_id}}/{{$item->section_id}}/{{$item->group_id}}/{{$item->num_task}}</td>
                     <td>{{$item->task_text}}</td>
                     <td>{{$item->rule_use}}</td>
                     <td>{{$item->correct_answer}}</td>
-                    <th>{{$item->string_task}}</th>
-                    
+                    <th>{{$item->string_task}}</th>                  
                     
                     <td  class="text-center">
                         <button class="delete" rel="{{$item->id}}" value="admin/task/delete">
                             Delete
                         </button>
-                        
                         <a class="" href="">
                             Redact
-                        </a>
-                                              
+                        </a>               
                     </td>
                </tr>
             @endforeach
@@ -55,10 +51,7 @@
     </table>          
     <div class="paginate" style=" width:600px; margin-top:20px"> {{ $tasks->links() }}</div>
     <a class ="" href="{{ url()->previous() }}">{{__('Обратно')}}</a>
-
 </div>
-
-
 
 @endsection
 

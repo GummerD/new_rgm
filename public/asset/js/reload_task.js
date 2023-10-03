@@ -38,8 +38,6 @@
 
     //массив правильных ответов:
     let correct_answers_array = [];
-    let a_dalee = document.querySelector('.a_dalee');
-    a_dalee.style = "visibility: hidden";
 
     //основной цикл перебора строки ввода ответов пользователя с последующим сопостовлением с верными ответами
     for (let i = 0; i < input_task.length; i++) {
@@ -48,8 +46,7 @@
         document.querySelector(`.button_task_${i}`).addEventListener('click', function () {
 
             let rule_use = document.querySelector(`.rule_use_${i}`).textContent;
-            //console.log("данные из бд" + rule_use);
-            rul_array[i] = rule_use.split(' | ');
+            rul_array[i] = rule_use.split(', ');
             //console.log("массив верных ответов после добавления в него значения" + rul_array);
 
             let data = input_task[i].value;
@@ -81,10 +78,6 @@
             || data == rul_array[i][1]
             || data == rul_array[i][2]
             || data == rul_array[i][3]
-            || data == rul_array[i][4]
-            || data == rul_array[i][5]
-            || data == rul_array[i][6]
-            || data == rul_array[i][7]
         ) { 
             out_clue.style = 'display: none';
             let newRegExp = new RegExp(data, 'g');
@@ -158,7 +151,7 @@
     //функция, которая делает выдимой кнопку перехода на следующую страницу, если все ответы в задании даны верно.
     function invisible_button(counter_correct_answer, counter_input){
         if (counter_input == counter_correct_answer) 
-        a_dalee.style = "visibility: visible";
+            document.querySelector('.dalee').style = "display: inline";
     }
    
 })();
