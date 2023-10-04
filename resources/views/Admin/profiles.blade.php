@@ -11,7 +11,7 @@
          </p>
     </div>
     
-    <div class="admin_navigate" style="overflow: auto; max-height:70vh">
+    <div class="admin_navigate" style="overflow: auto; max-height:60vh">
     
       <table class="table admin_table" >
           <thead class="admin_table_header">
