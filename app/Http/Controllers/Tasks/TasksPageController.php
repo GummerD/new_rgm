@@ -114,17 +114,30 @@ class TasksPageController extends Controller
   /**
    * Show the form for editing the specified resource.
    */
-  public function edit(string $id)
+  public function edit(Task $task):View
   {
-    //
+    $levels = $this->levelQueryBuilder->getAll();
+    $groups = $this->groupsTaskQueryBuilder->getAll();
+    $sections = $this->sectionQueryBuilder->getAll();
+    return view('Admin.Update.task', compact('task', 'levels', 'groups', 'sections'));
   }
+
 
   /**
    * Update the specified resource in storage.
    */
-  public function update(Request $request, string $id)
-  {
-    //
+  public function update(Request $request, Task $task)
+  { 
+    // dd($request->all());
+    $task = $task->fill($request->all());
+    if($task->save()) {
+        $level = Level::find($request->id);
+        $group  = GroupsTask::find($request->id);
+        $section = Section::find($request->id);
+    
+        return (\redirect()->route('admin.tasks', [$level, $group, $section])->with('success', __('The task has been successfully updated!')));
+    }
+    return (\back()->with('error', __('Error updating the article!')));
   }
 
   /**

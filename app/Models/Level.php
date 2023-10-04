@@ -10,8 +10,9 @@ class Level extends Model
 {
   use HasFactory;
 
+  public $timestamps = false;
+
   protected $fillable = [
-    'id',
     'num_level',
     'name_level',
     'desc_level',

@@ -12,7 +12,7 @@
     </div>
 
 
-<div class="admin_navigate" style="overflow: auto; max-height:70vh">
+<div class="admin_navigate" style="overflow: auto; max-height:60vh">
     
     <table class="table admin_table" >
         <thead class="admin_table_header">
@@ -32,9 +32,6 @@
                     <th> {{$item->id}}</td>
                     <td>{{$item->regex}}</td>
                     <td>{{$item->description}}</td>
-                   
-                    
-                    
                     <td  class="text-center">
                         <button >
                             Delete
@@ -51,10 +48,9 @@
         </tbody>
     </table>          
     <div class="paginate" style=" width:600px; margin-top:20px"> {{ $rules->links() }}</div>
-    <a class ="" href="{{ url()->previous() }}">{{__('Обратно')}}</a>
-
+   
 </div>
 
-
+<a class ="" href="{{ url()->previous() }}">{{__('Обратно')}}</a>
 
 @endsection

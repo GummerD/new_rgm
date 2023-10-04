@@ -4,5 +4,28 @@
 
 .admin_navigate{
     color: rgb(129, 124, 124);
-   
+}
+
+.bigBlock_levels{
+    display: flex;
+    justify-content: space-between;
+    height: 60vh;    
+}
+
+.admin_table_levels{
+    /* background-color: rgb(255, 255, 255); */
+    width: 90%; 
+}
+
+.admin_table_levels_groups{
+    background-color: rgb(255, 255, 255);
+    max-width: 430px;  
+    flex: 1 0 auto;
+    margin: 0 2px; 
+}
+
+
+.create_levels_block{
+    width: 310px;
+    margin-top: 30px;
 }
