@@ -18,9 +18,9 @@ class ProfilePageController extends Controller
 {
   /* ИЗВЛЕЧЬ ВСЕ ПРОФИЛИ */
 
-  public function index(UserQueryBuilder $userQueryBuilder):View
+  public function index(UserQueryBuilder $userQueryBuilder): View
   {
-      return view('admin.profiles', ['profiles' => $userQueryBuilder->getAll()]);
+    return view('admin.profiles', ['profiles' => $userQueryBuilder->getAll()]);
   }
 
   /**
@@ -48,24 +48,53 @@ class ProfilePageController extends Controller
     return view('Profiles.profile', compact('profile'));
   }
 
+  /* СОХРАНЕНИЕ ПРОГРЕССА (ПРОЙДЕННЫХ ЗАДАЧ) */
   public function saveprogress(Request $request)
   {
-    $uspex = $request->prog;
+    $uspex = $request->progress;
     $parts = explode(",", $uspex);
-    $p1 = $parts[0];
-    $p2 = $parts[1];
-    $p3 = $parts[2];
-    $ta = Task::where('group_id', $p3)->first();
-
-    if ($ta) {
-      $uspex2 = str_replace(",", "/", $uspex);
-      Profile::where('user_id', Auth::user()->id)->update(['progress' => $uspex2]);
+    $level = $parts[0];
+    $section = $parts[1];
+    $group = $parts[2];
+    $task_by_group = Task::where('level_id', $level)
+      ->where('section_id', $section)
+      ->where('group_id', $group + 1)->first();
+    $update_profile = Profile::where('user_id', Auth::user()->id);
+    if ($task_by_group) {
+      $group_next = $group + 1;
+      $uspex2 = $level . "/" . $section . "/" . $group_next;
+      $update_profile->update(['progress' => $uspex2]);
+      $group = $group_next;
     } else {
-      $p4 = $p2 + 1;
-      $uspex3 = $p1 . '/' . $p4 . '/1';
-      Profile::where('user_id', Auth::user()->id)->update(['progress' => $uspex3]);
+      $section_next = $section + 1;
+      $task_by_section = Task::where('level_id', $level)->where('section_id', $section_next)->first();
+      if ($task_by_section) {
+        $uspex3 = $level . '/' . $section_next . '/1';
+        $update_profile->update(['progress' => $uspex3]);
+        $section = $section_next;
+        $group = 1;
+      } else {
+        $level_next = $level + 1;
+        $task_by_level = Task::where('level_id', $level_next)->first();
+        if ($task_by_level) {
+          $uspex4 = $level_next . '/1/1';
+          $update_profile->update(['progress' => $uspex4]);
+          $level = $level_next;
+          $section = 1;
+          $group = 1;
+        } else {
+          $update_profile->update(['progress' => '1/1/1']);
+          $update_profile->increment('num_trainings');
+          return redirect()->route('profiles');
+        }
+      }
     };
-    return redirect()->route('profiles');
+
+    return redirect()->route('tasks', [
+      'level' => $level,
+      'section' => $section,
+      'group' => $group
+    ]);
   }
 
   /**
@@ -116,7 +145,6 @@ class ProfilePageController extends Controller
         'email' => $new['email'],
       ]);
       return (\redirect()->route('profiles'));
-      
     } else {
       User::where('id', $user->id)->update([
         'login' => $new['login'],
