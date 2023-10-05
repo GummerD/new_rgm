@@ -66,7 +66,7 @@
               {{-- <p class="out_clue"></p> --}}
             </div>
 
-            {{--Блок переменных из роута, который передается в JS --}}
+            {{--Блок php-переменных из роута, который передается в JS --}}
             @php
               $segments = [];
               $segments[0] =  Request::segment(2);
@@ -74,7 +74,8 @@
               $segments[2] =  Request::segment(4);
             @endphp
             <script>
-              let segments = {{Js::from($segments)}};
+              let segments = []
+              segments = {{Js::from($segments)}};
               //console.log(segments);
             </script>
 
