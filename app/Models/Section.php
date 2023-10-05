@@ -9,9 +9,10 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Section extends Model
 {
   use HasFactory;
+  
+  public $timestamps = false;
 
   protected $fillable = [
-    'id',
     'num_section',
     'name_section',
     'desc_section',

@@ -10,7 +10,7 @@
            {{__("Список задач")}}
          </p>
     </div>
-<div class="admin_navigate" style="overflow: auto; max-height:70vh">
+<div class="admin_navigate" style="overflow: auto; max-height:60vh">
     
     <table class="table admin_table" >
         <thead class="admin_table_header">
@@ -28,25 +28,21 @@
         <tbody>
             
             @foreach ($tasks as $item)
-
                 <tr>
                     <td>{{$item->id}}</td>
                     <th>{{$item->level_id}}/{{$item->section_id}}/{{$item->group_id}}/{{$item->num_task}}</td>
                     <td>{{$item->task_text}}</td>
                     <td>{{$item->rule_use}}</td>
                     <td>{{$item->correct_answer}}</td>
-                    <th>{{$item->string_task}}</th>
-                    
+                    <th>{{$item->string_task}}</th>                  
                     
                     <td  class="text-center">
                         <button class="delete" rel="{{$item->id}}" value="admin/task/delete">
                             Delete
                         </button>
-                        
-                        <a class="" href="">
+                        <a class="" href="{{route('admin.edit.task', ['task' => $item])}}">
                             Redact
-                        </a>
-                                              
+                        </a>               
                     </td>
                </tr>
             @endforeach
@@ -54,12 +50,9 @@
         </tbody>
     </table>          
     <div class="paginate" style=" width:600px; margin-top:20px"> {{ $tasks->links() }}</div>
-    <a class ="" href="{{ url()->previous() }}">{{__('Обратно')}}</a>
-
+   
 </div>
-
-
-
+<a class ="" href="{{ url()->previous() }}">{{__('Обратно')}}</a>
 @endsection
 
 @push('jsDel')
