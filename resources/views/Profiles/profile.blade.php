@@ -12,27 +12,48 @@
 
   <div class="profile_content">
     <div class="profile_content_user">
-      @if(is_numeric(Auth::user()->profile->path_img))    
-      <div class="profile_avatar"><img class="profile_avatar_img" src="{{ asset('asset/Images/photos/fone-125.jpg') }}" alt=""></div>        
+      @if(is_numeric(Auth::user()->profile->path_img))
+      <div class="profile_avatar"><img class="profile_avatar_img" src="{{ asset('asset/Images/photos/fone-125.jpg') }}"
+          alt=""></div>
       @else
-      <div class="profile_avatar"><img class="profile_avatar_img" src="{{asset(Auth::user()->profile->path_img)}}" alt=""></div>
+      <div class="profile_avatar"><img class="profile_avatar_img" src="{{asset(Auth::user()->profile->path_img)}}"
+          alt=""></div>
       @endif
       <a href="{{route('profiles.update', ['user' => Auth::user()->id])}}">
         <button class="btn_profile_redact">{{__('Редактировать профиль')}}</button>
-      </a>      
+      </a>
     </div>
 
     <div class="profile_content_rating">
-      @foreach ($profile as $prof)
-        <li>rating: {{$prof->rating}}</li>
-        <li>correct_answer: {{$prof->correct_answer}}</li>
-        <li>incorrect_answer: {{$prof->incorrect_answer}}</li>
-        <li>num_trainings: {{$prof->num_trainings}}</li>
-        <li>progress: {{$prof->progress}}</li>
-       @endforeach
-    </div> 
-     
-   
+      <li>rating: {{Auth::user()->profile->rating}}</li>
+      <li>correct_answer: {{Auth::user()->profile->correct_answer}}</li>
+      <li>incorrect_answer: {{Auth::user()->profile->incorrect_answer}}</li>
+      <li>num_trainings: {{Auth::user()->profile->num_trainings}}</li>
+      <li>progress: {{Auth::user()->profile->progress}}</li>
+    </div>
+
+    <div>
+      <table cellspacing="0" cellpadding="0" summary="Rating Users">
+        <tr>
+          <th scope="col"><span class="auraltext">Users</span> </th>
+          <th scope="col"><span class="auraltext">Current Rating</span> </th>
+        </tr>
+
+        @foreach ($user as $item)
+        <tr>
+          <td class="first" @if(Auth::user()->id == $item->id ) style="color:tomato;font-size: 16px;font-weight:bold"
+            @endif>
+            {{$item->login}}&nbsp;</td>
+          <td class="value first">
+            <img src="{{ asset('asset/Images/Icons/bar.png') }}" alt="" width="{{$item->profile->rating}}"
+              height="16" />&nbsp;{{$item->profile->rating}}
+          </td>
+        </tr>
+        @endforeach
+
+      </table>
+    </div>
+
   </div>
 </main>
 @endsection
