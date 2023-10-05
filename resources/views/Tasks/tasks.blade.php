@@ -66,7 +66,20 @@
               {{-- <p class="out_clue"></p> --}}
             </div>
 
+            {{--Блок php-переменных из роута, который передается в JS --}}
+            @php
+              $segments = [];
+              $segments[0] =  Request::segment(2);
+              $segments[1] =  Request::segment(3);
+              $segments[2] =  Request::segment(4);
+            @endphp
+            <script>
+              let segments = []
+              segments = {{Js::from($segments)}};
+              //console.log(segments);
+            </script>
 
+            {{--  Старый блок со ссылкой на след. страницу
             <a class="a_dalee" href="{{ route(
               'profiles.saveprogress', 
               Request::segment(2) . ',' . 
@@ -77,6 +90,15 @@
                 <img class="icon_task_dalee" src="{{asset('asset/Images/Icons/icons8-arrow-48.png')}}">
               </button>
             </a>
+            --}}
+            
+            <a class="a_dalee" href="">
+              <button class="dalee">
+                Далее
+                <img class="icon_task_dalee" src="{{asset('asset/Images/Icons/icons8-arrow-48.png')}}">
+              </button>
+            </a>
+            
 
           </div>
 

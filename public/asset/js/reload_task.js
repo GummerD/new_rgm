@@ -163,15 +163,21 @@
             for(let counter = 0; counter < rul_array[i].length; counter++){
                 out_clue.innerHTML += `<ul><li>${rul_array[i][counter]}</li></ul>`
             }
-            
+
         })
 
     }
 
     //функция, которая делает выдимой кнопку перехода на следующую страницу, если все ответы в задании даны верно.
     function invisible_button(counter_correct_answer, counter_input) {
+        //let string = `http://127.0.0.1:8000/tasks/${segments[0]}/${segments[1]}/${segments[2]}`;
+        let string = `http://127.0.0.1:8000/profiles/saveprogress/${segments[0]},${segments[1]},${segments[2]}`;
+        //let string = `@{{{rout("profiles.saveprogress",${segments[0]},${segments[1]},${segments[2]})}}})`;
         if (counter_input == counter_correct_answer)
             a_dalee.style = "visibility: visible";
+            a_dalee.setAttribute('href',string);
+
+            
     }
 
 })();
