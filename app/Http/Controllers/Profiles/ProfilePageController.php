@@ -44,8 +44,9 @@ class ProfilePageController extends Controller
 
   public function show(): View
   {
-    $profile = Profile::where('user_id', Auth::user()->id)->get();
-    return view('Profiles.profile', compact('profile'));
+    $user = User::all();
+    $profile = Profile::all();
+    return view('Profiles.profile', compact('profile', 'user'));
   }
 
   /* СОХРАНЕНИЕ ПРОГРЕССА (ПРОЙДЕННЫХ ЗАДАЧ) */
