@@ -30,16 +30,26 @@
      * ------------------------------------------------------------------------------------------------------------------------------------------------
      */
 
+    //блок для перехода на след. стр., с возможностью автоматической подставкой хоста и протокола черз window.location
+    let host = window.location.host;
+    let protocol = window.location.protocol;
+    let string = `//${host}/profiles/saveprogress/${segments[0]},${segments[1]},${segments[2]}`;
+    //let string = `http://${host}/profiles/saveprogress/${segments[0]},${segments[1]},${segments[2]}`;
+
+    //блок получения всех input, которые инициализирубтся циклом шаблонизатора - blade
     let input_task = document.getElementsByClassName('input_task');
     input_task = Array.from(input_task);
     //console.log("проверка связи " + input_task);
-    let rul_array = [];// переменная 
-    //console.log('итоговый массив верных ответов после итераций' + rul_array)
+
+    // массив рег. выражений, которые через логику получаем из БД
+    let rul_array = [];
+    //console.log('итоговый массив верных ответов (шаблонов рег. выражений) после итераций' + rul_array)
     let count_try_answer = 0;
     let rule_clue = [];
 
-    //массив правильных ответов:
+    //массив правильных ответов пользовтеля:
     let correct_answers_array = [];
+
     let a_dalee = document.querySelector('.a_dalee');
     a_dalee.style = "visibility: hidden";
 
@@ -169,15 +179,12 @@
     }
 
     //функция, которая делает выдимой кнопку перехода на следующую страницу, если все ответы в задании даны верно.
-    function invisible_button(counter_correct_answer, counter_input) {
-        //let string = `http://127.0.0.1:8000/tasks/${segments[0]}/${segments[1]}/${segments[2]}`;
-        let string = `http://127.0.0.1:8000/profiles/saveprogress/${segments[0]},${segments[1]},${segments[2]}`;
-        //let string = `@{{{rout("profiles.saveprogress",${segments[0]},${segments[1]},${segments[2]})}}})`;
-        if (counter_input == counter_correct_answer)
+    function invisible_button(counter_correct_answer, counter_input) {    
+        if (counter_input == counter_correct_answer){
             a_dalee.style = "visibility: visible";
-            a_dalee.setAttribute('href',string);
-
-            
+            protocol = protocol.match(/http.?:/);
+            a_dalee.setAttribute('href',`${protocol}${string}`);
+        }           
     }
 
 })();
