@@ -61,7 +61,7 @@ Route::group(['prefix' => 'profiles', 'middleware' => 'auth'], static function (
 
 
 Route::group(['prefix' => 'tasks', 'middleware' => 'auth'], static function () {
-  Route::get('/{level}/{section}/{group}', [TasksPageController::class, 'show'])->name('tasks');
+  Route::get('/{level}/{section}/{group}', [TasksPageController::class, 'show'])->name('tasks')->middleware('userBlock');
 });
 
 // <-
@@ -69,9 +69,11 @@ Route::group(['prefix' => 'tasks', 'middleware' => 'auth'], static function () {
 
 // Блок администратора ->
 
-Route::group(['prefix' => 'admin'], static function () {
+Route::group(['prefix' => 'admin', 'middleware' => 'admin' ], static function () {
   Route::get('/', [AdminPageController::class, 'index'])->name('admin');
+
   Route::get('profiles', [ProfilePageController::class, 'index'])->name('admin.profiles');
+  Route::any('update/user/status/{user}', [ProfilePageController::class, 'updateUserStatus'])->name('admin.update.user.status');
 
   Route::get('rules', [RulesPageController::class, 'index'])->name('admin.rules');
   Route::get('create/rule', [RulesPageController::class, 'create'])->name('admin.create.rule');
