@@ -77,6 +77,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin' ], static function ()
 
   Route::get('rules', [RulesPageController::class, 'index'])->name('admin.rules');
   Route::get('create/rule', [RulesPageController::class, 'create'])->name('admin.create.rule');
+  Route::any('store/rule/{rule?}', [RulesPageController::class, 'store'])->name('admin.store.rule');
+  Route::any('edit/rule/{rule}', [RulesPageController::class, 'edit'])->name('admin.edit.rule');
+  Route::any('update/rule/{rule}', [RulesPageController::class, 'update'])->name('admin.update.rule');
+  Route::any('delete/rule/{rule}', [RulesPageController::class, 'destroy'])->name('admin.delete.rule');
 
   Route::get('tasks', [TasksPageController::class, 'index'])->name('admin.tasks');
   Route::get('create/task', [TasksPageController::class, 'create'])->name('admin.create.task');
