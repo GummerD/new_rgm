@@ -17,10 +17,11 @@ class Profile extends Model
     'correct_answer',
     'incorrect_answer',
     'num_trainings',
+    'user_status',
   ];
 
   public function user(): HasOne
   {
-    return $this->hasOne(User::class, 'id', 'id_user');
+    return $this->hasOne(User::class, 'id', 'user_id');
   }
 }

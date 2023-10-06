@@ -20,7 +20,7 @@ class ProfilePageController extends Controller
 
   public function index(UserQueryBuilder $userQueryBuilder): View
   {
-    return view('admin.profiles', ['profiles' => $userQueryBuilder->getAll()]);
+    return view('Admin\profiles', ['profiles' => $userQueryBuilder->getAll()]);
   }
 
   /**
@@ -154,7 +154,22 @@ class ProfilePageController extends Controller
       return (\redirect()->route('profiles'));
     }
 
-
     return (\back());
   }
+
+
+  public function updateUserStatus(Request $request, User $user)
+  {
+    $status = $request->all();
+    $a = Profile::where('user_id', $user->id)->update(['user_status' => $status['user_status']]);
+
+    if($a){
+      return (\redirect()->route('admin.profiles'));
+    }
+    else {
+      dd('ошибка');
+    }
+  }
+
+
 }
