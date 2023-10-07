@@ -29,15 +29,15 @@
             @foreach ($rules as $item)
 
                 <tr>
-                    <th> {{$item->id}}</td>
+                    <th>{{$item->id}}</td>
                     <td>{{$item->regex}}</td>
                     <td>{{$item->description}}</td>
                     <td  class="text-center">
-                        <button >
+                        <button class="delete" rel="{{$item->id}}" value="admin/delete/rule">
                             Delete
                         </button>
                         
-                        <a class="" href="">
+                        <a class="" href="{{route('admin.edit.rule', $item)}}">
                             Redact
                         </a>
                                               
@@ -54,3 +54,7 @@
 <a class ="" href="{{ url()->previous() }}">{{__('Обратно')}}</a>
 
 @endsection
+
+@push('jsDel')
+<script type="text/javascript" src="{{ asset("asset/js/delete.js") }}"></script>
+@endpush
