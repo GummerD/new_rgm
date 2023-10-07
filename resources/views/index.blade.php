@@ -13,12 +13,14 @@
   <link rel="stylesheet" href="{{ asset('asset/css/Includes/footer.css') }}">
   <link rel="stylesheet" href="{{ asset('asset/css/Includes/regLogin.css') }}">
   <link rel="stylesheet" href="{{ asset('asset/css/Includes/menuProfile.css') }}">
+  <link rel="stylesheet" href="{{ asset('asset/css/Includes/alerts.css') }}">
   <link rel="stylesheet" href="{{ asset('asset/css/Includes/registr_log_component.css') }}">
   <link rel="stylesheet" href="{{ asset('asset/css/pages/rulesPage.css') }}">
   <link rel="stylesheet" href="{{ asset('asset/css/pages/profile.css') }}">
   <link rel="stylesheet" href="{{ asset('asset/css/pages/tasksPage.css') }}">
   <link rel="stylesheet" href="{{ asset('asset/css/pages/redactProfile.css') }}">
   <link rel="stylesheet" href="{{ asset('asset/css/pages/adminPage.css') }}">
+  
 
 
   {{-- Шрифты: --}}
@@ -60,18 +62,18 @@
 
       @include('Includes.header')
 
+      
+
       <div class="black_fon">
-        <div class=" contain ">
-          @yield('content')
+        <div class="contain">
+          @yield('content')         
         </div>
-
+        @include('includes.message')
       </div>
+      
     </div>
-
     @include('Includes.footer')
-
   </div>
-
  @stack('jsDel')
 </body>
 

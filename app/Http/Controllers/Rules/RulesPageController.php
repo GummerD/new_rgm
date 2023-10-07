@@ -85,7 +85,7 @@ class RulesPageController extends Controller
   {
     try {            
       $rule->delete();   
-      return (response()->with('success', __("Record deleted!"))->json(('Record deleted!')));
+      return (response()->with('success', __("Record deleted!")));
 
     }catch(Throwable $exception) {
         Log::error($exception->getMessage(), $exception->getTrace());

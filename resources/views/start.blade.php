@@ -100,6 +100,11 @@
                                                         document.getElementById('logout-form').submit();">
                                                         {{ __('Logout') }}
                                                     </a>
+                                                    @if ((Auth::user()->profile->user_status) === "admin")
+
+                                                    <a class="dropdown-item" href="{{route('admin')}}">{{__('Кабинет администратора')}}</a>
+                
+                                                    @endif  
                 
                                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                                         @csrf
