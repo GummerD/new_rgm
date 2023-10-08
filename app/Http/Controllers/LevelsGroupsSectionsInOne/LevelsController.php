@@ -48,7 +48,7 @@ class LevelsController extends Controller
     // dd($request->all());
     $level = $level->fill($request->all());
     if($level->save()) {       
-        return (\redirect()->route('admin.level', $level)->with('success', __('The task has been successfully updated!')));
+        return (\redirect()->route('admin.level', $level)->with('success', ['message' =>'The task has been successfully updated!']));
     }
     return (\back()->with('error', __('Error updating the article!')));
   }

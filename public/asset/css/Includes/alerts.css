@@ -1,0 +1,41 @@
+@import "bootstrap/functions";
+@import "bootstrap/variables";
+
+.alert.block_alert
+{
+    width: 300px;
+    height: 200px;
+    position: absolute;
+    margin-top: -150px;
+    margin-left: 1150px;
+    z-index: 4;
+    border: 6px solid;
+    border-radius: 5px;
+    background: linear-gradient(-120deg,
+    rgba(0, 0, 0, 1),
+    rgba(29, 12, 12, 1),
+    rgba(38, 0, 0, 0.97),
+    rgba(33, 16, 16, 0.97),
+    rgba(40, 37, 37, 0.9036),
+    rgba(14, 40, 12, 0.76),
+    rgba(14, 1, 1, 0.7942),
+    rgba(0, 0, 0, 0.99));
+    
+}
+
+.in_block_alert{
+    border-radius: 3px;
+    padding: 9px;
+    width: 255px;
+    margin-top: 45px;
+    background-color: black;
+}
+
+
+.alert.alert-danger {
+    color: rgba(238, 43, 43, 1);
+}
+
+.alert.alert-success {
+    --bs-alert-color: #21c57a;    
+}

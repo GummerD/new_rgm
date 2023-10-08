@@ -164,11 +164,11 @@ class ProfilePageController extends Controller
     $a = Profile::where('user_id', $user->id)->update(['user_status' => $status['user_status']]);
 
     if($a){
-      return (\redirect()->route('admin.profiles'));
+      return (\redirect()->route('admin.profiles')-> with('success', __("The user's status has been successfully updated")));
+ 
     }
-    else {
-      dd('ошибка');
-    }
+    return (\back()->with('error', __('Failed to update status!')));
+
   }
 
 
