@@ -18,7 +18,10 @@
      * let random_funny_unswer - необходима для получения рандомного индекса в массиве - funny_unswer.
      * let button_clue - присваевает в <button>, который появляется после 2-ого неверного ответа пользовтеля.
      * let correct_answers_array - массив, в котором хранится число вернхы ответов пользовтеля.
-     * let h1_clue  - переменная для вывода заголовка - "Варианты ответов", по умолчаниию hidden
+     * let h1_clue  - переменная для вывода заголовка - "Варианты ответов", по умолчаниию hidden.
+     * let correct_answer_user_in_one_task - переменная количество правильных ответов пользователя в одной карточке, где присутсвуют 3-4 задания.
+     * let a_dalee - переменная для скрытия <a> тега в общем потоке, дабы убрать кнопку перехода на след. страницу.
+     * let user_clicks - переменная, которая считает количкство clicks у кнопки - button_task_${i}.
      * 
      * Функции:
      * function output_result(data, i, out_clue){} - выводит результат введенных пользовтелем данных, если все верно
@@ -48,20 +51,35 @@
     let rule_clue = [];
 
     //массив правильных ответов пользовтеля:
-    let correct_answers_array = [];
+    let answers_array = [];
+    //переменная, которая отмечает правильные и неправильные ответы в значении массива - correct_answers_array
+    let answers_bool = undefined;
 
+    //Переменная для скрытия <a> тега в общем потоке, дабы убрать кнопку перехода на след. страницу:
     let a_dalee = document.querySelector('.a_dalee');
     a_dalee.style = "visibility: hidden";
 
     //основной цикл перебора строки ввода ответов пользователя с последующим сопостовлением с верными ответами
     for (let i = 0; i < input_task.length; i++) {
         //console.log("проверка итераций" + i);
-        // переменная для вывода заголовка - "Варианты ответов", по умолчаниию hidden
+        /** 
+        * h1_clue - переменная для вывода заголовка - "Варианты ответов", по умолчаниию hidden, 
+        * которая передается в функцию - output_result
+        */
         let h1_clue = document.querySelector(`.h4_clue_${i}`);
 
+        /** 
+        * out_clue - переменная для вывода подсказок, по умолчаниию hidden, 
+        * которая передается в функцию - output_result
+        */
         let out_clue = document.querySelector(`.out_clue_${i}`);
-        document.querySelector(`.button_task_${i}`).addEventListener('click', function () {
 
+        /** 
+        * основная функция, которая принимет в себя множество переменных и распределяет их по другим функциям
+        * в случае верного или неверного ответва пользовтеля при нажатии на кнопку - "Проверить":
+        */
+        document.querySelector(`.button_task_${i}`).addEventListener('click', function () {
+            console.log(answers_bool);
             let rule_use = document.querySelector(`.rule_use_${i}`).textContent;
             rule_clue[i] = rule_use;
             //console.log("данные из бд" + rule_clue);
@@ -71,19 +89,18 @@
             let data = input_task[i].value;
             //console.log("введенные данные пользователем" + data);
 
-            //проверка на пустую строку
+            //проверка на пустую строку:
             data == !' ' ? empty_string(i) : output_result(data, i, out_clue, h1_clue);
-
             //console.log('итоговый массив количества верных ответов пользователя ' + correct_answers_array);
 
-            //функция для вывода кнопки переахода на следующую страницу
-            invisible_button(correct_answers_array.length, input_task.length)
+            //функция для вывода кнопки перехода на следующую страницу:
+            invisible_button(answers_array.length, input_task.length)
 
         })
 
     }
 
-    // проверка на пустую строку
+    // функция проверки на пустую строку
     function empty_string(i) {
         document.querySelector(`.out_task_${i}`).style = "color: violet";
         document.querySelector(`.out_task_${i}`).textContent = `
@@ -117,7 +134,10 @@
             document.querySelector(`.out_task_${i}`).textContent = `
                 Ваш вариант регулярного выражения - /${data}/ верен, результат поиска: ${strOutPut}
             `;
-            correct_answers_array[i] = 'true';
+            
+            answers_choice(i);
+            
+
         } else {
 
             count_try_answer++;
@@ -142,7 +162,7 @@
         }
     }
 
-    // функция выводка забавных ответов в случае неверно введенного выражения пользовтелем:
+    // функция выводка забавных ответов в случае неверно ответа пользовтелем:
     function try_answer(out_clue) {
         let random_funny_unswer = 0;
         let funny_unswer = [
@@ -163,6 +183,7 @@
 
     // функция для вывода кнопки подсказки + подсказки:
     function clue(i, out_clue, h1_clue) {
+        console.log(answers_bool);
         let button_clue = document.querySelector(`.clue_${i}`);
         button_clue.style = 'visibility:visible';
         //console.log(button_clue);
@@ -173,17 +194,34 @@
             for(let counter = 0; counter < rul_array[i].length; counter++){
                 out_clue.innerHTML += `<ul><li>${rul_array[i][counter]}</li></ul>`
             }
-
         })
+        answers_bool = false;
+    }
 
+    function answers_choice(i){
+        //блок подсчета правильных и неправильных ответов пользовтеля в карточке заданий:
+        //сравниваем полученный результат ответа:
+        answers_bool == false ? 
+            answers_bool = false : 
+            answers_bool = true;
+
+        answers_array[i] = answers_bool;
+        //блокируем кнопку после ввода правильного ответа:
+        document.querySelector(`.button_task_${i}`).disabled = 'true';
+        answers_bool= undefined;
+        console.log(`Массив верных и не верных ответов пользовтеля ${answers_array}`);
     }
 
     //функция, которая делает выдимой кнопку перехода на следующую страницу, если все ответы в задании даны верно.
     function invisible_button(counter_correct_answer, counter_input) {    
         if (counter_input == counter_correct_answer){
+            let true_answers_array =  answers_array.filter(true_answers => true_answers == true);
+            let false_answers_array =  answers_array.filter(false_answers => false_answers == false);
+            console.log(false_answers_array.length);
+            console.log(true_answers_array.length);
             a_dalee.style = "visibility: visible";
             protocol = protocol.match(/http.?:/);
-            a_dalee.setAttribute('href',`${protocol}${string}`);
+            a_dalee.setAttribute('href',`${protocol}${string},${true_answers_array.length},${false_answers_array}`);
         }           
     }
 
