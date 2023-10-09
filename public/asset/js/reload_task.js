@@ -221,7 +221,7 @@
             console.log(true_answers_array.length);
             a_dalee.style = "visibility: visible";
             protocol = protocol.match(/http.?:/);
-            a_dalee.setAttribute('href',`${protocol}${string},${true_answers_array.length},${false_answers_array}`);
+            a_dalee.setAttribute('href',`${protocol}${string},${true_answers_array.length},${false_answers_array.length}`);
         }           
     }
 
