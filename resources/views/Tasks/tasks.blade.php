@@ -34,7 +34,7 @@
               <button class="b_t button_task_{{ $item->num_task - 1 }}">Проверить</button>
             </div>
             <br>
-            {{-- Блок вывод подсказок, по нему нужны стили --}}
+            {{-- Блок вывод подсказок --}}
             <p class="out_task_{{ $item->num_task - 1 }}"></p>
             <button class="clue_{{ $item->num_task - 1 }}" style="visibility:hidden">Нужна подсказка?</button>
             <h4 class="h4_clue_{{ $item->num_task - 1 }}" style="visibility:hidden">Варианты ответов:</h3>
@@ -42,8 +42,7 @@
             {{-- --------------------------------------------------------------------- --}}
 
             {{-- Невидимые блоки для передачи в js значений переменных из модели Task по ним не нужны стили, они места
-            не
-            занимают --}}
+            не занимают --}}
             <p class="correct_answer_{{ $item->num_task - 1 }}" style="display: none">{{ $item->correct_answer }}</p>
             <p class="rule_use_{{ $item->num_task - 1 }}" style="display: none">{{ $item->rule_use }}</p>
             <p class="string_task_{{ $item->num_task - 1 }}" style="display: none">{{ $item->string_task }}</p>
@@ -126,6 +125,5 @@
 </main>
 
 <script src="{{ asset('asset/js/reload_task.js') }}"></script>
-<script src="{{ asset('asset/js/first_task_example.js') }}"></script>
 <script src="{{ asset('asset/js/flip.js') }}"></script>
 @endsection
