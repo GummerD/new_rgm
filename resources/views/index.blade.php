@@ -65,8 +65,9 @@
           @yield('content')   
               
         </div>
+        
         @include('Includes.message')  
-       
+     
       </div>
 
     </div>
