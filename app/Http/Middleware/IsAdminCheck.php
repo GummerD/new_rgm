@@ -21,7 +21,7 @@ class IsAdminCheck
         $user = Auth::user();
         if ($user->profile->user_status !== 'admin') {
 
-            return (\redirect()->route('profiles')->with('error', __('You do not have access rights to the page')));
+            return (\redirect()->route('profiles')->with('error', __('У Вас нет доступа к этой странице!')));
         }
         return $next($request);
     }

@@ -42,7 +42,7 @@ a:link{
 
 .contain{
     margin: 0 auto;
-    width: 1124px;
+    max-width: 1124px;
 
 }
 
@@ -50,8 +50,8 @@ a:link{
 /* Header */
 
 .logo_start{
-    width:262px;
-    height:149px ;
+    width:200px;
+    height:115px ;
     margin-left: 50px;
     margin-top: 10px;
 }
@@ -96,15 +96,15 @@ a:link{
 
 .btn_rules_start{
     background-color: rgba(57, 6, 6, 0.17);
-    width: 300px;
-    height: 50px;
+    width: 200px;
+    height: 40px;
     box-shadow: 0px 4px 4px 0px rgba(228, 175, 175, 0.23) inset, 0px 4px 8px 0px rgba(0, 0, 0, 0.75);
     border-radius: 5px;
     margin-top: 30px;
     color: rgba(255, 255, 255, 1);
     font-family: 'Roboto Mono';
     font-weight: 500;
-    font-size: 20px;
+    font-size: 16px;
    
 }
 
@@ -121,4 +121,13 @@ a:link{
 
 .nav-item{
     color: #ffffff;
+}
+
+
+
+@media (max-width:1280px){
+    .contain{
+        max-width: 85vw;
+    }
+   
 }

@@ -86,7 +86,7 @@ class ProfilePageController extends Controller
         } else {
           $update_profile->update(['progress' => '1/1/1']);
           $update_profile->increment('num_trainings');
-          return redirect()->route('profiles');
+          return redirect()->route('profiles')->with('success', __('Ура! Вы справились со всеми заданиями!'));
         }
       }
     };
@@ -120,7 +120,7 @@ class ProfilePageController extends Controller
         'email' => $new['email'],
         'password' => Hash::make($new['password'])
       ]);
-      return (\redirect()->route('profiles'));
+      return (\redirect()->route('profiles')->with('success', __('Данные пользователя успешно изменены.')));
     }
     if (array_key_exists('path_img', $new) && array_key_exists('password', $new)) {
 
@@ -133,7 +133,7 @@ class ProfilePageController extends Controller
       $avatar = $request->file('path_img')->store('avatars', 'public');
       $url = Storage::url($avatar);
       Profile::where('user_id', $user->id)->update(['path_img' => $url]);
-      return (\redirect()->route('profiles'));
+      return (\redirect()->route('profiles')->with('success', __('Данные пользователя успешно изменены.')));
     }
     if (array_key_exists('path_img', $new) && !array_key_exists('password', $new)) {
 
@@ -145,16 +145,16 @@ class ProfilePageController extends Controller
         'login' => $new['login'],
         'email' => $new['email'],
       ]);
-      return (\redirect()->route('profiles'));
+      return (\redirect()->route('profiles')->with('success', __('Данные пользователя успешно изменены.')));
     } else {
       User::where('id', $user->id)->update([
         'login' => $new['login'],
         'email' => $new['email'],
       ]);
-      return (\redirect()->route('profiles'));
+      return (\redirect()->route('profiles')->with('success', __('Данные пользователя успешно изменены.')));
     }
 
-    return (\back());
+    return (\back()->with('error', __('Не удалось изменить данные!')));
   }
 
 
@@ -164,12 +164,12 @@ class ProfilePageController extends Controller
     $a = Profile::where('user_id', $user->id)->update(['user_status' => $status['user_status']]);
 
     if($a){
-      return (\redirect()->route('admin.profiles')-> with('success', __("The user's status has been successfully updated")));
+      return (\redirect()->route('admin.profiles')->with('success', __('Статус пользователя успешно изменен')));
  
     }
-    return (\back()->with('error', __('Failed to update status!')));
+    return (\back()->with('error', __('Не удалось изменить статус пользователя!')));
 
   }
 
 
-}
+} 

@@ -5,15 +5,15 @@
   
   <div class="row justify-content-center">
    
-      <div class="card_log_registr mt-4" style="overflow: auto; height:70vh">
+      <div class="card_log_registr mt-4 overflow">
         <div class="card-header mb-4">{{ __('Создать упражнение') }}</div>
 
         <div class="" style="display: flex; justify-content: center">
            <form method="POST" action="{{ route('admin.update.task', ['task'=>$task])}}" style="max-width:730px;">
               @csrf
               <div class="mb-2 justify-content-center">
-                <label  class="col-md-8 col-form-label text-md-start">{{__('Выберете уровень сложности')}}</label>
-                <select class="form-control mb-3" name="level_id" value="{{ $task->level_id }}">
+                <label  class="col-md-8 col-form-label text-md-start">{{__('Уровень сложности')}}</label>
+                <select class="form-control mb-3" name="level_id">
                   <option hidden disabled selected > {{ $task->level_id }}  {{$task->level->name_level}}  </option>
                   @foreach ($levels as $item)
                     <option value="{{$task->id}}">
@@ -28,8 +28,8 @@
 
 
               <div class="mb-2">
-                <label  class="col-md-8 col-form-label text-md-start">{{__('Выберете группу для упражнения')}}</label>
-                <select class="form-control mb-3" name="group_id" value="{{ $task->group_id }}">
+                <label  class="col-md-8 col-form-label text-md-start">{{__('Группа упражнений')}}</label>
+                <select class="form-control mb-3" name="group_id">
                   <option hidden disabled selected > {{ $task->group_id }}  {{$task->group->desc_group}} </option>
                   @foreach ($groups as $item)
                   <div class="" style="max-width: 630px; word-break:break-all">
@@ -44,8 +44,8 @@
               </div>
 
               <div class="mb-2">
-                <label  class="col-md-8 col-form-label text-md-start">{{__('Выберете секцию')}}</label>
-                <select class="form-control mb-3" name="section_id" value="{{ $task->section_id }}">
+                <label  class="col-md-8 col-form-label text-md-start">{{__('Секция')}}</label>
+                <select class="form-control mb-3" name="section_id">
                     <option hidden disabled selected > {{ $task->section_id }}  {{$task->section->name_section}} </option>
                     @foreach ($sections as $item)
                       <option  value="{{$item->id}}">
@@ -60,16 +60,15 @@
 
 
               <div class="mb-2 col-md-2">
-                <label for="num_task" class="col-md-8 col-form-label text-md-start">{{ __('Num task') }}</label>
+                <label for="num_task" class="col-md-8 col-form-label text-md-start">{{ __('Номер задачи') }}</label>
                   <input  type="number" step="1" id="num_task" type="integer" class="form-control" name="num_task"
                     value="{{ $task->num_task }}" autofocus> 
 
-                  @error("num_task")<p class="text-danger"> {{$message}}</p> @enderror
               </div>
-              
+              @error("num_task")<p class="text-danger"> {{$message}}</p> @enderror
 
               <div class="mb-2">
-                <label for="task_text" class="col-md-4 col-form-label text-md-start">{{ __('Task text') }}</label>
+                <label for="task_text" class="col-md-4 col-form-label text-md-start">{{ __('Текст задачи') }}</label>
 
                   <textarea id="task_text" type="text" class="form-control mb-3"  name="task_text"
                         value="{{ $task->task_text}}">{{$task->task_text}}</textarea>
