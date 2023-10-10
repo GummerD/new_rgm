@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\LevelsGroupsSectionsInOne;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Levels\Store;
+use App\Http\Requests\Levels\Update;
 use App\Models\Level;
 use App\Queries\LevelQueryBuilder;
 use Illuminate\Http\RedirectResponse;
@@ -20,20 +22,18 @@ class LevelsController extends Controller
     }
 
 
-    public function store(Request $request):RedirectResponse
+    public function store(Store $request):RedirectResponse
     {
-       $data = $request->all();
-      //$data = $request->validate(); 
-     //dd($data);
-        
-      $level = Level::create($data);       
+      $validated = $request->validated(); 
+      $level = Level::create($validated);       
   
       if ($level) {       
-        return (\redirect()->route('admin.level', $level)-> with ('success', __('The task was successfully created!')));           
+        return (\redirect()->route('admin.level', $level)-> with ('success', __('Уровень успешно сщздан!')));           
       }        
-      return (\back()->with('error', __('Task creation error!')));
+      return (\back()->with('error', __('Не удалось сщздать уровень!')));
    
     }
+
 
     public function edit(Level $level):View
     {
@@ -43,14 +43,13 @@ class LevelsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Level $level)
-  { 
-    // dd($request->all());
-    $level = $level->fill($request->all());
+    public function update( $request, Level $level)
+   { 
+        $level = $level->fill($request->validated());
     if($level->save()) {       
-        return (\redirect()->route('admin.level', $level)->with('success', ['message' =>'The task has been successfully updated!']));
+        return (\redirect()->route('admin.level', $level)->with('success',  __('Уровень успешно изменен!')));
     }
-    return (\back()->with('error', __('Error updating the article!')));
+    return (\back()->with('error', __('Не удалось изменить уровень!')));
   }
 
 

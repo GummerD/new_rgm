@@ -5,14 +5,14 @@
   
   <div class="row justify-content-center">
    
-      <div class="card_log_registr mt-4" style="overflow: auto; height:70vh">
+      <div class="card_log_registr mt-4 overflow">
         <div class="card-header mb-4">{{ __('Создать упражнение') }}</div>
 
         <div class="" style="display: flex; justify-content: center">
            <form method="POST" action="{{ route('admin.store.task')}}" style="max-width:730px;">
               @csrf
               <div class="mb-2 justify-content-center">
-                <label  class="col-md-8 col-form-label text-md-start">{{__('Выберете уровень сложности')}}</label>
+                <label  class="col-md-8 col-form-label text-md-start">{{__('Уровень сложности')}}</label>
                 <select class="form-control mb-3" name="level_id" value="{{ old('level_id') }}">
                   <option hidden disabled selected > {{__("please select a level")}} </option>
                   @foreach ($levels as $item)
@@ -28,7 +28,7 @@
 
 
               <div class="mb-2">
-                <label  class="col-md-8 col-form-label text-md-start">{{__('Выберете группу для упражнения')}}</label>
+                <label  class="col-md-8 col-form-label text-md-start">{{__('Группа упражнений')}}</label>
                 <select class="form-control mb-3" name="group_id" value="{{ old('group_id') }}">
                   <option hidden disabled selected > {{__("please select a group")}} </option>
                   @foreach ($groups as $item)
@@ -44,7 +44,7 @@
               </div>
 
               <div class="mb-2">
-                <label  class="col-md-8 col-form-label text-md-start">{{__('Выберете секцию')}}</label>
+                <label  class="col-md-8 col-form-label text-md-start">{{__('Секция')}}</label>
                 <select class="form-control mb-3" name="section_id" value="{{ old('section_id') }}">
                     <option hidden disabled selected > {{__("please select a section")}} </option>
                     @foreach ($sections as $item)
@@ -59,17 +59,16 @@
               </div>
 
 
-              <div class="mb-2 col-md-2">
-                <label for="num_task" class="col-md-8 col-form-label text-md-start">{{ __('Num task') }}</label>
-                  <input  type="number" step="1" id="num_task" type="integer" class="form-control" name="num_task"
+              <div class="mb-2 col-md-4">
+                <label for="num_task" class="col-md-8 col-form-label text-md-start">{{ __('Номер задачи') }}</label>
+                  <input  type="number" step="1" id="num_task" type="integer" class="form-control col-md-2" name="num_task"
                     value="{{ old('num_task') }}" autofocus> 
 
-                  @error("num_task")<p class="text-danger"> {{$message}}</p> @enderror
-              </div>
-              
+               </div>
+               @error("num_task")<p class="text-danger"> {{$message}}</p> @enderror
 
               <div class="mb-2">
-                <label for="task_text" class="col-md-4 col-form-label text-md-start">{{ __('Task text') }}</label>
+                <label for="task_text" class="col-md-4 col-form-label text-md-start">{{ __('Текст задачи') }}</label>
 
                   <textarea id="task_text" type="text" class="form-control mb-3"  name="task_text"
                     value="{{ old('task_text') }}"></textarea>

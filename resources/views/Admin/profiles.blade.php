@@ -52,7 +52,7 @@
                                 <label  class="col-md-8 col-form-label text-md-start">{{__('Выберете значение')}}</label>
                                 <div class="d-flex flex-row">
                                 
-                                    <select class="form-control" name="user_status">
+                                    <select class="form-control inpt_user_status" name="user_status">
                                             <option @if($item->profile->user_status === 'active') selected @endif value="{{\App\Enums\UserStatusEnum::ACTIVE->value}}"> 
                                                 Active 
                                             </option>

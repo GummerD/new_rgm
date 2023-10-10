@@ -23,19 +23,26 @@ input[type="email"]:focus,
 input[type="password"]:focus,
 input[type="checkbox"]:focus,
 input[type="file"]:focus,
+input[type="number"]:focus,
+textarea[type="text"]:focus,
+select.form-control:focus,
 .uneditable-input:focus {   
     border-color: rgba(126, 239, 104, 0.8);
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(126, 239, 104, 0.6);
     outline: 0 none;
 }
 
-/* input[type="text"],
+input[type="text"],
 input[type="email"],
 input[type="checkbox"],
 input[type="password"],
+input[type="file"],
+input[type="number"],
+textarea[type="text"],
+select.form-control,
 .uneditable-input {   
-    background-color: rgba(248, 238, 228, 1);    
-} */
+    background-color: rgb(228, 228, 228);    
+} 
 
 
 

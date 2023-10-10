@@ -19,14 +19,14 @@
                 @csrf  
                 
                 <div class="">
-                    <label for="num_group" class="col-form-label text-md-end">{{ __('num group') }}</label>                    
+                    <label for="num_group" class="col-form-label text-md-end">{{ __('Номер группы') }}</label>                    
                        <input  type="number" step="1" id="num_group" type="integer" class="form-control" name="num_group"
                            value="{{ $group->num_group }}" autofocus>   
                     @error("num_group")<p class="text-danger"> {{$message}}</p> @enderror 
                 </div>
         
                 <div class="">
-                    <label for="desc_group" class="col-form-label text-md-end">{{ __('description group') }}</label>
+                    <label for="desc_group" class="col-form-label text-md-end">{{ __('Описание группы') }}</label>
                         <textarea id="desc_group" type="text" class="form-control mb-3"  name="desc_group"
                             value="{{ $group->desc_group }}">{{ $group->desc_group }}</textarea>
                     @error("desc_group")<p class="text-danger"> {{$message}}</p> @enderror

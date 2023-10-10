@@ -14,7 +14,8 @@
   padding: 40px;
   overflow: auto;
   overflow-y: scroll;
-  height: 75% !important;
+  height:60vh;
+  /* height: 75% !important; */
   perspective: 1000px;
 }
 

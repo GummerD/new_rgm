@@ -111,6 +111,7 @@ class ProfilePageController extends Controller
           $group = 1;
         } else {
           $update_profile->increment('num_trainings');
+
           $update_profile->update([
             'progress' => '1/1/1',
             'correct_answer' => $new_correct_answer,
@@ -151,7 +152,7 @@ class ProfilePageController extends Controller
         'email' => $new['email'],
         'password' => Hash::make($new['password'])
       ]);
-      return (\redirect()->route('profiles'));
+      return (\redirect()->route('profiles')->with('success', __('Данные пользователя успешно изменены.')));
     }
     if (array_key_exists('path_img', $new) && array_key_exists('password', $new)) {
 
@@ -164,7 +165,7 @@ class ProfilePageController extends Controller
       $avatar = $request->file('path_img')->store('avatars', 'public');
       $url = Storage::url($avatar);
       Profile::where('user_id', $user->id)->update(['path_img' => $url]);
-      return (\redirect()->route('profiles'));
+      return (\redirect()->route('profiles')->with('success', __('Данные пользователя успешно изменены.')));
     }
     if (array_key_exists('path_img', $new) && !array_key_exists('password', $new)) {
 
@@ -176,16 +177,16 @@ class ProfilePageController extends Controller
         'login' => $new['login'],
         'email' => $new['email'],
       ]);
-      return (\redirect()->route('profiles'));
+      return (\redirect()->route('profiles')->with('success', __('Данные пользователя успешно изменены.')));
     } else {
       User::where('id', $user->id)->update([
         'login' => $new['login'],
         'email' => $new['email'],
       ]);
-      return (\redirect()->route('profiles'));
+      return (\redirect()->route('profiles')->with('success', __('Данные пользователя успешно изменены.')));
     }
 
-    return (\back());
+    return (\back()->with('error', __('Не удалось изменить данные!')));
   }
 
 
@@ -200,3 +201,4 @@ class ProfilePageController extends Controller
     return (\back()->with('error', __('Failed to update status!')));
   }
 }
+

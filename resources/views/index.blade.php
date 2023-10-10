@@ -50,30 +50,30 @@
 
 
 
-
-
 </head>
 
-<body>
+<body class="rast">
 
-  <div class="rast">
+    <div class="verx soder">
 
-    <div class="verx soder ">
-
-      @include('Includes.header')
-
-      
+      @include('Includes.header')     
 
       <div class="black_fon">
+
         <div class="contain">
-          @yield('content')         
+          
+          @yield('content')   
+              
         </div>
-        @include('Includes.message')
+        
+        @include('Includes.message')  
+     
       </div>
-      
+
     </div>
     @include('Includes.footer')
-  </div>
+ 
+
  @stack('jsDel')
 </body>
 
