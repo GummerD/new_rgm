@@ -9,8 +9,27 @@
 .bigBlock_levels{
     display: flex;
     justify-content: space-between;
-    height: 60vh;    
+    /* height: 60vh;    */
+   
 }
+
+.inpt_user_status{
+    max-width: 110px;
+    margin-right: 10px;
+}
+
+.overflow{
+    overflow-y: auto;
+}
+
+@media (max-width:1280px){
+    .bigBlock_levels{
+        flex-direction: column;
+        margin-bottom: 40px;
+        align-items: center;
+    }
+   
+  }
 
 .admin_table_levels{
     /* background-color: rgb(255, 255, 255); */
@@ -19,9 +38,11 @@
 
 .admin_table_levels_groups{
     background-color: rgb(255, 255, 255);
-    max-width: 430px;  
+    max-width: 430px; 
+    min-width: 310px; 
     flex: 1 0 auto;
     margin: 0 2px; 
+    
 }
 
 

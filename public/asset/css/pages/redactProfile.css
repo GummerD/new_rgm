@@ -9,7 +9,10 @@
 .redact_profile_content{
     display:flex;
     justify-content: center;
-    overflow-y: auto;
+    overflow: auto;
+    padding: 0px 0 40px 0;
+    box-sizing: border-box;
+    
 }
 
 .block_form_redact_profile{
@@ -23,7 +26,7 @@
     height: 38px;
     border-radius: 4px;
     background-color: rgba(0, 1, 0, 0.8);
-    color: beige;
+    color: rgb(41, 36, 36);
     margin-bottom: 5px;
     box-sizing: border-box;    
     padding: 3px 10px;
@@ -43,7 +46,9 @@
 }
 
 .int_redact_profile_file::file-selector-button{
-    box-shadow: 2px 4px 4px 1px rgba(255, 255, 255, 0.8) inset;
-    background-color:rgba(255, 255, 255, 0.5);
+    box-shadow: 2px 4px 4px 1px rgba(70, 66, 66, 0.8) inset;
+    background-color:rgba(29, 23, 23);
     border-radius: 3px;
+    color: rgb(217, 201, 201);
+    padding: 4px;
 }

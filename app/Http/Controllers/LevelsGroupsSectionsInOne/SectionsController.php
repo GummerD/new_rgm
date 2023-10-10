@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\LevelsGroupsSectionsInOne;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Sections\Store;
+use App\Http\Requests\Sections\Update;
 use App\Models\Section;
 use App\Queries\SectionQueryBuilder;
 use Illuminate\Http\RedirectResponse;
@@ -19,18 +21,16 @@ class SectionsController extends Controller
         return view('Admin.sections', ['sections'=> $sectionQueryBuilder->getAll()]);
     }
 
-    public function store(Request $request):RedirectResponse
+    public function store(Store $request):RedirectResponse
     {
-       $data = $request->all();
-      //$data = $request->validate(); 
-     //dd($data);
-        
-      $section = Section::create($data);       
+      $validated = $request->validated(); 
+    
+      $section = Section::create($validated);       
   
       if ($section) {       
-        return (\redirect()->route('admin.section', $section)-> with ('success', __('The task was successfully created!')));           
+        return (\redirect()->route('admin.section', $section)-> with ('success', __('Секция упражнений успешно изменена!')));           
       }        
-      return (\back()->with('error', __('Task creation error!')));
+      return (\back()->with('error', __('Не удалось создать секцию!')));
    
     }
 
@@ -43,14 +43,14 @@ class SectionsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Section $section)
+    public function update(Update $request, Section $section)
   { 
     //dd($request->all());
-    $section = $section->fill($request->all());
+    $section = $section->fill($request->validated());
     if($section->save()) {       
-        return (\redirect()->route('admin.section', $section)->with('success', __('The section has been successfully updated!')));
+        return (\redirect()->route('admin.section', $section)->with('success',  __('Секция упражнений успешно изменена!')));
     }
-    return (\back()->with('error', __('Error updating the article!')));
+    return (\back()->with('error', __('Не удалось изменить секцию!')));
   }
 
 

@@ -10,7 +10,7 @@ use Illuminate\Validation\Rule;
 
 
 
-class Store extends FormRequest
+class Update extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,16 +28,13 @@ class Store extends FormRequest
      * @return array<string, mixed> 
      * 
      */  
-
-
-     
      public function rules():array
     {       
          return [ 
             'task_text' => ['required','string', 'min:6','max:500'],
-            'level_id' => ['required', 'exists:levels,id'],
-            'group_id' => ['required', 'exists:groups_tasks,id'],
-            'section_id' => ['required', 'exists:sections,id'],
+            'level_id' => ['nullable', 'exists:levels,id'],
+            'group_id' => ['nullable', 'exists:groups_tasks,id'],
+            'section_id' => ['nullable', 'exists:sections,id'],
             'num_task' => ['required', 'integer'],
             'rule_use' => ['required', 'string','min:1','max:100'],
             'correct_answer' => ['required', 'string','min:1','max:100'],
@@ -60,7 +57,5 @@ class Store extends FormRequest
             
         ];
     }
-
-   
 }
 

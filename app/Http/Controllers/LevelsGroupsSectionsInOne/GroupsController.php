@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\LevelsGroupsSectionsInOne;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Groups\Store;
+use App\Http\Requests\Groups\Update;
 use App\Models\GroupsTask;
 use App\Queries\GroupsTaskQueryBuilder;
 use Illuminate\Http\RedirectResponse;
@@ -22,18 +24,16 @@ class GroupsController extends Controller
 
 
 
-    public function store(Request $request):RedirectResponse
+    public function store(Store $request):RedirectResponse
   {
-     $data = $request->all();
-    //$data = $request->validate(); 
-   //dd($data);
-      
-    $group = GroupsTask::create($data);       
-
+    $validated = $request->validated(); 
+         
+    $group = GroupsTask::create($validated);       
+    
     if ($group) {       
-      return (\redirect()->route('admin.groups', $group)-> with ('success', __('The task was successfully created!')));           
+      return (\redirect()->route('admin.groups', $group)-> with ('success', __('Группа упражнений успешно создана!')));           
     }        
-    return (\back()->with('error', __('Task creation error!')));
+    return (\back()->with('error', __('Ошибка создания!')));
  
   }
 
@@ -45,17 +45,15 @@ class GroupsController extends Controller
   /**
    * Update the specified resource in storage.
    */
-  public function update(Request $request, GroupsTask $group)
+  public function update(Update $request, GroupsTask $group)
 { 
   //dd($request->all());
-  $group = $group->fill($request->all());
+  $group = $group->fill($request->validated());
   if($group->save()) {       
-      return (\redirect()->route('admin.groups', $group)->with('success', __('The task has been successfully updated!')));
+      return (\redirect()->route('admin.groups', $group)->with('success', __('Группа упражнений успешно изменена!')));
   }
-  return (\back()->with('error', __('Error updating the article!')));
+  return (\back()->with('error', __('Не удалось изменить!')));
 }
-
-
 
 
 

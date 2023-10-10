@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Tasks;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Tasks\Store;
+use App\Http\Requests\Tasks\Update;
 use App\Models\GroupsTask;
 use App\Models\Level;
 use App\Models\Rule;
@@ -18,7 +19,6 @@ use App\Queries\TasksQueryBuilder;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\View\View;
 use Throwable;
 
@@ -69,25 +69,20 @@ class TasksPageController extends Controller
    * Store a newly created resource in storage.
    */
 
-
-
-
-  public function store(Request $request): RedirectResponse
+  public function store(Store $request): RedirectResponse
   {
-
-    $data = $request->all();
-    //$data = $request->validate(); 
-    // dd($data);
-
-    $task = Task::create($data);
-
+    //$data = $request->all();
+    $validated = $request->validated();    
+   
+    $task = Task::create($validated);
+    
     if ($task) {
       $level = Level::find($request->id);
       $group  = GroupsTask::find($request->id);
       $section = Section::find($request->id);
-      return (\redirect()->route('admin.tasks', [$level, $group, $section])->with('success', __('The task was successfully created!')));
+      return (\redirect()->route('admin.tasks', [$task, $level, $group, $section])->with('success', __('Упражнение успешно создано!')));
     }
-    return (\back()->with('error', __('Task creation error!')));
+    return (\back()->with('error', __('Не удалось создать упражнение!')));
   }
 
   /**
@@ -126,18 +121,17 @@ class TasksPageController extends Controller
   /**
    * Update the specified resource in storage.
    */
-  public function update(Request $request, Task $task)
+  public function update(Update $request, Task $task)
   { 
-    // dd($request->all());
-    $task = $task->fill($request->all());
+    $task = $task->fill($request->validated());
     if($task->save()) {
         $level = Level::find($request->id);
         $group  = GroupsTask::find($request->id);
         $section = Section::find($request->id);
     
-        return (\redirect()->route('admin.tasks', [$level, $group, $section])->with('success', __('The task has been successfully updated!')));
+        return (\redirect()->route('admin.tasks', [$level, $group, $section])->with('success', __('Упражнение успешно обновлено!')));
     }
-    return (\back()->with('error', __('Error updating the article!')));
+    return (\back()->with('error', __('Не удалось обновить сообщение')));
   }
 
   /**

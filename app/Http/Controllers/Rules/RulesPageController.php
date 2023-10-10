@@ -43,9 +43,9 @@ class RulesPageController extends Controller
 
     if ($rule) {
      
-      return (\redirect()->route('admin.rules', $rule )->with('success', __('The task was successfully created!')));
+      return (\redirect()->route('admin.rules', $rule )->with('success', __('Правило было создано успешно!')));
     }
-    return (\back()->with('error', __('Task creation error!')));
+    return (\back()->with('error', __('Не удалось создать правило!')));
 
   }
 
@@ -73,9 +73,9 @@ class RulesPageController extends Controller
     //dd($request->all(), $rule);
     $rule = $rule->fill($request->all());
     if($rule->save()) {       
-        return (\redirect()->route('admin.rules', $rule)->with('success', __('The rule has been successfully updated!')));
+        return (\redirect()->route('admin.rules', $rule)->with('success', __('Правило было изменить успешно!')));
     }
-    return (\back()->with('error', __('Error updating the rule!')));
+    return (\back()->with('error', __('Не удалось изменить правило!')));
   }
  
   /**
@@ -85,7 +85,7 @@ class RulesPageController extends Controller
   {
     try {            
       $rule->delete();   
-      return (response()->with('success', __("Record deleted!")));
+      return (response()->header('success', __("Record deleted!")));
 
     }catch(Throwable $exception) {
         Log::error($exception->getMessage(), $exception->getTrace());
