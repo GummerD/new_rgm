@@ -57,21 +57,42 @@ class ProfilePageController extends Controller
     $level = $parts[0];
     $section = $parts[1];
     $group = $parts[2];
+    $correct_answers = $parts[3];
+    $incorrect_answers = $parts[4];
     $task_by_group = Task::where('level_id', $level)
       ->where('section_id', $section)
       ->where('group_id', $group + 1)->first();
     $update_profile = Profile::where('user_id', Auth::user()->id);
+    $qt_user = User::count();
+    $rat = (($correct_answers - $incorrect_answers) + $qt_user / 0.4) * $group;
+    $current_rating = $update_profile->value('rating');
+    $new_rating = $current_rating + $rat;
+    $current_correct_answer = $update_profile->value('correct_answer');
+    $current_incorrect_answer = $update_profile->value('incorrect_answer');
+    $new_correct_answer = $current_correct_answer + $correct_answers;
+    $new_incorrect_answer = $current_incorrect_answer + $incorrect_answers;
+
     if ($task_by_group) {
       $group_next = $group + 1;
       $uspex2 = $level . "/" . $section . "/" . $group_next;
-      $update_profile->update(['progress' => $uspex2]);
       $group = $group_next;
+      $update_profile->update([
+        'progress' => $uspex2,
+        'correct_answer' => $new_correct_answer,
+        'incorrect_answer' => $new_incorrect_answer,
+        'rating' => $new_rating,
+      ]);
     } else {
       $section_next = $section + 1;
       $task_by_section = Task::where('level_id', $level)->where('section_id', $section_next)->first();
       if ($task_by_section) {
         $uspex3 = $level . '/' . $section_next . '/1';
-        $update_profile->update(['progress' => $uspex3]);
+        $update_profile->update([
+          'progress' => $uspex3,
+          'correct_answer' => $new_correct_answer,
+          'incorrect_answer' => $new_incorrect_answer,
+          'rating' => $new_rating,
+        ]);
         $section = $section_next;
         $group = 1;
       } else {
@@ -79,13 +100,23 @@ class ProfilePageController extends Controller
         $task_by_level = Task::where('level_id', $level_next)->first();
         if ($task_by_level) {
           $uspex4 = $level_next . '/1/1';
-          $update_profile->update(['progress' => $uspex4]);
+          $update_profile->update([
+            'progress' => $uspex4,
+            'correct_answer' => $new_correct_answer,
+            'incorrect_answer' => $new_incorrect_answer,
+            'rating' => $new_rating,
+          ]);
           $level = $level_next;
           $section = 1;
           $group = 1;
         } else {
-          $update_profile->update(['progress' => '1/1/1']);
           $update_profile->increment('num_trainings');
+          $update_profile->update([
+            'progress' => '1/1/1',
+            'correct_answer' => $new_correct_answer,
+            'incorrect_answer' => $new_incorrect_answer,
+            'rating' => $new_rating,
+          ]);
           return redirect()->route('profiles');
         }
       }
@@ -163,13 +194,9 @@ class ProfilePageController extends Controller
     $status = $request->all();
     $a = Profile::where('user_id', $user->id)->update(['user_status' => $status['user_status']]);
 
-    if($a){
-      return (\redirect()->route('admin.profiles')-> with('success', __("The user's status has been successfully updated")));
- 
+    if ($a) {
+      return (\redirect()->route('admin.profiles')->with('success', __("The user's status has been successfully updated")));
     }
     return (\back()->with('error', __('Failed to update status!')));
-
   }
-
-
 }
