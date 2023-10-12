@@ -212,19 +212,30 @@
         console.log(`Массив верных и не верных ответов пользовтеля ${answers_array}`);
     }
 
-    //функция, которая делает выдимой кнопку перехода на следующую страницу, если все ответы в задании даны верно.
+    /**
+     * функция, которая делает выдимой кнопку перехода на следующую страницу, при всех пройденных заданиях,
+     * также здесь происхожит передача нового url в роут с новыми данными о новой страничке, коректных и некорретных
+     * ответах пользовтеля.
+    */
     function invisible_button(counter_correct_answer, counter_input) {    
         if (counter_input == counter_correct_answer){
+            // из массива ответов получаем все корректные ответ:
             let true_answers_array =  answers_array.filter(true_answers => true_answers == true);
+            // из массива ответов получаем все некорректные ответы:
             let false_answers_array =  answers_array.filter(false_answers => false_answers == false);
-            console.log(false_answers_array.length);
-            console.log(true_answers_array.length);
+            // по длине новых масссивов формируем переменную с количеством верных ответов:
+            let cotrrect_answers = true_answers_array.length;
+            // по длине новых масссивов формируем переменную с количеством неверных ответов:
+            let incotrrect_answers = false_answers_array.length;
+            //стилизуем выидимость кнопки перехода на новую страницу:
             a_dalee.style = "visibility: visible";
-            protocol = protocol.match(/http.?:/);
-            a_dalee.setAttribute('href',`${protocol}${string},${true_answers_array.length},${false_answers_array.length}`);
+            // через регулярку проверям переменную protocol на http|https:
+            protocol = protocol.match(/https?:/);
+            // формируем url - адрес сновыми параметрами:протокол, hostname c необходимыми перенными для
+            // перехода на новую страницу и передачи к
+            a_dalee.setAttribute('href',`${protocol}${string},${incotrrect_answers},${cotrrect_answers}`);
         }           
     }
-
 })();
 
 
