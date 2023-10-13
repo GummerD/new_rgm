@@ -75,14 +75,16 @@
         let out_clue = document.querySelector(`.out_clue_${i}`);
 
         /** 
-        * основная функция, которая принимет в себя множество переменных и распределяет их по другим функциям
+        * основная функция, которая принимет в множество переменных и распределяет их по другим функциям
         * в случае верного или неверного ответва пользовтеля при нажатии на кнопку - "Проверить":
         */
         document.querySelector(`.button_task_${i}`).addEventListener('click', function () {
-            console.log(answers_bool);
+            //console.log(answers_bool);
             let rule_use = document.querySelector(`.rule_use_${i}`).textContent;
+
             rule_clue[i] = rule_use;
             //console.log("данные из бд" + rule_clue);
+
             rul_array[i] = rule_use.split(' | ');
             //console.log("массив верных ответов после добавления в него значения" + rul_array);
 
@@ -139,14 +141,15 @@
             
 
         } else {
-
+            // подсчет попыток пользователя:
             count_try_answer++;
 
+            //очистка подсказок:
             out_clue.textContent = ``;
 
             /** 
              * тернарный оператор для вывода на странице верного ответа либо кнопки с подсказкой после 
-             * после двух неверных ответов
+             * после трех неверных ответов.
             */
             count_try_answer > 2 ? (
                 clue(i, out_clue, h1_clue),
@@ -154,7 +157,8 @@
                 out_clue.textContent = ``
             )
                 : try_answer(out_clue);
-
+            
+            //вывод на экран сообщения об ошибке:
             document.querySelector(`.out_task_${i}`).style = "color: red";
             document.querySelector(`.out_task_${i}`).textContent = `
                 Вы не верно подобрали регулярное выражение - /${data}/, попробуйте еще раз.
@@ -183,7 +187,8 @@
 
     // функция для вывода кнопки подсказки + подсказки:
     function clue(i, out_clue, h1_clue) {
-        console.log(answers_bool);
+        out_clue.textContent = ``
+        //console.log(answers_bool);
         let button_clue = document.querySelector(`.clue_${i}`);
         button_clue.style = 'visibility:visible';
         //console.log(button_clue);
@@ -194,6 +199,7 @@
             for(let counter = 0; counter < rul_array[i].length; counter++){
                 out_clue.innerHTML += `<ul><li>${rul_array[i][counter]}</li></ul>`
             }
+            
         })
         answers_bool = false;
     }
@@ -233,7 +239,7 @@
             protocol = protocol.match(/https?:/);
             // формируем url - адрес сновыми параметрами:протокол, hostname c необходимыми перенными для
             // перехода на новую страницу и передачи к
-            a_dalee.setAttribute('href',`${protocol}${string},${incotrrect_answers},${cotrrect_answers}`);
+            a_dalee.setAttribute('href',`${protocol}${string},${cotrrect_answers},${incotrrect_answers}`);
         }           
     }
 })();

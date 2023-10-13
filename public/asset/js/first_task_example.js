@@ -107,8 +107,8 @@ document.querySelector('.button_task_3').addEventListener('click', function (){
     }
 })
 
-let new_str = '(^_^)/ - приветствие, (-_-) – грусть, ($_$) - жадность';
-let newRegExpTest = new RegExp('\\(\\^_\\^\\)/.*?,','g');
+let new_str = 'Моем, моем трубочиста Чисто, чисто, чисто, чисто! Будет, будет трубочист Чист, чист, чист, чист!';
+let newRegExpTest = new RegExp('чисто?','g');
 //let newRegExpTest = `/[1–9]+/g`;
 //let newRegExpTest = new RegExp('(чик)+', 'g');
 console.log(newRegExpTest);
