@@ -35,8 +35,8 @@ class Store extends FormRequest
     {       
         return [
             'num_level'=> ['required', 'integer'],
-            'name_level' => ['required','string', 'min:4','max:60'],
-            'desc_level' => ['required','string', 'min:4','max:500'],
+            'name_level' => ['required','string', 'min:4','max:160'],
+            'desc_level' => ['required','string', 'min:4','max:1500'],
         ];
 
     }   

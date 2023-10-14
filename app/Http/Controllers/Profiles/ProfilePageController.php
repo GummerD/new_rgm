@@ -118,8 +118,9 @@ class ProfilePageController extends Controller
             'incorrect_answer' => $new_incorrect_answer,
             'rating' => $new_rating,
           ]);
-          $this->scaleGrafik();
-          return redirect()->route('profiles');
+
+          return redirect()->route('profiles')->with('success', __('Ура! Вы справились со всеми заданиями!'));;
+
         }
       }
     };

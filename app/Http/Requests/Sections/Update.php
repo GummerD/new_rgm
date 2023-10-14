@@ -35,8 +35,8 @@ class Update extends FormRequest
     {       
         return [
             'num_section'=> ['required', 'integer'],
-            'name_section' => ['required','string', 'min:4','max:60'],
-            'desc_section' => ['required','string', 'min:4','max:500'],
+            'name_section' => ['required','string', 'min:4','max:160'],
+            'desc_section' => ['required','string', 'min:4','max:1500'],
             ];
 
     }   

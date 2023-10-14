@@ -38,3 +38,26 @@
   margin-right: 6px;
 }
 
+
+@media (max-width:439px){
+  .copyright_block{
+    font-size: 14px;  
+  }
+
+  .footer_content{
+    flex-direction: column;
+  }
+  .team_footer{
+    font-size: 12px;
+  }
+  .icon_footer{
+    margin-right: 4px;
+    width: 15px;
+    height: 15px;
+  }
+
+  .contacts_block p{
+    font-size: 12px;
+    
+  }
+}
