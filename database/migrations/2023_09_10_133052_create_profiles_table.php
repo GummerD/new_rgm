@@ -17,7 +17,7 @@ return new class extends Migration
         ->on('users')
         ->cascadeOnDelete();
       $table->string('path_img')->default('/asset/Images/Background/fon1.png');
-      $table->float('rating', 8, 2)->nullable()->default(0);
+      $table->float('rating', 8, 2)->nullable()->default(1);
       $table->integer('correct_answer')->nullable()->default(0);
       $table->integer('incorrect_answer')->nullable()->default(0);
       $table->integer('num_trainings')->nullable()->default(0);
