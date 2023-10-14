@@ -18,6 +18,7 @@ class Profile extends Model
     'incorrect_answer',
     'num_trainings',
     'user_status',
+    'pixel_rating',
   ];
 
   public function user(): HasOne

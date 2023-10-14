@@ -10,7 +10,7 @@
 
   <h3 class="profile_username">{{Auth::user()->login}}</h3>
 
- 
+
   <div class="profile_content">
     <div class="profile_content_user">
       @if(is_numeric(Auth::user()->profile->path_img))
@@ -28,15 +28,15 @@
     <div class="profile_content_rating">
       @if(Auth::user()->profile->user_status === 'blocked')
 
-        <div class="blocked_user_profile" style="max-width:500px; color: rgb(255, 84, 84);">
-         <p style="font-size: 16px;"> {{__('Ваш аккаунт заблокирован! :(')}}</p>
-         <p>
+      <div class="blocked_user_profile" style="max-width:500px; color: rgb(255, 84, 84);">
+        <p style="font-size: 16px;"> {{__('Ваш аккаунт заблокирован! :(')}}</p>
+        <p>
           {{__('К сожалению, Вы не можете продолжать занятия так как доступ к ним приостановлен
           Вы можете получить более подробную информацию, обратившись к нашим администраторам
-         admin@mail.com.')}}
-         </p>
-        </div>
-      
+          admin@mail.com.')}}
+        </p>
+      </div>
+
       @endif
 
       <li>rating: {{Auth::user()->profile->rating}}</li>
@@ -46,7 +46,7 @@
       <li>progress: {{Auth::user()->profile->progress}}</li>
     </div>
 
-    
+
     <div>
       <table cellspacing="0" cellpadding="0" summary="Rating Users">
         <tr>
@@ -60,8 +60,9 @@
             @endif>
             {{$item->login}}&nbsp;</td>
           <td class="value first">
-            <img src="{{ asset('asset/Images/Icons/bar.png') }}" alt="" width="{{$item->profile->rating}}"
-              height="16" />&nbsp;{{$item->profile->rating}}
+            <img @if(Auth::user()->id == $item->id) src="{{ asset('asset/Images/Icons/bar_red.png') }}" @else src="{{
+            asset('asset/Images/Icons/bar_blue.png') }}" @endif alt="" width="{{$item->profile->pixel_rating}}"
+            height="16" />&nbsp;{{$item->profile->rating}}
           </td>
         </tr>
         @endforeach

@@ -107,8 +107,8 @@ document.querySelector('.button_task_3').addEventListener('click', function (){
     }
 })
 
-let new_str = 'Ивановой Л выплатить 500,745; Петровой И выплатить 12000,24621; Иванову Д выплатить 16000,25546; Сидорову П выплатить 13000,78945; Иванову Г выплатить 9000,24566;  Сеченеву Ю выплатить 10000,4568';
-let newRegExpTest = new RegExp('[А-Я].+? . .+? .+?,.{2}','g');
+let new_str = 'Моем, моем трубочиста Чисто, чисто, чисто, чисто! Будет, будет трубочист Чист, чист, чист, чист!';
+let newRegExpTest = new RegExp('чисто?','g');
 //let newRegExpTest = `/[1–9]+/g`;
 //let newRegExpTest = new RegExp('(чик)+', 'g');
 console.log(newRegExpTest);
