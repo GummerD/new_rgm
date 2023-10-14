@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Rules;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Rules\Store;
+use App\Http\Requests\Rules\Update;
 use App\Models\Rule;
 use App\Queries\RulesQueryBuilder;
 use Illuminate\Http\Request;
@@ -33,13 +35,13 @@ class RulesPageController extends Controller
   /**
    * Store a newly created resource in storage.
    */
-  public function store(Request $request)
+  public function store(Store $request)
   {
    // dd($request->all());
 
-    $data = $request->all();
+    $validated = $request->validated();
    
-    $rule = Rule::create($data);
+    $rule = Rule::create($validated);
 
     if ($rule) {
      
@@ -68,10 +70,10 @@ class RulesPageController extends Controller
   /**
    * Update the specified resource in storage.
    */
-  public function update(Request $request, Rule $rule)
+  public function update(Update $request, Rule $rule)
   {
     //dd($request->all(), $rule);
-    $rule = $rule->fill($request->all());
+    $rule = $rule->fill($request->validated());
     if($rule->save()) {       
         return (\redirect()->route('admin.rules', $rule)->with('success', __('Правило было изменить успешно!')));
     }

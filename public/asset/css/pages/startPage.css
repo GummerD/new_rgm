@@ -12,14 +12,14 @@ a:link{
 
 .start{
     width: 100vw;
-    height: 100vh; 
+    height: 100vh;  
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
 }
 
 .start_gradient{
-    height:calc(100vh - 130px);
+    max-height: 100%;
     background: linear-gradient(64.86deg,
     rgba(0, 0, 0, 1),
     rgba(29, 12, 12, 1),
@@ -35,7 +35,7 @@ a:link{
 
 .start_fon{
     flex: 1 0 auto;
-    width: 100%;    
+    width: 100%; 
     background-image: url("/asset/Images/Background/fon1.png"); 
     background-position: center;
 }
@@ -50,8 +50,8 @@ a:link{
 /* Header */
 
 .logo_start{
-    width:200px;
-    height:115px ;
+    width:200x;
+    height:100px ;
     margin-left: 50px;
     margin-top: 10px;
 }
@@ -69,17 +69,34 @@ a:link{
 /* main */
 
 .content_start{
+    padding: 12px 0;
+    width: 100%;
+    /* height:calc(100vh  - 230px);   */
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     align-items: center;
+    width: 100%;  
     overflow: auto;
 }
+
+/* .content_start::-webkit-scrollbar {
+    width: 8px;
+    border: 1px solid rgba(60, 37, 37, 0.56); 
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.content_start::-webkit-scrollbar-thumb {
+    background: linear-gradient(0deg, rgba(60, 37, 37, 0.56), rgba(60, 37, 37, 0.16)),
+        linear-gradient(0deg, rgba(60, 37, 37, 0.13), rgba(60, 37, 37, 0.13));
+    border-radius: 3px;  
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 1px 6px 4px 0px rgba(245, 245, 245, 0.15) inset;
+} */
 
 .description{
     color: rgb(205, 205, 205);
     width: 50%;
-    height: 462px;
+    /* max-height: 462px; */
     font-family: "Roboto Mono";
     font-weight: 500;
     font-size: 16px;
@@ -90,8 +107,7 @@ a:link{
 .start_rules{
     display: flex;
     flex-direction: column;
-    align-items: center;
-  
+    align-items: center;  
 }
 
 .btn_rules_start{
@@ -100,12 +116,17 @@ a:link{
     height: 40px;
     box-shadow: 0px 4px 4px 0px rgba(228, 175, 175, 0.23) inset, 0px 4px 8px 0px rgba(0, 0, 0, 0.75);
     border-radius: 5px;
-    margin-top: 30px;
-    color: rgba(255, 255, 255, 1);
+    margin-top: 30px;  
     font-family: 'Roboto Mono';
     font-weight: 500;
     font-size: 16px;
    
+}
+.btn_rules_start a{
+    color: rgba(255, 255, 255, 1);
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
 }
 
 .user_name_start{
@@ -113,6 +134,11 @@ a:link{
     font-family:'Roboto Mono';
     font-size: 16px;
     text-align: start;
+}
+
+.icon_header{
+    width: 45px;
+    height: 45px;
 }
 
 .icon_header_a{
@@ -129,5 +155,70 @@ a:link{
     .contain{
         max-width: 85vw;
     }
+
+}
+@media (max-width:835px){
+    .content_start{
+        flex-wrap: nowrap;
+        flex-direction: column;
+    }
+    .description{
+        width: 80vw;
+        padding: 40px 0 20px 0;
+
+        /* margin-bottom: 20px; */
+    }
+    .start_rules{
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        flex-wrap: wrap;
+         width: 80vw;
+    }
+    .btn_rules_start{
+        margin-bottom: 50px;
+    }
+    .icon_header{
+        width: 30px;
+        height: 30px;
+    }
+    .nav-item{
+        font-size: 16px;
+    }
+
+}
+
+@media (max-width:439px){
+    .contain{
+        width: 80vw;
+    }
+
+    .icon_header_in_block{
+        width: 30px;
+        height: 30px;
+    }
    
+    .icon_header,
+    .dropdown .dropdown-toggle { 
+        width: 2px;
+        height: 2px;   
+        visibility: hidden;
+    }
+    .start_rules{
+        display: flex;
+        flex-direction: column;
+        align-items: center;  
+    }
+    .start_rules_img img{
+        width: 200px;
+        height: 190px;
+    }
+
+    .logo_start{
+        width: 127px;
+        height: 78px;
+        margin-left: 0px;
+    }
+    .description{
+        font-size: 14px;
+    }
 }

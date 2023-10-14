@@ -5,9 +5,8 @@
     <div class="contain_header">
 
       <a href="{{route('start')}}">
-        <div class="logo_sm">
-          <div class="logo_sm_regexp">RegExp</div>
-          <div class="logo_sm_master">master</div>
+        <div >
+          <img class="logo_sm" src="{{asset('asset/Images/Icons/logo.png')}}" alt="">
         </div>
       </a>
 

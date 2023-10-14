@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Groups;
+namespace App\Http\Requests\Rules;
 
 
 use Illuminate\Foundation\Http\FormRequest;
@@ -34,18 +34,20 @@ class Store extends FormRequest
      public function rules():array
     {       
         return [
-            'num_group'=> ['required', 'integer'],
-            'desc_group' => ['required','string', 'min:4','max:1500'],
-        ];
+            'num_rule'=> ['required', 'integer'],
+            'regex' => ['required','string', 'min:4','max:160'],
+            'description' => ['required','string', 'min:4','max:1500'],
+        ]; 
+        
 
     }   
 
     public function attributes():array
     {
         return [
-            'num_group'=> "номер группы",
-            'desc_group' => "описание группы",
-            
+            'num_rule'=> 'нромер правила',
+            'regex' => 'правило',
+            'description' => 'описание правила'           
         ];
     }
 }

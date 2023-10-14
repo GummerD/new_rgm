@@ -35,7 +35,7 @@ class Update extends FormRequest
     {       
         return [
             'num_group'=> ['required', 'integer'],
-            'desc_group' => ['required','string', 'min:4','max:500'],
+            'desc_group' => ['required','string', 'min:4','max:1500'],
         ];
 
     }   

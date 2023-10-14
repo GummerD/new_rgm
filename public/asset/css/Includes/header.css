@@ -7,8 +7,6 @@ a:link {
   text-decoration: none;
 }
 
-
-
 .header {
   box-sizing: border-box;
   height: 85px;
@@ -43,14 +41,9 @@ a:link {
   flex-wrap: wrap
 }
 
-@media (max-width:1280px){
-  .contain_header{
-    max-width: 85vw;
-  }
- 
-}
+
 .icon_block_header {
-  min-width: 260px;
+  max-width: 300px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -59,25 +52,37 @@ a:link {
 
 
 .logo_sm {
-  font-family: "Anonymous Pro";
-  color: white;
-  font-weight: 400;
+ width: 120px;
+ height: 65px;
+ margin-top: 12px;
 }
-
-.logo_sm_regexp {
-  font-size: 37px;
-  /* margin-top: 13px;  */
-}
-
-.logo_sm_master {
-  font-size: 16px;
-  margin-left: 63px;
-  margin-top: -14px;
-}
-
 
 .icon_header {
   margin-left: 50px;
   width: 30px;
   height: 30px;
+}
+
+
+@media (max-width:1280px){
+  .contain_header{
+    max-width: 85vw;
+  }
+  
+}
+
+@media (max-width:448px){
+  .logo_sm {
+    width: 100px;
+    height: 60px;
+    margin-top: 18px;
+   }
+   
+   .icon_header {   
+    margin-left: 17px; 
+    width: 20px;
+    height: 20px;
+  }
+
+
 }
