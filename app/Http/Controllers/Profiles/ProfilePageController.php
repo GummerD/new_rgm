@@ -118,16 +118,31 @@ class ProfilePageController extends Controller
             'incorrect_answer' => $new_incorrect_answer,
             'rating' => $new_rating,
           ]);
+          $this->scaleGrafik();
           return redirect()->route('profiles');
         }
       }
     };
-
+    $this->scaleGrafik();
     return redirect()->route('tasks', [
       'level' => $level,
       'section' => $section,
       'group' => $group
     ]);
+  }
+
+  // Масштабирование графика
+  public function scaleGrafik()
+  {
+    $max_rating = Profile::max('rating');
+    $max_pix = 200;
+    Profile::where('rating', $max_rating)->update(['pixel_rating' => $max_pix]);
+    $allprof = Profile::all();
+    foreach ($allprof as $item) {
+      $n_r = round((200 * $item->rating) / $max_rating);
+      $item->where('user_id', $item->user_id)->update(['pixel_rating' => $n_r]);
+    }
+    return true;
   }
 
   /**
@@ -201,4 +216,3 @@ class ProfilePageController extends Controller
     return (\back()->with('error', __('Failed to update status!')));
   }
 }
-
