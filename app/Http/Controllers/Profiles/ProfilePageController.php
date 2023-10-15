@@ -44,9 +44,14 @@ class ProfilePageController extends Controller
 
   public function show(): View
   {
-    $user = User::all();
+    $user = User::join('profiles', 'user_id', '=', 'id')
+      ->orderBy('rating', 'desc')
+      ->with('profile')
+      ->select('users.*')
+      ->paginate(10);
+    $counter = $user->firstItem();
     $profile = Profile::all();
-    return view('Profiles.profile', compact('profile', 'user'));
+    return view('Profiles.profile', compact('profile', 'user', 'counter'));
   }
 
   /* СОХРАНЕНИЕ ПРОГРЕССА (ПРОЙДЕННЫХ ЗАДАЧ) */
