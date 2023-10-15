@@ -50,15 +50,22 @@
     <div>
       <table cellspacing="0" cellpadding="0" summary="Rating Users">
         <tr>
+          <th scope="col"><span class="auraltext"></span> </th>
           <th scope="col"><span class="auraltext">Users</span> </th>
           <th scope="col"><span class="auraltext">Current Rating</span> </th>
         </tr>
 
+
+
         @foreach ($user as $item)
         <tr>
+          <td class="first" @if(Auth::user()->id == $item->id ) style="color:tomato;font-size:
+            16px;"@endif
+            >{{$counter++}}.&nbsp</td>
           <td class="first" @if(Auth::user()->id == $item->id ) style="color:tomato;font-size: 16px;font-weight:bold"
             @endif>
-            {{$item->login}}&nbsp;</td>
+            {{$item->login}}&nbsp;
+          </td>
           <td class="value first">
             <img @if(Auth::user()->id == $item->id) src="{{ asset('asset/Images/Icons/bar_red.png') }}" @else src="{{
             asset('asset/Images/Icons/bar_blue.png') }}" @endif alt="" width="{{$item->profile->pixel_rating}}"
@@ -68,6 +75,8 @@
         @endforeach
 
       </table>
+      <div class="pagination_grafik">{{ $user->links() }}</div>
+
     </div>
 
   </div>
