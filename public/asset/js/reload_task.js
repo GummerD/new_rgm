@@ -52,6 +52,8 @@
 
     //массив правильных ответов пользовтеля:
     let answers_array = [];
+    // переменная определеяет ключ порядок правильных и неправильных ответов.
+    let namber_answer_array_key = 0;
     //переменная, которая отмечает правильные и неправильные ответы в значении массива - correct_answers_array
     let answers_bool = undefined;
 
@@ -85,7 +87,18 @@
             rule_clue[i] = rule_use;
             //console.log("данные из бд" + rule_clue);
 
-            rul_array[i] = rule_use.split(' | ');
+            /** 
+             * разделение льветов изначально шло черещ символ - |, при изучении рег. выражений 
+             * и создании новой темы выяснилось, что это символ альтерации.
+             */ 
+        
+            console.log(segments[2]);
+            if(+(segments[2]) == 10){
+                rul_array[i] = rule_use.split('% ');
+            }else{
+                rul_array[i] = rule_use.split(' | ');
+            }
+
             //console.log("массив верных ответов после добавления в него значения" + rul_array);
 
             let data = input_task[i].value;
@@ -211,7 +224,8 @@
             answers_bool = false : 
             answers_bool = true;
 
-        answers_array[i] = answers_bool;
+        answers_array[namber_answer_array_key++] = answers_bool;
+        console.log(answers_array);
         //блокируем кнопку после ввода правильного ответа:
         document.querySelector(`.button_task_${i}`).disabled = 'true';
         answers_bool= undefined;
