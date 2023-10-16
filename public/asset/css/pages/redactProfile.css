@@ -25,7 +25,6 @@
     width: 380px;
     height: 38px;
     border-radius: 4px;
-    background-color: rgba(0, 1, 0, 0.8);
     color: rgb(41, 36, 36);
     margin-bottom: 5px;
     box-sizing: border-box;    
@@ -52,3 +51,26 @@
     color: rgb(217, 201, 201);
     padding: 4px;
 }
+
+.redact_profile_username{
+    font-size: 22px;
+    color: rgba(198, 239, 199, 1);
+    font-family: "Roboto Mono";
+    padding: 50px 0 10px 0;
+    text-align: center;
+}
+
+
+@media (max-width:450px){
+    .block_form_redact_profile{
+        font-size: 14px; 
+    }
+    
+    .int_redact_profile{
+        width: 85vw;
+        height: 38px;
+        font-size: 14px;
+        
+    }
+}
+   

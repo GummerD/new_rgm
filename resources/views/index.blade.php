@@ -53,20 +53,21 @@
 </head>
 
 <body class="rast">
-
+ 
     <div class="verx soder">
 
       @include('Includes.header')     
 
       <div class="black_fon">
+        
 
         <div class="contain">
-          
+          @include('Includes.message') 
           @yield('content')   
               
         </div>
         
-        @include('Includes.message')  
+       
      
       </div>
 

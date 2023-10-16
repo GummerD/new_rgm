@@ -70,4 +70,66 @@ input[type="checkbox"]:checked{
     border: 1px solid rgba(240, 233, 207, 1);
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 4px rgba(208, 207, 207, 0.6);
 }
+.reg_log_content{
+    width: 100%;
+    justify-content: center;
+}
+.reg_log_content_card{
+    display: flex;
+    justify-content: center;
+}
 
+.card_log_registr{
+    width: 650px;
+    justify-content: center;
+}
+
+@media (max-width:1025px){
+    .card_log_registr{
+        width: 80%;
+        justify-content: center;
+    }
+}
+
+@media (max-width:900px){
+   
+    .inpt_reg_login{       
+        width: 345px;
+        height: 36px;
+     
+    }
+    .registr_row_flex{
+        display: flex;
+        flex-direction: column;
+    }
+    .block_form_redact_profile label{
+        max-width: 100%;
+    }
+
+    .reg_log_content{
+        width: 80vw;
+    }
+}
+
+
+@media (max-width:840px){
+    .card_log_registr{
+        width: 100%;
+        justify-content: center;
+    }    
+}
+
+@media (max-width:510px){
+    .inpt_reg_login{       
+        width: 96%;
+    }
+    .btn_reg_login{
+        margin-top: 30px;
+    }  
+}
+
+@media (max-width:360px){
+    .btn_reg_login{
+        width: 60%;
+    }
+}

@@ -73,7 +73,7 @@
                                             @if (Route::has('login'))
                                             <li class="nav-item">
                                                 <a  href="{{ route('login') }}">
-                                                    <button class="log_component">{{ __('Login') }}</button>
+                                                    <button class="log_component_start">{{ __('Login') }}</button>
                                                 </a>
                                             </li>
                                         @endif
@@ -81,7 +81,7 @@
                                         @if (Route::has('register'))
                                             <li class="nav-item">
                                                 <a  href="{{ route('register') }}">
-                                                    <button class="register_component">{{ __('Register') }}</button>
+                                                    <button class="register_component_start">{{ __('Register') }}</button>
                                                 </a>
                                             </li>
                                         @endif
