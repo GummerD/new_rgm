@@ -144,7 +144,7 @@ class ProfilePageController extends Controller
     Profile::where('rating', $max_rating)->update(['pixel_rating' => $max_pix]);
     $allprof = Profile::all();
     foreach ($allprof as $item) {
-      $n_r = round((200 * $item->rating) / $max_rating);
+      $n_r = round(($max_pix * $item->rating) / $max_rating);
       $item->where('user_id', $item->user_id)->update(['pixel_rating' => $n_r]);
     }
     return true;

@@ -4,18 +4,17 @@
 }
 
 .profile_username {
-  /* margin: 0 auto; */
-  text-align: center;
-  padding-top: 30px;
+  font-size: 26px;
   color: rgba(198, 239, 199, 1);
   font-family: "Roboto Mono";
+  margin-bottom: 30px;
 }
 
 .profile_content {
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
   box-sizing: border-box;
-  padding: 30px 50px;
+  padding: 50px;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -23,8 +22,9 @@
 }
 
 .profile_avatar {
-  width: 200px;
-  height: 260px;
+  width: 240px;
+  height: 300px;
+  box-shadow: 0px 0px 5px 2px rgba(255, 255, 255, 1);
 }
 
 .profile_avatar_img {
@@ -36,23 +36,73 @@
 }
 
 .btn_profile_redact {
-  width: 200px;
-  height: 30px;
-  background-color: rgba(183, 169, 169, 0.6);
+  width: 240px;
+  height: 40px;
+  background: rgba(171, 165, 165, 1);
   margin-top: 20px;
   border-radius: 3px;
   font-family: "Roboto Mono";
   box-sizing: border-box;
   padding-bottom: 3px;
+  box-shadow: 0px 4px 4px 2px rgba(0, 0, 0, 0.9), 4px 4px 4px 0px rgba(255, 255, 255, 0.91) inset;
+  border: none;
+}
+
+.blocked_user_profile{
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 20px;
+  border-radius: 4px;
+  text-align: justify;
+  max-width:500px; 
+  color:rgba(193, 27, 27, 1);
+  margin-bottom: 30px;
+  box-shadow: 0px 4px 4px 2px rgba(136, 6, 6, 0.9);
+  letter-spacing: 2px; 
+}
+.blocked_user_profile_text{
+  color:  rgba(171, 165, 165, 0.8);
+
+}
+
+.blocked_user_profile_email{
+  color:  rgba(255, 255, 255, 0.8);
+  font-size: 16px;
+}
+
+.profile_list{
+  line-height: 225%;
+}
+.profile_list_email{
+  color: rgba(118, 91, 91, 1);
+  font-size: 16px; 
 }
 
 .profile_content_rating {
   flex: 1 0 auto;
 }
 
+.profile_rating_message{
+  font-size: 16px;
+  line-height: 180%;
+  color:rgba(224, 193, 113, 1);
+}
+
 .profile_content_user {
   margin-right: 50px;
   flex: 0 0 auto;
+}
+
+.profile_grafik{
+  width: 100%;
+  margin-top: 50px;
+  color: rgba(222, 211, 198, 1);
+}
+
+.profile_grafik_title{
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 16px;
+  color: rgba(99, 205, 103, 1);
 }
 
 .pagination {
@@ -72,3 +122,108 @@ a.page-link {
 p.text-muted {
   color: rgba(222, 211, 198, 1) !important;
 }
+
+.profile_grafik_colum_title{
+  line-height: 325%; 
+}
+
+.profile_grafik_colum{
+ 
+  line-height: 200%; 
+}
+
+.auraltext{
+  color: rgba(118, 91, 91, 1);
+  font-size: 16px;
+  padding: 2% 0;
+}
+
+.profile_username_smoll{
+  display: none;
+}
+
+
+@media (max-width:1050px){
+  .blocked_user_profile{
+    width: 40vw;
+  }
+}
+
+@media (max-width:835px){
+
+  .profile_content {
+    padding: 30px 1px;
+  }
+  .profile_content_rating {
+    width: 30vw;
+  }
+
+}
+
+@media (max-width:725px){
+  .profile_content_rating {
+    width: 30vw;
+  }
+  .profile_list{
+    font-size: 14px;
+  }
+  .profile_list_email{
+    font-size: 14px; 
+  } 
+
+}
+
+@media (max-width:660px){
+
+  .profile_content_rating {
+    width: 90vw;
+  }
+  .blocked_user_profile{
+    width: 85vw;
+    margin-top: 30px;
+  }  
+  .profile_content_rating{
+    margin-top: 40px;
+  }
+
+  .profile_content_rating p{
+    text-align: center;
+  }
+
+     
+ .profile_username{
+   display: none;
+  }
+  .profile_content{
+  justify-content: center;
+  }
+
+.profile_content_user {
+  margin-right: 0;
+  flex: 0 0 auto;
+}
+.profile_content_rating{
+  align-items: center;
+}
+
+  .profile_username_smoll{
+    display: block;
+    font-size: 26px;
+    color: rgba(198, 239, 199, 1);
+    font-family: "Roboto Mono";
+    margin-bottom: 30px;
+    text-align: center;
+
+ }
+}
+
+@media (max-width:370px){
+ 
+  .profile_grafik_title{    
+    font-size: 14px;   
+  }
+  .profile_list{
+    font-size: 12px;
+  }
+  
+} 

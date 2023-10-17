@@ -5,7 +5,7 @@
     <div class="contain_header">
 
       <a href="{{route('start')}}">
-        <div >
+        <div>
           <img class="logo_sm" src="{{asset('asset/Images/Icons/logo.png')}}" alt="">
         </div>
       </a>
@@ -46,8 +46,8 @@
             @if ((Auth::user()->profile->user_status) === "admin")
 
             <a class="dropdown-item" href="{{route('admin')}}">{{__('Кабинет администратора')}}</a>
-                
-            @endif          
+
+            @endif
 
             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                       document.getElementById('logout-form').submit();">
@@ -69,13 +69,44 @@
           <img class="icon_header " src="{{asset('asset/Images/Icons/icons8-book-64.png')}}">
         </a>
 
+
         @if (Auth::user())
+
+        @if (Route::currentRouteName()=='profiles')
         <a href="tasks/{{Auth::user()->profile->progress}}">
-          @else
-          <a href="{{ route('login') }}">
-            @endif
-            <img class=" icon_header" src="{{asset('asset/Images/Icons/icons1.png')}}">
-          </a>
+          @elseif (Route::currentRouteName()=='tasks')
+          <a href="{{ route('tasks', [
+            'level' => $level_view->value('num_level'),
+            'section' => $section_view->value('num_section'),
+            'group' => $group_view->value('num_group'),
+            ]) }}">
+            @elseif (Route::currentRouteName()=='rules')
+            <a href="tasks/{{Auth::user()->profile->progress}}">
+              @elseif (Route::currentRouteName()=='admin')
+              <a href="tasks/{{Auth::user()->profile->progress}}">
+                @elseif (Request::path()=='admin/level')
+                <a href="/tasks/{{Auth::user()->profile->progress}}">
+                  @elseif (Request::path()=='admin/tasks')
+                  <a href="/tasks/{{Auth::user()->profile->progress}}">
+                    @elseif (Request::path()=='admin/rules')
+                    <a href="/tasks/{{Auth::user()->profile->progress}}">
+                      @elseif (Request::path()=='admin/group')
+                      <a href="/tasks/{{Auth::user()->profile->progress}}">
+                        @elseif (Request::path()=='admin/section')
+                        <a href="/tasks/{{Auth::user()->profile->progress}}">
+                          @elseif (Request::path()=='admin/create/task')
+                          <a href="/tasks/{{Auth::user()->profile->progress}}">
+                            @elseif (Request::path()=='admin/create/rule')
+                            <a href="/tasks/{{Auth::user()->profile->progress}}">
+                              @elseif (Request::path()=='admin/create/levGrSec')
+                              <a href="/tasks/{{Auth::user()->profile->progress}}">
+                                @endif
+
+                                @else
+                                <a href="{{ route('login') }}">
+                                  @endif
+                                  <img class=" icon_header" src="{{asset('asset/Images/Icons/icons1.png')}}">
+                                </a>
 
 
       </div>

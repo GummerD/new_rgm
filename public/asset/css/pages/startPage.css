@@ -184,6 +184,10 @@ a:link{
     .nav-item{
         font-size: 16px;
     }
+    .icon_header_in_block{
+        width: 35px;
+        height: 35px;
+    }
 
 }
 
@@ -191,12 +195,11 @@ a:link{
     .contain{
         width: 80vw;
     }
-
     .icon_header_in_block{
         width: 30px;
         height: 30px;
     }
-   
+      
     .icon_header,
     .dropdown .dropdown-toggle { 
         width: 2px;
