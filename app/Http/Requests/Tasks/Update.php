@@ -32,9 +32,9 @@ class Update extends FormRequest
     {       
          return [ 
             'task_text' => ['required','string', 'min:6','max:2500'],
-            'level_id' => ['required', 'exists:levels,id'],
-            'group_id' => ['required', 'exists:groups_tasks,id'],
-            'section_id' => ['required', 'exists:sections,id'],
+            'level_id' => ['nullable', 'exists:levels,id'],
+            'group_id' => ['nullable', 'exists:groups_tasks,id'],
+            'section_id' => ['nullable', 'exists:sections,id'],
             'num_task' => ['required', 'integer'],
             'rule_use' => ['required', 'string','min:1','max:1500'],
             'correct_answer' => ['required', 'string','min:1','max:1500'],

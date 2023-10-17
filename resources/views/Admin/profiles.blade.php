@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="admin_content">
-         <p>
+         <p  class = 'admin_page_title'>
            {{__("Пользователи сервиса")}}
          </p>
     </div>
@@ -20,7 +20,7 @@
                   <th>{{__('Пользователь')}}</th>
                   <th>{{__('Прогресс')}}</th>
                   <th>{{__('Ответы')}}</th>
-                  <th>{{__('Тренировки')}}</th>  
+                  <th class = "admin_page_small_title" >{{__('Тренировки')}}</th>  
                   
                   <th class="text-center">{{__('Изменить статус')}}</th>
               </tr>
@@ -30,7 +30,7 @@
               
               @foreach ($profiles as $item)
   
-                  <tr>
+                <tr class = "admin_table_content">
                     <th>{{$item->id}}</td>
                     <th>
                         {{__('Логин: ')}}{{$item->login}}<br/>{{__('Email: ')}}{{$item->email}}
@@ -49,8 +49,8 @@
                             @csrf  
 
                             <div class="mb-2 justify-content-center ">
-                                <label  class="col-md-8 col-form-label text-md-start">{{__('Выберете значение')}}</label>
-                                <div class="d-flex flex-row">
+                                <label  class="col-form-label text-md-start">{{__('Выберете значение')}}</label>
+                                <div class="admin_user_status_update_block">
                                 
                                     <select class="form-control inpt_user_status" name="user_status">
                                             <option @if($item->profile->user_status === 'active') selected @endif value="{{\App\Enums\UserStatusEnum::ACTIVE->value}}"> 
@@ -65,7 +65,7 @@
                                     </select>  
                                            
                                     @error("level_id")<p class="text-danger"> {{$message}}</p> @enderror               
-                                    <button>{{__('Обновить')}}</button>
+                                    <button class = "admin_profile_update_status_btn">{{__('Обновить')}}</button>
                                 </div>
                             </div>
                                                  
@@ -75,12 +75,10 @@
                  @endforeach
   
           </tbody>
-      </table>          
-      
-      <a class ="" href="{{url()->previous() }}">{{__('Обратно')}}</a>
-  
+      </table> 
   </div>
   
-
+  <a class ="admin_page_back_btn" href="{{route('admin')}}">{{__('Обратно')}}</a>
+  {{-- <a class ="admin_page_back_btn" href="{{url()->previous() }}">{{__('Обратно')}}</a> --}}
    
 @endsection

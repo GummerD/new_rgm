@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="admin_content">
-         <p>
+         <p  class = 'admin_page_title'>
            {{__("Правила")}}
          </p>
     </div>
@@ -33,11 +33,11 @@
                     <td>{{$item->regex}}</td>
                     <td>{{$item->description}}</td>
                     <td  class="text-center">
-                        <button class="delete" rel="{{$item->id}}" value="admin/delete/rule">
+                        <button class="delete admin_delete_btn" rel="{{$item->id}}" value="admin/delete/rule">
                             Delete
                         </button>
                         
-                        <a class="" href="{{route('admin.edit.rule', $item)}}">
+                        <a class="admin_redact_btn" href="{{route('admin.edit.rule', $item)}}">
                             Redact
                         </a>
                                               
@@ -51,7 +51,8 @@
    
 </div>
 
-<a class ="" href="{{ url()->previous() }}">{{__('Обратно')}}</a>
+<a class ="admin_page_back_btn" href="{{route('admin')}}">{{__('Обратно')}}</a>
+{{-- <a class ="admin_page_back_btn" href="{{url()->previous() }}">{{__('Обратно')}}</a> --}}
 
 @endsection
 

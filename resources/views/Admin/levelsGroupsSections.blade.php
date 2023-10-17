@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="admin_content">
-         <p>
+         <p  class = 'admin_page_title'>
            {{__("Уровни, группы, секции.")}}
          </p>
     </div>
@@ -110,7 +110,8 @@
      </div>
    </div>
   
-   <a class ="" href="{{url()->previous() }}">{{__('Обратно')}}</a>
+   <a class ="admin_page_back_btn" href="{{route('admin')}}">{{__('Обратно')}}</a>
+   {{-- <a class ="admin_page_back_btn" href="{{url()->previous() }}">{{__('Обратно')}}</a> --}}
    
 @endsection
 

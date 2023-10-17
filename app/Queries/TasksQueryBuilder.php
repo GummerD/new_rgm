@@ -15,7 +15,7 @@ class TasksQueryBuilder extends QueryBuilder
 
     public function getAll(): LengthAwarePaginator
     {
-        return $this->getModel()->paginate(10);
+        return $this->getModel()->paginate(50);
     }
 
 
