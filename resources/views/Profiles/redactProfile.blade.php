@@ -7,7 +7,7 @@
 @section('content')
 
 <main class="">
-    <h3 class="profile_username">{{$user->login}}</h3>
+    <h3 class="redact_profile_username">{{__('Редактирование профиля ')}}{{$user->login}}</h3>
 
     <div class="redact_profile_content">
     

@@ -9,7 +9,8 @@
 }
 
 
-.register_component{
+.register_component,
+.register_component_start{
     width: 150px;
     height: 35px;
     background-color: rgba(47, 7, 7, 0.6);
@@ -17,9 +18,11 @@
     border-radius: 0 5px 5px 0 ;
     color: rgba(255, 255, 255, 1);
     font-family: "Roboto Mono";
+
 }
 
-.log_component{
+.log_component,
+.log_component_start{
     width: 150px;
     height: 35px;
     background-color: rgba(64, 144, 67, 0.6);
@@ -27,5 +30,62 @@
     border-radius: 5px 0 0 5px ;
     color: rgba(255, 255, 255, 1);
     font-family: "Roboto Mono";
+    margin-left: -150px;
     
+}
+
+
+
+@media (max-width:840px){
+     
+    .register_component{
+        width: 100px;
+        height: 30px;
+    }
+    .log_component{
+        width: 100px;
+        margin-left: -100px;
+        height: 30px;
+    }
+
+
+}
+
+
+@media (max-width:768px){
+    .log_component_start{
+        width: 100px;
+        height: 30px;
+        margin-left: 15vw;
+    }
+
+    .register_component_start{
+        width: 100px;
+        height: 30px;
+       
+    }
+}
+
+@media (max-width:630px){
+
+    .register_component{
+        font-size: 13px;
+        width: 80px;
+       
+    }
+    .log_component{
+        font-size: 13px;
+        width: 60px;
+        margin-left: 5vw;
+       
+    } 
+}
+
+@media (max-width:425px){
+    .log_component{
+        font-size: 13px;
+        width: 60px;
+        /* margin-left: 20vw; */
+       
+    } 
 }

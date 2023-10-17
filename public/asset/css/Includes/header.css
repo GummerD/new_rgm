@@ -8,8 +8,8 @@ a:link {
 }
 
 .header {
-  box-sizing: border-box;
-  height: 85px;
+  /* box-sizing: border-box; */
+  min-height: 85px;
   width: 100vw;
   box-shadow: 0px 4px 4px black;
   color: darkgrey;
@@ -71,18 +71,35 @@ a:link {
   
 }
 
-@media (max-width:448px){
-  .logo_sm {
+@media (max-width:540px){
+
+ .logo_sm {
     width: 100px;
     height: 60px;
     margin-top: 18px;
-   }
-   
-   .icon_header {   
-    margin-left: 17px; 
-    width: 20px;
-    height: 20px;
   }
+   
+  .icon_header {   
+    margin-left: 17px; 
+    width: 25px;
+    height: 25px;
+  }
+
+
+}
+@media (max-width:425px){
+  .icon_block_header {
+    width: 98%;
+  }
+  .icon_block_header {
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content:space-around;
+    }
+  .header {
+    padding-bottom: 25px; 
+  }
+
 
 
 }
