@@ -107,8 +107,9 @@ document.querySelector('.button_task_3').addEventListener('click', function (){
     }
 })
 
-let new_str = 'Идет направо – песнь заводит, налево – сказку говорит.';
-let newRegExpTest = new RegExp('.+? (направо|налево) . (песнь|сказку) (заводит|говорит)','g');
+let new_str = 'When visiting the zoo we saw: 3 crocodiles, 1 lion, 2 pandas, 5 toucans.';
+//let newRegExpTest = new RegExp('\\W+','g');
+let newRegExpTest = new RegExp('saw: (\\w*\\W*)*\\w*','g');
 //let newRegExpTest = `/[1–9]+/g`;
 //let newRegExpTest = new RegExp('(чик)+', 'g');
 console.log(newRegExpTest);
