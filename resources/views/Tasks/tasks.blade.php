@@ -17,16 +17,21 @@
   </div>
 
   <div class="tasks_content">
+   
     <div class="flip">
+  
       <div class="nutro">
-
+        <p class="about_section_small">{{ $section_view->implode('desc_section') }}</p>
+        <p class="about_group_small">{{ $group_view->implode('desc_group') }}</p>
         <div class="group_tasks">
-
+          
+          
           <div class="num_group_txt">Задания {{ $group_view->implode('num_group') }}</div>
-
-          <div class="tasks">
+         
+          <div class="tasks">            
 
             @foreach ($tasks_view as $item)
+            <div class="">
             <hr>
             <p class="tsk_txt">{{ $item->num_task }}. {!! $item->task_text !!}</p>
             <div class="knop">
@@ -34,25 +39,30 @@
               <button class="b_t button_task_{{ $item->num_task - 1 }}">Проверить</button>
             </div>
             <br>
-            {{-- Блок вывод подсказок --}}
-            <p class="out_task_{{ $item->num_task - 1 }}"></p>
-            <button class="clue_{{ $item->num_task - 1 }}" style="visibility:hidden">Нужна подсказка?</button>
-            <h4 class="h4_clue_{{ $item->num_task - 1 }}" style="visibility:hidden">Варианты ответов:</h3>
-            <p class="out_clue_{{ $item->num_task - 1 }}" style="visibility:hidden"></p>
-            {{-- --------------------------------------------------------------------- --}}
+              {{-- Блок вывод подсказок --}}
+              <div class="block_hint_tasks">
+                <p class="out_task_{{ $item->num_task - 1 }} out_task_hint_block"></p>
+                <button class="clue_{{ $item->num_task - 1 }} btn_hint_task" style="visibility:hidden">Нужна подсказка?</button>
+                <h4 class="h4_clue_{{ $item->num_task - 1 }} title_hint_task" style="visibility:hidden">Варианты ответов:</h3>
+                <p class="out_clue_{{ $item->num_task - 1 }} out_clue_hint_task" style="visibility:hidden"></p>
+              </div>
+              {{-- --------------------------------------------------------------------- --}}
 
-            {{-- Невидимые блоки для передачи в js значений переменных из модели Task по ним не нужны стили, они места
-            не занимают --}}
-            <p class="correct_answer_{{ $item->num_task - 1 }}" style="display: none">{{ $item->correct_answer }}</p>
-            <p class="rule_use_{{ $item->num_task - 1 }}" style="display: none">{{ $item->rule_use }}</p>
-            <p class="string_task_{{ $item->num_task - 1 }}" style="display: none">{{ $item->string_task }}</p>
-            {{-- --------------------------------------------------------------------- --}}
-            {{-- <div class="" style="display: none">{{$level = $item->level_id}}</div> --}}
+              {{-- Невидимые блоки для передачи в js значений переменных из модели Task по ним не нужны стили, они места
+              не занимают --}}
+              <p class="correct_answer_{{ $item->num_task - 1 }}" style="display: none">{{ $item->correct_answer }}</p>
+              <p class="rule_use_{{ $item->num_task - 1 }}" style="display: none">{{ $item->rule_use }}</p>
+              <p class="string_task_{{ $item->num_task - 1 }}" style="display: none">{{ $item->string_task }}</p>
+              {{-- --------------------------------------------------------------------- --}}
+              {{-- <div class="" style="display: none">{{$level = $item->level_id}}</div> --}}
+            </div>
             @endforeach
           </div>
-
+       
         </div>
 
+
+        
         <div class="about_tasks">
 
           <p class="about_section">{{ $section_view->implode('desc_section') }}</p>

@@ -30,6 +30,7 @@ a:link{
     rgba(14, 1, 1, 0.8),
     rgba(0, 0, 0, 0.99)
     );
+    height:100% !important;
 }
 
 
@@ -191,9 +192,14 @@ a:link{
 
 }
 
-@media (max-width:439px){
+.about_section_small,
+.about_group_small{
+    display: none;
+}
+
+@media (max-width:624px){
     .contain{
-        width: 80vw;
+        width: 100%;
     }
     .icon_header_in_block{
         width: 30px;
