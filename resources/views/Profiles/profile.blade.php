@@ -8,9 +8,6 @@
 
 <main class="contain">
 
-  
-
-
   <div class="profile_content">
      
         
@@ -28,7 +25,6 @@
       </a>
     </div>   
 
-    
 
     
     <div class="profile_content_rating">
@@ -50,26 +46,26 @@
 
       @if(Auth::user()->profile->user_status !== 'blocked')
 
-        @if(Auth::user()->profile->rating  < 40 && Auth::user()->profile->rating > 0)
+        @if(Auth::user()->profile->rating  < 60 && Auth::user()->profile->rating > 0)
           <p class="profile_rating_message"> 
             {{__('Ваш рейтинг - ')}} {{Auth::user()->profile->rating}} {{__('пунктов')}}
             <br/> {{'Тяжело в учении - легко в бою!'}}
           </p>
         @endif
 
-        @if (Auth::user()->profile->rating >= 40 && Auth::user()->profile->rating < 80)
+        @if (Auth::user()->profile->rating >= 60 && Auth::user()->profile->rating < 180)
           <p class="profile_rating_message">{{__('Вы успешный ученик!')}}
             <br/> {{__('Ваш рейтинг - ')}} {{Auth::user()->profile->rating}} {{__('пунктов.')}}
           </p>          
         @endif
 
-        @if (Auth::user()->profile->rating >= 80  && Auth::user()->profile->rating < 120)
+        @if (Auth::user()->profile->rating >= 180  && Auth::user()->profile->rating < 400)
           <p class="profile_rating_message"> {{__('Вы справляетесь на отлично!')}}
             <br/> {{__('Ваш рейтинг -')}} {{Auth::user()->profile->rating}} {{__('пунктов.')}}
           </p>          
         @endif
 
-        @if(Auth::user()->profile->rating >= 120)
+        @if(Auth::user()->profile->rating >= 400)
           <p class="profile_rating_message"> {{__('Скоро Вы станете гуру регулярных выражений!')}}
             <br/> {{__('Ваш рейтинг -')}} {{Auth::user()->profile->rating}} {{__('пунктов.')}}
           </p>          
