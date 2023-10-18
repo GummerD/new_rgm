@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="admin_content">
-         <p>
+         <p  class = 'admin_page_title'>
            {{__("Создать уровни, группы, секции. Заполнять и сохранять по отдельности")}}
          </p>
     </div>
@@ -119,6 +119,6 @@
     
     </div>
   
-   <a class ="" href="{{url()->previous() }}">{{__('Обратно')}}</a>
+    <a class ="admin_page_back_btn" href="{{route('admin')}}">{{__('Обратно')}}</a>
    
 @endsection

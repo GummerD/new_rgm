@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="admin_content">
-         <p>
+         <p  class = 'admin_page_title' >
             Кабинет Администратора,
          привет {{Auth::user()->login}}!
          </p>

@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="admin_content">
-         <p>
+         <p class = 'admin_page_title'>
            {{__("Группы")}}
          </p>
     </div>
@@ -31,11 +31,11 @@
                         <td>{{$item->num_group}}</td>  
                         <td>{{$item->desc_group}}</td>              
                         <td  class="text-center">
-                            <button class="delete" rel="{{$item->id}}" value="admin/group/delete">
+                            <button class="delete admin_delete_btn" rel="{{$item->id}}" value="admin/group/delete">
                                 Delete
                             </button>
                                                            
-                            <a class="" href="{{route('admin.edit.group', ['group' => $item])}}">
+                            <a class=" admin_redact_btn" href="{{route('admin.edit.group', ['group' => $item])}}">
                                 Redact
                             </a>
                                                       
@@ -46,9 +46,10 @@
         </table>   
         
     </div>
-    <a class ="" href="{{url()->previous() }}">{{__('Обратно')}}</a>   
-   </div>
    
+   </div>
+   <a class ="admin_page_back_btn" href="{{route('admin')}}">{{__('Обратно')}}</a>
+   {{-- <a class ="admin_page_back_btn" href="{{url()->previous() }}">{{__('Обратно')}}</a> --}}
 @endsection
 
 
