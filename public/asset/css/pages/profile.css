@@ -142,7 +142,6 @@ p.text-muted {
   display: none;
 }
 
-
 @media (max-width:1050px){
   .blocked_user_profile{
     width: 40vw;
@@ -227,3 +226,32 @@ p.text-muted {
   }
   
 } 
+
+
+@media (max-width:463px){
+
+  .profile_grafik table{
+    font-size: 12px;
+  }
+
+  .profile_grafik_rating_you{
+    font-size: 12px;  
+  }
+ 
+}
+
+@media (max-width:428px){
+  .profile_grafik table tbody tr td img{
+     max-width: 150px;
+  }
+  .profile_grafik_colum{
+ 
+    line-height: 250%; 
+  }
+}
+
+@media (max-width:369px){
+  .profile_grafik table tbody tr td img{
+     max-width: 100px;
+  }
+}

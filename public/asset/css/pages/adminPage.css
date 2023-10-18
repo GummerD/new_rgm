@@ -107,7 +107,7 @@
    
   }
 
-@media (max-width:968px){
+@media (max-width:1025px){
     .form-control.inpt_user_status{
         max-width: 110px;
         min-width: 73px;
@@ -141,10 +141,6 @@
         padding: 6px;
 
     } 
-
-    .table{
-        word-wrap: break-word;
-    }
 
     .admin_profile_update_status_btn{        
         padding: 6px;

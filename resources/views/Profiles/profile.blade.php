@@ -46,26 +46,26 @@
 
       @if(Auth::user()->profile->user_status !== 'blocked')
 
-        @if(Auth::user()->profile->rating  < 60 && Auth::user()->profile->rating > 0)
+        @if(Auth::user()->profile->rating  < 80 && Auth::user()->profile->rating > 0)
           <p class="profile_rating_message"> 
             {{__('Ваш рейтинг - ')}} {{Auth::user()->profile->rating}} {{__('пунктов')}}
             <br/> {{'Тяжело в учении - легко в бою!'}}
           </p>
         @endif
 
-        @if (Auth::user()->profile->rating >= 60 && Auth::user()->profile->rating < 180)
+        @if (Auth::user()->profile->rating >= 80 && Auth::user()->profile->rating < 580)
           <p class="profile_rating_message">{{__('Вы успешный ученик!')}}
             <br/> {{__('Ваш рейтинг - ')}} {{Auth::user()->profile->rating}} {{__('пунктов.')}}
           </p>          
         @endif
 
-        @if (Auth::user()->profile->rating >= 180  && Auth::user()->profile->rating < 400)
+        @if (Auth::user()->profile->rating >= 580  && Auth::user()->profile->rating < 1500)
           <p class="profile_rating_message"> {{__('Вы справляетесь на отлично!')}}
             <br/> {{__('Ваш рейтинг -')}} {{Auth::user()->profile->rating}} {{__('пунктов.')}}
           </p>          
         @endif
 
-        @if(Auth::user()->profile->rating >= 400)
+        @if(Auth::user()->profile->rating >= 1500)
           <p class="profile_rating_message"> {{__('Скоро Вы станете гуру регулярных выражений!')}}
             <br/> {{__('Ваш рейтинг -')}} {{Auth::user()->profile->rating}} {{__('пунктов.')}}
           </p>          
@@ -107,12 +107,15 @@
 
         @foreach ($user as $item)
         <tr class="profile_grafik_colum">
-          <td class="first" @if(Auth::user()->id == $item->id ) style="color:tomato;font-size:
-            16px;"@endif
-            >{{$counter++}}.&nbsp</td>
-          <td class="first" @if(Auth::user()->id == $item->id ) style="color:tomato;font-size: 16px;font-weight:bold"
-            @endif>
-            {{$item->login}}&nbsp;
+          <td class="first" @if(Auth::user()->id == $item->id ) 
+          style="color:tomato;font-size:16px;"@endif>
+            <span class="profile_grafik_rating_you">{{$counter++}}</span>
+            &nbsp;
+          </td>
+          <td class="first" @if(Auth::user()->id == $item->id ) 
+            style="color:tomato;font-size: 16px;font-weight:bold" @endif>
+            <span class="profile_grafik_rating_you">{{$item->login}}</span>
+            &nbsp;
           </td>
           <td class="value first">
             <img @if(Auth::user()->id == $item->id) src="{{ asset('asset/Images/Icons/bar_red.png') }}" @else src="{{
