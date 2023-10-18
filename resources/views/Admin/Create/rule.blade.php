@@ -55,4 +55,5 @@
     </div>
  
 </main>
+<a class ="admin_page_back_btn" href="{{route('admin')}}">{{__('Обратно')}}</a>
 @endsection

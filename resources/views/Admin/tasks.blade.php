@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="admin_content">
-         <p>
+         <p  class = 'admin_page_title'> 
            {{__("Список задач")}}
          </p>
     </div>
@@ -37,10 +37,10 @@
                     <th>{{$item->string_task}}</th>                  
                     
                     <td  class="text-center">
-                        <button class="delete" rel="{{$item->id}}" value="admin/task/delete">
+                        <button class="delete admin_delete_btn" rel="{{$item->id}}" value="admin/task/delete">
                             Delete
                         </button>
-                        <a class="" href="{{route('admin.edit.task', ['task' => $item])}}">
+                        <a class="admin_redact_btn" href="{{route('admin.edit.task', ['task' => $item])}}">
                             Redact
                         </a>               
                     </td>
@@ -49,10 +49,10 @@
 
         </tbody>
     </table>          
-    <div class="paginate" style=" width:600px; margin-top:20px"> {{ $tasks->links() }}</div>
-   
+    <div class="paginate" style=" width:600px; margin-top:20px"> {{ $tasks->links() }}</div>   
 </div>
-<a class ="" href="{{ url()->previous() }}">{{__('Обратно')}}</a>
+<a class ="admin_page_back_btn" href="{{route('admin')}}">{{__('Обратно')}}</a>
+{{-- <a class ="admin_page_back_btn" href="{{url()->previous() }}">{{__('Обратно')}}</a> --}}
 @endsection
 
 @push('jsDel')

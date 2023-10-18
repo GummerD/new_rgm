@@ -1,3 +1,8 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
 .admin_content{
     color: white;
 }
@@ -22,14 +27,6 @@
     overflow-y: auto;
 }
 
-@media (max-width:1280px){
-    .bigBlock_levels{
-        flex-direction: column;
-        margin-bottom: 40px;
-        align-items: center;
-    }
-   
-  }
 
 .admin_table_levels{
     /* background-color: rgb(255, 255, 255); */
@@ -49,4 +46,111 @@
 .create_levels_block{
     width: 310px;
     margin-top: 30px;
+}
+
+.admin_page_title{
+    color: rgb(180, 188, 188);
+    font-size: 18px;
+    padding-top: 20px;
+}
+
+.admin_user_status_update_block{
+    display: flex;
+    flex-direction: row;
+}
+
+.admin_page_back_btn{
+    align-items: center;
+    width: 40vw;
+    text-align: center;
+    border: 1px solid;
+    color:rgb(94, 210, 162);
+    display: block;
+    margin: 20px auto;
+    box-shadow: 0px 0px 3px 1px rgb(94, 210, 162);
+    border-radius: 3px;
+    padding: 4px;
+}
+
+.admin_profile_update_status_btn{
+    border: 1px solid rgb(94, 210, 162);
+    box-shadow: 0px 0px 3px 1px rgb(94, 210, 162);
+    border-radius: 3px;
+    padding: 0 9px;
+}
+
+.admin_delete_btn{
+    padding: 2px 6px;
+    border-color: brown;
+    box-shadow: 0px 0px 3px 1px brown;
+    border-radius: 3px;
+    margin-bottom: 16px;
+}
+
+.admin_redact_btn{
+    padding: 3px 6px;
+    font-size: 14px;
+    color: black;
+    border: 2px solid rgb(94, 210, 162) ;
+    box-shadow: 0px 0px 3px 1px rgb(94, 210, 162);
+    border-radius: 3px; 
+   
+}
+
+
+@media (max-width:1280px){
+    .bigBlock_levels{
+        flex-direction: column;
+        margin-bottom: 40px;
+        align-items: center;
+    }
+   
+  }
+
+@media (max-width:968px){
+    .form-control.inpt_user_status{
+        max-width: 110px;
+        min-width: 73px;
+        margin-right: 10px;
+        font-size: 14px;
+        padding: 6px;
+
+    } 
+
+    .admin_profile_update_status_btn{
+        font-size: 13px;
+        padding: 0 7px;
+    }
+
+
+    .table {
+        font-size: 13px;        
+    }   
+    
+}
+
+@media (max-width:750px){
+    .form-control.inpt_user_status{
+        flex-direction: column;
+    }
+
+    .form-control.inpt_user_status{
+        margin-right:0;
+        margin-bottom: 7px;
+        font-size: 14px;
+        padding: 6px;
+
+    } 
+
+    .table{
+        word-wrap: break-word;
+    }
+
+    .admin_profile_update_status_btn{        
+        padding: 6px;
+    }
+
+    .admin_user_status_update_block{
+        flex-direction: column;
+    }
 }

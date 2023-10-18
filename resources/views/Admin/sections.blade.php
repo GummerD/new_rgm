@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="admin_content">
-         <p>
+         <p  class = 'admin_page_title'>
            {{__("Секции")}}
          </p>
     </div>
@@ -33,11 +33,11 @@
                         <td>{{$item->name_section}}</td>  
                         <td>{{$item->desc_section}}</td>              
                         <td  class="text-center">
-                            <button class="delete" rel="{{$item->id}}" value="admin/section/delete">
+                            <button class="delete admin_delete_btn" rel="{{$item->id}}" value="admin/section/delete">
                                 Delete
                             </button>
                                                            
-                            <a class="" href="{{route('admin.edit.section', ['section'=> $item])}}">
+                            <a class="admin_redact_btn" href="{{route('admin.edit.section', ['section'=> $item])}}">
                                 Redact
                             </a>
                                                       
@@ -46,8 +46,10 @@
                 @endforeach   
             </tbody>
         </table>   
-        <a class ="" href="{{url()->previous() }}">{{__('Обратно')}}</a> 
     </div>
+   </div>
+   <a class ="admin_page_back_btn" href="{{route('admin')}}">{{__('Обратно')}}</a>
+   {{-- <a class ="admin_page_back_btn" href="{{url()->previous() }}">{{__('Обратно')}}</a> --}}
 @endsection
 
 

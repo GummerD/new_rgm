@@ -53,6 +53,6 @@
         </div>
     
     </div>
- 
+    <a class ="admin_page_back_btn" href="{{url()->previous() }}">{{__('Обратно')}}</a>
 </main>
 @endsection

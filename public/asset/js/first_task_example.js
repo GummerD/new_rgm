@@ -107,9 +107,9 @@ document.querySelector('.button_task_3').addEventListener('click', function (){
     }
 })
 
-let new_str = 'When visiting the zoo we saw: 3 crocodiles, 1 lion, 2 pandas, 5 toucans.';
+let new_str = 'Вечером я завел будильник на 06:00 утра, но он просигналил в 05:00, тогда я решил поставить будильник на 06:15, но к моему удивлению он прозвонил в 09:15, из-за чего я пришел в школу только к 11:00';
 //let newRegExpTest = new RegExp('\\W+','g');
-let newRegExpTest = new RegExp('saw: (\\w*\\W*)*\\w*','g');
+let newRegExpTest = new RegExp('\\d+:\\d+','g');
 //let newRegExpTest = `/[1–9]+/g`;
 //let newRegExpTest = new RegExp('(чик)+', 'g');
 console.log(newRegExpTest);
