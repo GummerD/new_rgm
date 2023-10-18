@@ -5,23 +5,20 @@
 }
 
 .tasks_content {
-  /* position: absolute; */
-  top: 160px;
-  bottom: 135px;
   border-radius: 7px;
   background: #000000CC;
   box-shadow: 0px 4px 16px 1px #FFFFFF47 inset;
   padding: 40px;
   overflow: auto;
   overflow-y: scroll;
-  height:60vh;
+  height:60vh; 
   /* height: 75% !important; */
-  perspective: 1000px;
-}
+  perspective: 1000px; 
+  }
 
 .flip {
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
   transition: transform 0.8s;
   transform-style: preserve-3d;
 }
@@ -56,56 +53,50 @@
   font-family: 'Roboto Mono';
   font-size: 21px;
   font-weight: 400;
-  line-height: 28px;
-  letter-spacing: 0em;
+  line-height: 28px; 
   text-align: left;
   display: flex;
   justify-content: space-around;
 }
 
 .tasks_level_txt {
-  height: 28px;
+ font-size: 22px;
   top: 46px;
   left: 265px;
-  float: left;
-  padding-bottom: 22px;
+  float: left;  
   color: rgba(222, 211, 198, 1);
 }
 
 .tasks_section_txt {
-  height: 28px;
+  font-size: 28px;
   top: 46px;
   left: 164px;
   float: right;
-  padding-bottom: 22px;
   color: rgba(222, 211, 198, 1);
 }
 
 .nutro {
-  width: 100;
+  width: 100%;
   display: flex;
   justify-content: space-between;
-  height: 100%;
+  /* height: 100%;  */
   position: absolute;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
 
 .group_tasks {
-  width: 670px;
-  margin-right: 6vw;
+  margin-right: 60px; 
 }
 
 .num_group_txt {
-  width: 105.94px;
-  height: 24px;
+  width:100% ;
   top: 122px;
   left: 200px;
   font-family: 'Roboto Mono';
   font-size: 18px;
   font-weight: 400;
   line-height: 19px;
-  letter-spacing: 0em;
   text-align: left;
   color: rgba(198, 239, 199, 1);
 }
@@ -118,8 +109,8 @@
   letter-spacing: 0em;
   text-align: left;
   color: rgba(222, 211, 198, 1);
-  max-width: 670px;
-  height: 114px;
+  width: 100%;
+  /* height: 114px; */
 }
 
 .tsk_txt {
@@ -127,12 +118,12 @@
 }
 
 .about_tasks {
-  width: 244px;
+  width: 240px;
   text-align: justify;
   display: flex;
   flex-direction: column;
-  align-items: end;
-}
+  flex: 0 0 auto;
+ }
 
 .knop {
   display: flex;
@@ -145,7 +136,7 @@
   background-color: rgba(242, 240, 240, 0.88);
   border: 0;
   padding-left: 15px;
-  width: 489.85px;
+  width: 90% !important;
   height: 34px;
   border-radius: 4px 0 0 4px;
   box-shadow: 0px 4px 4px 2px rgba(126, 116, 92, 0.52) inset, 0px 4px 6px 0px rgba(0, 0, 0, 0.95);
@@ -184,12 +175,20 @@
 }
 
 .ab_but {
+  padding: 2px;
+  width: 100%;
   display: flex;
+  justify-content:space-around;
   margin-top: 50px;
 }
 
+.div_clue{
+  width: 48%;
+}
+             
+
 .button_clue {
-  width: 137px;
+  width: 100%;
   height: 30px;
   box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.3) inset, 0px 4px 8px 0px rgba(0, 0, 0, 0.75);
   background-color: rgba(64, 144, 67, 0.5);
@@ -212,8 +211,12 @@
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 1px 6px 4px 0px rgba(245, 245, 245, 0.5) inset;
 }
 
+.a_dalee {
+  width:48%;
+}
+
 .dalee {
-  width: 137px;
+  width: 100%;
   height: 30px;
   box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.3) inset, 0px 4px 8px 0px rgba(0, 0, 0, 0.75);
   background-color: rgba(118, 91, 91, 0.6);
@@ -228,12 +231,13 @@
 
 .tab {
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
   background: black;
+  margin-bottom: 40px;
 }
 
 .tab_tr {
-  color: rgba(170, 169, 169, 0.56)
+  color: rgba(170, 169, 169, 0.56);
 }
 
 .tab_th {
@@ -241,6 +245,7 @@
   font-size: 22px;
   text-align: center;
   font-style: italic;
+  padding-bottom: 20px;
 }
 
 .tab_rule_regex {
@@ -248,6 +253,7 @@
   font-size: 22px;
   text-align: center;
   border: 1px solid rgba(118, 91, 91, 0.6);
+  padding: 10px;
 }
 
 .tab_rule_desc {
@@ -255,5 +261,178 @@
   font-size: 16px;
   font-style: italic;
   border: 1px solid rgba(118, 91, 91, 0.6);
-  padding-left: 10px;
+  padding: 10px;
+}
+
+
+.btn_hint_task{
+  background-color: rgba(238, 43, 43, 0.34);
+  width: 200px;
+  height: 30px;
+  box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.3) inset, 0px 4px 8px 0px rgba(0, 0, 0, 0.75); 
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+  color: rgba(255, 255, 255, 1);
+  border-radius: 3px;
+  border: 0;
+}
+
+
+.about_section_small,
+.about_group_small{
+  display: none;
+}
+
+
+
+@media (max-width:985px){
+
+  .nutro {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .group_tasks {
+    width: 100%;
+    margin-right:0;
+    flex: 1 0 auto;
+    padding: 1px;
+    height: 85% !important;
+       
+}
+  .about_tasks {
+    height: 100px;
+    width: 100%;
+    flex: 0 0 auto;
+       
+  }
+
+  .tasks {    
+    width:100%;
+   
+  }
+
+
+  .about_section {
+   display: none;
+     
+  }
+  
+  .about_group {
+   display: none;
+  }
+
+
+  .about_section_small,
+  .about_group_small{
+    font-family: 'Roboto Mono';
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 21px;
+    letter-spacing: 0em;
+    text-align: justify;
+    color: rgba(236, 248, 237, 0.61);
+    display: block;
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+  .div_clue,
+  .a_dalee {
+    width:30%;
+  }
+
+  .ab_but {
+    padding: 2px;
+    width: 100%;
+    display: flex;
+    justify-content:space-evenly;
+    margin-top: 5px;
+  }
+}
+
+@media (max-width:769px){
+
+  .tasks_level_txt {
+    font-size: 18px;
+    margin-right:25px;
+  }
+
+  .tasks_section_txt {  
+    font-size: 20px;
+  }
+
+    
+  .about_section_small,
+  .about_group_small{
+    font-size: 14px;
+}
+}
+
+
+@media (max-width:540px){
+  .knop {
+    display: flex;
+    flex-direction: column;
+    height: 90px;
+       
+  }
+
+
+  .tasks_content {   
+    padding: 28px;    
+    }
+
+  .input_task { 
+    margin-bottom: 10px;
+    padding-left: 15px;
+    width: 100% !important;
+    height: 32px;
+    border-radius: 4px;
+  }
+
+  .b_t { 
+    width: 100%;
+    height: 32px;  
+    border-radius:4px;
+  }
+
+}
+
+@media (max-width:401px){
+
+  .tasks_content {   
+    padding: 18px;    
+  }
+
+  .tasks_level_txt {
+    font-size: 16px;
+    margin-right:25px;
+       
+  }
+
+  .tasks_section_txt {
+    font-size: 16px;
+  }
+
+  .out_clue_hint_task{
+    font-size: 16px;
+  }
+  .title_hint_task{
+    font-size: 18px;
+  }
+
+  .div_clue,
+  .a_dalee {
+    width:40%;
+  }
+  .tab_rule_regex {
+    font-size: 19px;
+  }
+  
+  .tab_rule_desc {
+    font-size: 15px;
+  } 
+
 }
