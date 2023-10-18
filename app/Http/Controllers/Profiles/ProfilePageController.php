@@ -20,7 +20,7 @@ class ProfilePageController extends Controller
 
   public function index(UserQueryBuilder $userQueryBuilder): View
   {
-    return view('Admin\profiles', ['profiles' => $userQueryBuilder->getAll()]);
+    return view('Admin/profiles', ['profiles' => $userQueryBuilder->getAll()]);
   }
 
   /**
@@ -91,7 +91,8 @@ class ProfilePageController extends Controller
       $section_next = $section + 1;
       $task_by_section = Task::where('level_id', $level)->where('section_id', $section_next)->first();
       if ($task_by_section) {
-        $uspex3 = $level . '/' . $section_next . '/1';
+        $group_next = $group + 1;
+        $uspex3 = $level . '/' . $section_next . '/' . $group_next;
         $update_profile->update([
           'progress' => $uspex3,
           'correct_answer' => $new_correct_answer,
@@ -99,7 +100,7 @@ class ProfilePageController extends Controller
           'rating' => $new_rating,
         ]);
         $section = $section_next;
-        $group = 1;
+        $group = $group_next;
       } else {
         $level_next = $level + 1;
         $task_by_level = Task::where('level_id', $level_next)->first();
