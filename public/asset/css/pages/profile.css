@@ -43,7 +43,7 @@
   border-radius: 3px;
   font-family: "Roboto Mono";
   box-sizing: border-box;
-  padding-bottom: 3px;
+  padding: 3px;
   box-shadow: 0px 4px 4px 2px rgba(0, 0, 0, 0.9), 4px 4px 4px 0px rgba(255, 255, 255, 0.91) inset;
   border: none;
 }
@@ -128,7 +128,6 @@ p.text-muted {
 }
 
 .profile_grafik_colum{
- 
   line-height: 200%; 
 }
 
@@ -136,6 +135,24 @@ p.text-muted {
   color: rgba(118, 91, 91, 1);
   font-size: 16px;
   padding: 2% 0;
+}
+
+.profile_training{
+  min-width: 200px;
+  height: 35px;
+  background: linear-gradient(80deg, #e8a70379 0%, #e0c07192 25%, #e0a08572 50%, rgba(170, 87, 74, 0.589) 75%, #3a1a0c 100%);
+  margin-top: 20px;
+  margin-left: 30px;
+  align-items: center;
+  border-radius: 3px;
+  font-family: "Roboto Mono";
+  padding: 3px, 30px;
+  box-shadow: 0px 4px 4px 2px rgba(0, 0, 0, 0.9), 4px 4px 4px 0px rgba(255, 255, 255, 0.8) inset;
+  border: none;
+
+}
+.profile_training a{
+  color: aliceblue;
 }
 
 .profile_username_smoll{

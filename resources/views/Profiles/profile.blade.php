@@ -1,7 +1,6 @@
 @extends('index')
 
 @section('title')
-
 @endsection
 
 @section('content')
@@ -88,7 +87,9 @@
     @endif
 
     <div class="profile_list_email">{{__('Моя почта:')}} {{Auth::user()->email}}</div>
+    <button class="profile_training"><a href="{{route('training')}}" style="width: 100%; height: 100%">{{__('Потренироваться  :)')}}</a></button>
     </div>
+    
   </div>
 
 
