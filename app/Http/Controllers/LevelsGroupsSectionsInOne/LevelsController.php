@@ -28,7 +28,7 @@ class LevelsController extends Controller
       $level = Level::create($validated);       
   
       if ($level) {       
-        return (\redirect()->route('admin.level', $level)-> with ('success', __('Уровень успешно сщздан!')));           
+        return (\redirect()->route('admin.level', $level)-> with ('success', __('Уровень успешно создан!')));           
       }        
       return (\back()->with('error', __('Не удалось сщздать уровень!')));
    
@@ -43,7 +43,7 @@ class LevelsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update( $request, Level $level)
+    public function update(Update $request, Level $level)
    { 
         $level = $level->fill($request->validated());
     if($level->save()) {       

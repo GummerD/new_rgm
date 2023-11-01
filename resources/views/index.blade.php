@@ -17,9 +17,10 @@
   <link rel="stylesheet" href="{{ asset('asset/css/Includes/registr_log_component.css') }}">
   <link rel="stylesheet" href="{{ asset('asset/css/pages/rulesPage.css') }}">
   <link rel="stylesheet" href="{{ asset('asset/css/pages/profile.css') }}">
-  <link rel="stylesheet" href="{{ asset('asset/css/pages/tasksPage.css') }}">
+  <link rel="stylesheet" href="{{ asset('asset/css/pages/tasksPage.css') }}">  
   <link rel="stylesheet" href="{{ asset('asset/css/pages/redactProfile.css') }}">
   <link rel="stylesheet" href="{{ asset('asset/css/pages/adminPage.css') }}">
+  <link rel="stylesheet" href="{{ asset('asset/css/pages/trainingPage.css')}}">
   
 
 
@@ -40,7 +41,7 @@
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <title>Document</title>
+  <title> @yield('title')</title>
   <!-- Fonts -->
   <link rel="dns-prefetch" href="//fonts.bunny.net">
   <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
@@ -75,6 +76,7 @@
  
 
  @stack('jsDel')
+ @stack('jsTraining')
 </body>
 
 

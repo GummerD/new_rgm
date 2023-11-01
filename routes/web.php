@@ -13,8 +13,7 @@ use App\Http\Controllers\LevelsGroupsSectionsInOne\GroupsController;
 use App\Http\Controllers\LevelsGroupsSectionsInOne\LevelsController;
 use App\Http\Controllers\LevelsGroupsSectionsInOne\LevGrSecController;
 use App\Http\Controllers\LevelsGroupsSectionsInOne\SectionsController;
-
-
+use App\Http\Controllers\TrainingPageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +31,8 @@ use App\Http\Controllers\LevelsGroupsSectionsInOne\SectionsController;
 // Этот блок будет доступен всем ->
 
 Route::get('/', [StartPageController::class, 'index'])->name('start');
+
+Route::get('training', TrainingPageController::class)->name('training');
 
 
 Route::group(['prefix' => 'rules'], static function () {

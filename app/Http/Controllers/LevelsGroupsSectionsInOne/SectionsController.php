@@ -28,7 +28,7 @@ class SectionsController extends Controller
       $section = Section::create($validated);       
   
       if ($section) {       
-        return (\redirect()->route('admin.section', $section)-> with ('success', __('Секция упражнений успешно изменена!')));           
+        return (\redirect()->route('admin.section', $section)-> with ('success', __('Секция упражнений успешно создана!')));           
       }        
       return (\back()->with('error', __('Не удалось создать секцию!')));
    
